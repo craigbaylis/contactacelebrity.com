@@ -1,0 +1,192 @@
+/*
+#------------------------------------------------------------------------
+# Musicity - #2 2011 template (for Joomla 1.5)
+#
+# Copyright (C) 2007-2010 Gavick.com. All Rights Reserved.
+# License: Copyrighted Commercial Software
+# Website: http://www.gavick.com
+# Support: support@gavick.com   
+#------------------------------------------------------------------------ 
+# Based on T3 Framework
+#------------------------------------------------------------------------
+# Copyright (C) 2004-2009 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+# @license - GNU/GPL, http://www.gnu.org/copyleft/gpl.html
+# Author: J.O.O.M Solutions Co., Ltd
+# Websites: http://www.joomlart.com - http://www.joomlancers.com
+#------------------------------------------------------------------------
+*/
+
+body{ background:transparent url('../../images/main_bg.jpg') repeat 0 0; }
+body#bd { font-size: 14px; margin:0; padding:0; font-family:Arial,Verdana,sans-serif; color: #444; }
+
+h1.logo{
+	margin:0 0 0 2px;
+	padding:0;
+	clear:both;
+}
+h1.logo a{
+	height:90px;
+	display:block;
+	text-indent:-999em;
+	margin:0;
+	background:transparent url('../../images/style1/logo.png') no-repeat center center;
+}
+
+#gk-top{ background: #000 url('../../images/top_bg.jpg') no-repeat center top; padding-bottom: 6px; }
+
+#gk-mainnav{
+	height:78px;
+	margin:0;
+	padding:0;
+	background: transparent url('../../images/style1/menu_bg.jpg') repeat 0 0;
+}
+
+button,
+.button,
+input[type=button],
+input[type=submit]{ background:#bc3726; color: #fff; border:3px solid #bc3726; }
+
+#imenu{
+	height:40px;
+	padding:0;
+	background:#fff;
+}
+
+#gk-mainnav input{margin:2px 0 0 0!important;padding:0!important;color:#999;}
+#gk-mainnav2 select{margin:2px 0 0 0!important;padding:0!important;color:#999;}
+
+#gk-mainnav ul{
+	margin:0;
+	padding:0;
+}
+
+#gk-mainnav ul li{
+	margin:0 0 0 10px; 
+}
+
+#gk-search{
+	clear:both;
+	padding:0px 0 0 10px;
+	width:auto;
+	float:left;
+}
+select { margin:14px 10px 10px 10px; float:left; }
+fieldset{border:none;}
+
+#imenu{padding:0px 0 0 20px;}
+
+#login-btn, 
+input[type=button], 
+#mod_search_button{
+	float:right;
+	color:#fff;
+	background: #bc3726;
+	border:none;
+	display:block;
+	padding:4px 5px;
+	margin:0 10px;
+}
+
+#login-btn{
+	margin-top:12px;
+}
+
+.gk-megamenu{
+	clear:both;
+	overflow:hidden;
+	border-bottom:1px solid #ccc;
+}
+
+#gk-top{
+	overflow: hidden;
+}
+
+.buttonheading{
+	display:none;
+}
+.buttonheading a,
+.buttonheading img{
+	border:none!important;
+}
+
+fieldset{
+	width:87%;
+}
+
+#gk-content{
+	clear:both;
+}
+
+textarea{
+	width:90%!important;
+}
+
+.article-meta{
+	color:#000;
+}
+
+.pagination{
+	list-style-type:none;
+	overflow:hidden;
+	clear:both;
+}
+.pagination li{
+	float:left;
+	margin:0 0 0 2px;
+}
+
+#gk-main {
+	padding:10px;
+}
+
+#gk-footer,
+.gk-breadcrumbs,
+.gk-copyright{
+	padding:0 10px;
+	font-size:10px;
+}
+
+#gk-footer{
+	border-top:1px solid #999;
+}
+
+.article_row { padding: 0; border-bottom: 0; }
+
+.article_column { padding-top: 10px; padding-bottom: 10px; overflow: hidden; }
+
+.blog_more { border-top: 0; }
+
+.gk-megamenu span.menu-desc{ display:none!important; }
+
+a{ color: #bc3726; text-decoration:none; }
+
+h1,h2,h3,h4,h5,h6{
+	color: #bc3726;
+	font-weight:normal;
+}
+
+h1{font-size:250%;}
+h2{font-size:180%;}
+h3{font-size:150%;}
+h4{font-size:120%;}
+h5{font-size:115%;}
+h6{font-size:110%;}
+
+/* 
+ * Messages 
+ */
+ 
+#system-message { margin: 0 0 4px; }
+#system-message dd.message ul, #system-message dd.error ul, #system-message dd.notice ul { margin: 0; padding: 0; }
+#system-message dd.message ul li, #system-message dd.error ul li, #system-message dd.notice ul li { background: none; color: #fff; margin: 0; padding: 5px; list-style-type:none;}
+/* System Standard Messages */
+#system-message dd.message ul { background: #069; border: 0; }
+/* System Error Messages */
+#system-message dd.error ul { background: #cf052b; border: 0; }
+/* System Notice Messages */
+#system-message dd.notice ul { background: #333; border: 0; }
+
+/**/
+.blogcreatedate {
+	display: none;
+}

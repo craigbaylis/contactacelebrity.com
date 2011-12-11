@@ -1,0 +1,302 @@
+.loader{
+    background: url(../images/loader.gif) no-repeat center center #fff;
+}
+.wizard-page {
+  border: 1px dashed #CCCCCC;
+  margin: 0 0 18px;
+  padding: 0;
+  position: relative;
+  width:500px;
+  margin:0px auto;
+}
+.step_header {
+  background-color: #BC3726;
+  color: #FFFFFF;
+  font-family: WinterthurCondensed,Arial,sans-serif;
+  font-size: 24px;
+  padding: 10px;
+}
+.step_body {
+  padding: 10px;
+  min-height:110px;
+}
+.step_controls{
+  padding:10px;
+}
+.step_message1{
+}
+.step_message2{
+}
+.field {
+  margin: 10px 0px;
+}
+.label {
+  display: inline-block;
+  margin: 3px 0 3px 5px;
+  text-align: right;
+  vertical-align: middle;
+}
+.addressLabel{
+	width: 150px;
+}
+#celebrity #Step3 .label{
+    width:120px;
+    vertical-align: middle;
+}
+
+#fields{
+  height:120px;
+  width:460px;
+  padding:1px;
+}
+.celebname, p.notfound span{
+  color: blue;
+  font-weight: bold;
+  text-align:left;
+}
+#biography{
+ 	width:300px;
+}
+#formFields .field{
+	margin: 0;
+	overflow: hidden;
+  	padding:4px;
+}
+#formRight .label, #formLeft .label{
+}
+.hair_color, .eye_color{
+  width:100px;
+}
+.celebs_found {
+  border: thin solid;
+  margin: 10px auto;
+  padding: 10px;
+  width: 300px;
+}
+.step_message1 span{
+}
+.required{
+  color:#ff0000;
+  vertical-align:middle;
+  padding-left: 2px;
+}
+#search_results{
+  min-height:110px;
+}
+ul.step_list{
+  list-style-type:none;
+  padding:0px;
+  margin:0px;
+}
+ul.step_list li {
+  background-image: url("../images/go-bullet.gif");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  margin: 20px 0;
+  padding-left: 34px;
+}
+ul.step_list li a{
+  line-height:100%;
+}
+p.notfound span{
+  text-decoration:underline;
+  font-size:14px;
+}.add-address-celeb-name {
+	text-align: center;
+	margin-top: 5px;
+}
+.small-text {
+	font-size: 18px;
+}
+.add-address {
+	background-color: #EEE;
+	padding: 5px 10px;
+	margin: 5px 0px;
+
+}
+.address-type {
+  color: #000000;
+  font-weight: bold;
+  margin: 0;
+}
+.address-list {
+  list-style-position: outside;
+  list-style-type: disc;
+  margin: 5px 0 5px 10px;
+}
+.add-address-msg2 {
+	text-align: center;
+}
+.add-address-msg2 h4 {
+	margin-bottom: 0px;
+}
+#mailing-address .address-list li div {
+	line-height: 110%;
+}
+#mailing-address .address-list li {
+	margin: 0 0 20px 0;
+}
+.addressTypes {
+	display:inline-block;
+	float:left;
+	text-align:left;
+	margin-left:15px;
+}
+.typesContainer {
+  margin-left: 25px;
+}
+.typeSeparator {
+	border-bottom: thin solid #CCCCCC;
+	clear: both;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	width: 100%;
+}
+.addTemp {
+  border: 1px solid #CCCCCC;
+  margin: 10px auto;
+  padding: 5px;
+  width: 450px;
+}
+.add-address-msg3 {
+	line-height: 110%;
+}
+.loading{
+    background: transparent no-repeat center center url('../images/loading.gif');
+}
+.calendar{
+    vertical-align: middle;
+}
+input#addVenueStart,input#addVenueEnd{
+    background-color: #FFF;
+    color: #555;
+}
+#addOtherState{
+    margin-left: 5px;
+}
+
+/** BOF SEARCH RESULTS **/
+#sr-pict {
+  float: left;
+  height: 95px;
+  position: relative;
+  width: 75px;
+}
+#sr-pict img {
+  bottom: 0;
+  position: absolute;
+}
+#sr-container {
+  border: 1px dashed #CCCCCC;
+  margin: 10px auto;
+  overflow: hidden;
+  width: 485px;
+}
+#sr-extra {
+	float: left;
+	width: 400px;
+}
+.sr-title {
+	display: inline-block;
+	width: 100px;
+}
+#sr-extra {
+	margin-left: 10px;
+}
+.active-letter{
+    background-color:#BC3726;
+    color:#CCC;
+}
+/** EOF SEARCH RESULTS **/
+
+/** BOF ADDRESS DETAIL **/
+.address-detail-body > div {
+	float: left;
+}
+.address-detail-footer {
+  background-color: #000;
+  clear: both;
+  color: #FFFFFF;
+  margin-top: 10px;
+  padding: 5px;
+}
+.address-detail-footer span {
+	display: inline-block;
+	margin: 0 15px;
+}
+
+.address-detail {
+    width: 300px;
+}
+.address-detail div, .address-detail-options div, .address-detail-options-values div, .address-detail-submit-info div {
+    padding: 3px;
+}
+.address-detail-options {
+    width: 150px;
+}
+.address-detail-options-values {
+    width: 150px;
+}
+.address-detail-footer a:hover{
+    color:#fff;
+}
+.address-detail a:hover{
+    color:#BC3726;
+    text-decoration: underline;
+}
+input, #country_id, #addState {
+    margin: 5px 0 !important;
+}
+#addresult .celebrity-name {
+	text-decoration: underline;
+	font-weight: bold;
+}
+#addresult {
+  border: 1px solid;
+  margin: 0 auto;
+  padding: 10px;
+  width: 500px;
+}
+#addresult .normal-label {
+  display: inline-block;
+  width: 200px;
+}
+#addresult .wide-label{
+    display: inline-block;
+    margin-right: 0;
+}
+#addresult .confirm-address {
+  background-color: #CCCCCC;
+  display: inline-block;
+  padding: 5px;
+  vertical-align: top;
+  width: auto;
+}
+#addresult fieldset {
+  border: medium none;
+  margin-top: 10px;
+  padding: 2px 0;
+}
+#addresult fieldset label {
+  margin-left: 2px;
+  margin-right: 20px;
+  vertical-align: middle;
+}
+#addresult .caption, #addresult .comment, #addresult .wide-label{
+    width:480px;
+    text-align: left !important;
+}
+.imagegroup {
+  border: 1px solid;
+  margin: 10px 0;
+  padding: 10px;
+}
+#addresult legend {
+  background: none repeat scroll 0 0 #BC3726;
+  color: #FFFFFF;
+  margin-top: 5px;
+  padding: 5px;
+  text-transform: uppercase;
+  width: 493px;
+  height: 25px;
+}

@@ -1,0 +1,30 @@
+/*
+#------------------------------------------------------------------------
+# Musicity - #2 2011 template (for Joomla 1.5)
+#
+# Copyright (C) 2007-2010 Gavick.com. All Rights Reserved.
+# License: Copyrighted Commercial Software
+# Website: http://www.gavick.com
+# Support: support@gavick.com   
+#------------------------------------------------------------------------ 
+# Based on T3 Framework
+#------------------------------------------------------------------------
+# Copyright (C) 2004-2009 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+# @license - GNU/GPL, http://www.gnu.org/copyleft/gpl.html
+# Author: J.O.O.M Solutions Co., Ltd
+# Websites: http://www.joomlart.com - http://www.joomlancers.com
+#------------------------------------------------------------------------
+*/
+
+/* Son of Suckerfish Dropdowns
+---------------------------------------------------------
+Originally developed by Patrick Griffiths and Dan Webb
+http://www.htmldog.com/articles/suckerfish/dropdowns/
+---------------------------------------------------------*/
+
+#gksdl-mainnav { position: relative; }
+#gksdl-mainnav ul { display: block; }
+#gksdl-mainnav li { float: left; }
+#gksdl-mainnav a { display: block; float: left; text-decoration: none; }
+#gksdl-subnav .first-item { border-left: 0; }
+#gksdl-subnav { display: none; }

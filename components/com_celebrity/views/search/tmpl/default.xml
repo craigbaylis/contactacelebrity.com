@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="Search Results" hidden="false">
+        <message>
+            <![CDATA[
+                Use to assign a menu to celebrity search results so that modules can be displayed along with search results
+            ]]>
+        </message>
+    </layout>
+    <state>
+        <name>Search Results</name>
+        <description>Use to assign a menu to celebrity search results so that modules can be displayed along with search results</description>       
+    </state>
+</metadata>

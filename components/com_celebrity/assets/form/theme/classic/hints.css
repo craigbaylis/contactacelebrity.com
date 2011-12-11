@@ -1,0 +1,50 @@
+
+.fc-hint-button{
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	background-image: url(img/hint.png);
+	vertical-align: middle;
+	cursor: help;
+}
+.fc-hint-button:hover{
+	background-position: left top;
+}
+
+.fc-hint *{
+	display: block;
+	background: transparent none;
+}
+
+.fc-hint{
+	position: absolute;
+	z-index: 1000000002;
+	width: 180px;
+    text-decoration:none;
+	font-size: 10px;
+	font-family: tahoma, verdana, sans-serif;
+	text-align:left;
+	background-image: none;
+}
+.fc-hint div.title,
+.fc-hint div.content{
+	background-image: url(img/hint_tip.png);
+	background-repeat: no-repeat;
+}
+
+.fc-hint div.title{
+	padding:10px 10px 5px;
+	color: #CCC;
+	text-align: center;
+	font-weight:bold;
+	background-position: top center;
+}
+
+.fc-hint div.content{
+	padding: 0 10px 20px;
+	text-align: center;
+	color:#FFF;
+    background-position: bottom center;
+}

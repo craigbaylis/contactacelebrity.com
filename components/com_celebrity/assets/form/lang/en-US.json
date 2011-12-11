@@ -1,0 +1,7 @@
+{
+	"cascade" : ["en-EN"],
+	"hints" : {
+		"thishint" : "This is a hint that would notify you to fill this in a certain way.",
+		"thishint2" : "This is another hint message!"
+	}
+}

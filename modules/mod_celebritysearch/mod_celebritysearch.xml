@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+    <!-- Name of the Module -->
+        <name>celebritysearch</name> 
+
+    <!-- Name of the Author -->
+        <author>Kevin Campbell</author> 
+
+    <!-- Version Date of the Module -->
+        <creationDate>2011-7-25</creationDate>
+
+    <!-- Copyright information -->
+        <copyright>TCM Services</copyright>
+
+    <!-- License Information -->
+        <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+
+    <!-- Author's email address -->
+        <authorEmail>kevin@tcmsvc.net</authorEmail>
+
+    <!-- Author's website -->
+        <authorUrl>http://www.tcmsvc.net</authorUrl>
+
+    <!-- Module version number -->
+        <version>1.0.0</version>
+
+    <!-- Description of what the module does -->
+        <description>Display Celebrity Search Results</description>
+
+    <!-- Listing of all files that should be installed for the module to function -->
+        <files>
+        <!-- The 'module' attribute signifies that this is the main controller file -->
+                <filename module="mod_celebritysearch">mod_celebritysearch.php</filename>
+                <filename>index.html</filename>
+                <filename>helper.php</filename>
+                <filename>tmpl/default.php</filename>
+                <filename>tmpl/index.html</filename>
+        </files>
+
+    <languages>
+        <!-- Any language files included with the module -->
+        <language tag="en-GB">en-GB.mod_celebritysearch.ini</language>
+    </languages>
+
+    <!-- Optional parameters -->
+        <params group="">
+            <param name="social_network_icons" type="radio" default="0" label="Show Social Icons" description="Display the social network icons next to the browse search letters">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </param>
+        </params>
+
+</install>

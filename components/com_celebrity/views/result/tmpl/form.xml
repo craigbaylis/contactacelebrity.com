@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="Submit Result" hidden="false">
+        <message>
+            <![CDATA[Form used by users to submit the results of mailing to a celebrity address]]>
+        </message>
+    </layout>
+    
+    <state>
+        <name>Submit Result</name>
+        <description>Form used by users to submit the results of mailing to a celebrity address</description>
+    </state>
+</metadata>

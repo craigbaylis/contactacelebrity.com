@@ -1,0 +1,50 @@
+/*
+#------------------------------------------------------------------------
+# Musicity - #2 2011 template (for Joomla 1.5)
+#
+# Copyright (C) 2007-2010 Gavick.com. All Rights Reserved.
+# License: Copyrighted Commercial Software
+# Website: http://www.gavick.com
+# Support: support@gavick.com   
+#------------------------------------------------------------------------ 
+# Based on T3 Framework
+#------------------------------------------------------------------------
+# Copyright (C) 2004-2009 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+# @license - GNU/GPL, http://www.gnu.org/copyleft/gpl.html
+# Author: J.O.O.M Solutions Co., Ltd
+# Websites: http://www.joomlart.com - http://www.joomlancers.com
+#------------------------------------------------------------------------
+*/
+
+.wrap { width:100%; clear:both; }
+.main { max-width:1200px; margin:0 auto; }
+.static { position:static; }
+.column { overflow:hidden; float:left; }
+.gk-mass { clear:both; margin-bottom:18px; }
+#gk-top,
+#banner1,
+#banner2,
+#gk-header { clear:both; margin-bottom: 18px; }
+#gk-topsl1,
+#gk-topsl2 { margin: 0 auto 18px auto!important; }
+#gk-usersl1,
+#gk-usersl2,
+#gk-botsl1,
+#gk-botsl2 { margin: 18px auto 0 auto!important; }
+.main .inner { padding:18px; }
+.main .inner.ctop { padding-top:0; }
+.main .inner.cbottom { padding-bottom:0; }
+.main .inner.cleft { padding-left:0; }
+.main .inner.cright { padding-right:0; }
+#gk-mainbody { float:left; }
+#gk-current-content,
+#gk-main { float:right;}
+#gk-right { float:right; }
+#gk-footer { clear:both; }
+.article_column { float:left; position:relative; }
+.cols1 .article_column { width:100%; }
+.cols2 .article_column { width:50%; }
+.cols3 .article_column { width:33.33%; }
+.cols4 .article_column { width:25%; }
+.cols5 .article_column { width:20%; }
+.gk-box { float:left; overflow:hidden; }

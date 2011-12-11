@@ -1,0 +1,137 @@
+.gk_opt{
+	border:1px solid #d1d1d1;
+	border-bottom:1px solid #e1e1e1;
+	height:43px;
+	background:url('xml_panel.png') repeat-x 0 0;
+	cursor:pointer;
+}
+.gk_opt:hover div{
+	background:url('xml_panel.png') no-repeat ;
+}
+.gk_opt span.gk_text{
+	display:block;
+	background:url('xml_panel.png') repeat-x 0 -43px;
+	margin:7px 0 7px 10px;
+	padding:0 0 0 14px;
+	float:left;
+	width: 122px;
+	border:1px solid #fff;
+	height:27px;
+	line-height:27px;
+	font-size:12px;
+	color:#fff;
+	float:left;
+	font-weight:bold;
+	text-transform:uppercase;
+	text-shadow: 1px 1px #000;
+}
+.gk_opt span.gk_btn{
+	display:block;
+	background:url('xml_panel.png') repeat-x 0 -82px;
+	margin:16px 16px 0 0;
+	float:right;
+	width: 14px;
+	height:10px;
+	text-indent:-999em;
+}
+.gk_opt.active span.gk_btn{
+	background-position:0 -72px;
+}
+.gk_opt:hover span.gk_btn{
+	background-position:14px -82px;
+}
+.gk_opt.active:hover span.gk_btn{
+	background-position:14px -72px;
+}
+.gk_opts{
+	border-left:1px solid #d1d1d1;
+	border-right:1px solid #d1d1d1;
+}
+
+.paramlist_value .inputbox,
+.paramlist_value input.text_area{
+	width:260px;
+	height:24px;
+	border:1px solid #d1d1d1;
+	font-size:14px;
+	padding:5px 0 0 5px;	
+}
+.paramlist_value .inputbox{
+	height:30px;
+	padding:5px;
+}
+.paramlist_key label{
+	font-size:13px;
+}
+
+#gk_social_icons .paramlist_value .text_area{
+	margin:-4px 0 0 5px;
+	padding-top:6px;
+}
+#gk_social_icons .paramlist_value .inputbox{
+	width:100px;
+	height:32px;
+}
+#gk_update_div{
+	border-bottom:1px solid #d1d1d1;
+	color:#aaa;
+	padding:10px;
+	text-align:center;
+	height:150px;
+	overflow:auto;
+}
+#gk_loader{
+	background:url('loader.gif') no-repeat 0 0;
+	display:block;
+	width:16px;
+	height:16px;
+	margin:10px auto 10px auto;
+}
+.gk_update{
+	clear:both;
+}
+#gk_update_div p{
+	font-size:11px;
+	text-align:left;
+	color:#999;
+}
+.gk_update{
+	line-height:25px;
+	border-bottom:1px dotted #d1d1d1;
+}
+span.gk_update_version{
+	color:#666;
+	float:left;
+	padding:0 20px;
+	border-right:1px dotted #d1d1d1;
+	font-size:12px;
+}
+span.gk_update_data{
+	float:left;
+	color:#666;
+	padding:0 20px;
+	font-size:12px;
+	border-right:1px dotted #d1d1d1;
+}
+span.gk_update_link{
+	float:left;
+	font-size:14px;
+	padding-left:20px;
+}
+
+.switcher-on,
+.switcher-off{
+	width:94px;
+	height:27px;
+	background:transparent url('switcher.png') no-repeat 0 0;
+	cursor:pointer;
+}
+
+.switcher-off{
+	background-position:-94px 0;
+}
+
+.gk_link {
+    color:#ca3528!important;
+    font-size:85%;
+}

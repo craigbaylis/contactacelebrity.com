@@ -1,0 +1,587 @@
+/** 
+# Musicity - #2 2011 template (for Joomla 1.5)
+ */
+
+/*----------------------------------------------------------------------
+	Common Elements
+----------------------------------------------------------------------*/
+
+/* --- Global K2 container --- */
+#k2Container { padding:0; }
+body.contentpane #k2Container { padding:16px; } /* used in popups */
+/* --- General padding --- */
+.k2Padding { padding:4px; }
+/* --- Clearing --- */
+.clr { clear:both; height:0; line-height:0; display:block; float:none; }
+/* --- RSS feed icon --- */
+
+
+.k2FeedIcon { padding:4px 8px; }
+.k2FeedIcon a,
+.k2FeedIcon a:hover { display:block; float:right; margin:0; padding:0; width:16px; height:16px; background:url(../images/fugue/feed.png) no-repeat 50% 50%; }
+.k2FeedIcon a span,
+.k2FeedIcon a:hover span { display:none; }
+/* --- Rating --- */
+
+
+.itemRatingForm { display:block; vertical-align:middle; line-height:25px; float:left; }
+.itemRatingLog { margin: -2px 0 0; padding:0 0 0 4px; float:left; line-height:25px; }
+.itemRatingForm .formLogLoading { background:url(../images/system/loading.gif) no-repeat left center; height:25px; padding:0 0 0 20px; }
+.itemRatingList,
+.itemRatingList a:hover,
+.itemRatingList .itemCurrentRating { background:url(../images/style1/star.png) left -1000px repeat-x; }
+.itemRatingList { position:relative; float:left; width:125px; height:25px; overflow:hidden; list-style:none; margin:0 6px!important; padding:0; background-position:left top; }
+.itemRatingList li { display:inline; background:none; padding:0; border: none !important }
+.itemRatingList a,
+.itemRatingList .itemCurrentRating { position:absolute; top:0; left:0; text-indent:-1000px; height:25px; line-height:25px; outline:none; overflow:hidden; border:none; cursor:pointer; }
+.itemRatingList a:hover { background-position:left bottom; }
+.itemRatingList a.one-star { width:20%; z-index:6; }
+.itemRatingList a.two-stars { width:40%; z-index:5; }
+.itemRatingList a.three-stars { width:60%; z-index:4; }
+.itemRatingList a.four-stars { width:80%; z-index:3; }
+.itemRatingList a.five-stars { width:100%; z-index:2; }
+.itemRatingList .itemCurrentRating { z-index:1; background-position:0 center; margin:0; padding:0; }
+.siteRoot { display:none; }
+/* --- CSS added with Javascript --- */
+
+
+.smallerFontSize { font-size:100%; line-height:inherit; }
+.largerFontSize { font-size:150%; line-height:140%; }
+/* --- ReCaptcha --- */
+
+
+.recaptchatable .recaptcha_image_cell,
+#recaptcha_table { background-color:#fff !important; }
+#recaptcha_table { border-color: #ccc !important; }
+#recaptcha_response_field { border-color: #ccc !important; background-color:#fff !important; }
+/* --- Primary lists in modules --- */
+
+
+.clearList { display:none; float:none; clear:both; } /* this class is used to clear all previous floating list elements */
+.lastItem { border:none; } /* class appended on last list item */
+/* --- Avatars --- */
+
+
+.k2Avatar img { display:block; float:left; margin:2px 8px 4px 4px; }
+/* --- Pagination --- */
+
+
+.k2Pagination { padding:8px; margin:24px 0 4px 0; text-align:center; color:#999; }
+/* --- Featured flags: the classes are repeated further below to indicate placement in the CSS structure --- */
+
+
+.itemIsFeatured,
+.catItemIsFeatured,
+.userItemIsFeatured { background:none; }
+/*----------------------------------------------------------------------
+
+
+	Component: views
+
+
+----------------------------------------------------------------------*/
+
+
+.genericItemView { border-bottom:1px dashed #ccc; padding:8px 0; margin:0 0 16px 0; } /* this is the item container for this view */
+.userItemViewUnpublished { opacity:0.9; border:4px solid #dadada; background:#fffff2; padding:8px; }
+.itemView { padding:8px 0 24px 0; margin:0 0 24px 0; } /* this is the item container for this view */
+.userItemEditLink,
+.catItemEditLink,
+.itemEditLink { display:block; text-align:right; padding:8px 36px; margin:0 0 24px 0; border:1px dashed #ccc; background: #fffef4; font-size: 20px; font-weight: normal; font-family: Georgia, "Times New Roman", Times, serif; font-style: italic }
+.userItemEditLink a,
+.catItemEditLink a,
+.itemEditLink a { }
+.latestItemDateCreated,
+.genericItemDateCreated,
+.userItemDateCreated,
+.catItemDateCreated { font-size:11px; }
+.itemDateCreated { float: left; padding: 3px; margin: 0 0 0 -18px; background: #BC3726 url('../images/style1/date_bg.png') no-repeat right bottom; color: #fff; }
+.itemDateCreated div { padding: 2px 8px; border: 1px dashed #CE6C5D; border-left: none; }
+.itemDateCreated span { display: block; font-size: 24px; line-height: 28px; text-align: center; }
+.itemDateCreated span:first-child { font-size: 36px; line-height:40px; }
+.genericItemDateCreated { border-right:1px solid #ccc; margin:0 8px 0 0; padding:0 8px 0 0; }
+.itemHeader { margin: 40px 0 0; }
+.itemHeader .itemTitle { color: #373636; line-height:110%; font-weight: bold; margin:0 0 12px; padding:0; }
+.latestItemHeader .latestItemTitle,
+.genericItemHeader .genericItemTitle,
+.userItemHeader .userItemTitle,
+.catItemHeader .catItemTitle { font-size:180%; line-height:110%; margin:0; padding:0 0 4px; }
+.latestItemHeader .latestItemTitle a,
+.genericItemHeader .genericItemTitle a,
+.userItemHeader .userItemTitle a,
+.catItemHeader .catItemTitle a { }
+.latestItemHeader .latestItemTitle a:hover,
+.genericItemHeader .genericItemTitle a:hover,
+.userItemHeader .userItemTitle a:hover,
+.catItemHeader .catItemTitle a:hover { }
+.userItemHeader .userItemTitle span sup,
+.catItemHeader .catItemTitle span sup,
+.itemHeader .itemTitle span sup { font-size:12px; text-decoration:none; } /* "Featured" presented in superscript */
+.catItemHeader .catItemAuthor { display:block; padding:0; margin:0; font-size: 11px; }
+.catItemHeader .catItemAuthor { float: left; margin: 0 12px 0 0; }
+.itemToolbar { float: left; margin:0 0 25px 20px; width: 90%; }
+.itemToolbar ul { text-align:left; list-style:none; margin:0; font-size: 11px; }
+.itemToolbar ul li { display:inline; list-style:none; padding:0 4px 0 8px; margin:0; border-left:1px solid #ccc; text-align:center; background:none; }
+.itemToolbar ul > li:first-child { border:none; padding-left:0!important; } /* remove the first CSS border from the left of the toolbar */
+.itemToolbar ul li a { font-weight:normal; }
+.itemToolbar ul li a:hover { }
+.itemToolbar ul li a img { vertical-align:middle; position: relative; top: -2px; }
+.itemToolbar ul li a#fontDecrease { margin:0 0 0 2px; }
+.itemToolbar ul li a#fontDecrease img { width:13px; height:13px; background:url(../images/system/font_decrease.gif) no-repeat; }
+.itemToolbar ul li a#fontIncrease { margin:0 0 0 2px; }
+.itemToolbar ul li a#fontIncrease img { width:13px; height:13px; background:url(../images/system/font_increase.gif) no-repeat; }
+.itemToolbar ul li a#fontDecrease span,
+.itemToolbar ul li a#fontIncrease span { display:none; }
+.itemToolbar .itemAuthor a { }
+.itemToolbar .itemAuthor a:hover { }
+.catItemRatingBlock,
+.itemRatingBlock { padding:3px 0 4px; line-height: 25px; font-size: 11px; }
+.catItemRatingBlock { padding-top: 12px; }
+.catItemRatingBlock span,
+.itemRatingBlock span { display:block; float:left; font-style:normal; padding:0 4px 0 0; margin:0; }
+.latestItemBody,
+.genericItemBody,
+.userItemBody,
+.catItemBody,
+.itemBody { padding:16px 0; margin:0; }
+.genericItemImageBlock,
+.latestItemImageBlock { float:left; margin:10px 16px 0 0!important; padding:0; }
+.userItemImageBlock,
+.itemImageBlock { margin:0 0 16px; padding:0; text-align: center; clear: both; }
+.userItemImageBlock { float: left; margin:10px 16px 0 0 !important; }
+.userItemView { margin-bottom: 40px; }
+.latestItemImageBlock,
+.genericItemImageBlock,
+.catItemImageBlock { margin:0; padding:0; }
+.genericItemImageBlock { padding:0; border:none; }
+span.itemImage { display:block; text-align:center; margin:0 0 8px 0; }
+span.latestItemImage,
+span.userItemImage,
+span.catItemImage { display:block; margin:0; text-align:center; }
+span.latestItemImage img,
+span.genericItemImage img,
+span.userItemImage img,
+span.catItemImage img,
+span.itemImage img { background: #fff; margin:0; padding:6px; }
+span.itemImageCaption,
+span.itemImageCredits { font-size:11px; }
+span.itemImageCredits { font-style:italic; border-left: 1px solid #ccc; padding-left: 5px; margin-left: 5px; }
+.latestItemIntroText,
+.genericItemIntroText,
+.userItemIntroText,
+.catItemIntroText,
+.itemIntroText { font-size:inherit; font-weight:normal; line-height:inherit; padding:4px 0 12px; }
+span.latestItemImage img,
+span.genericItemImage img,
+span.userItemImage img,
+span.catItemImage img,
+span.itemImage img { margin:0; padding:4px; background: #fff; border: 1px dashed #ccc; }
+.itemFullText h3 { margin:0; padding:16px 0 4px 0; }
+.itemFullText img { padding:6px; margin:4px; background:#fff; }
+.catItemExtraFields,
+.genericItemExtraFields,
+.itemExtraFields { clear:both; margin:10px 0; padding:0; }
+.catItemExtraFields h4,
+.genericItemExtraFields h4,
+.itemExtraFields h3 { font-size:28px; font-weight:normal; height:auto; line-height:28px; margin:32px 0 22px 6px; padding:0 0 6px; border-bottom: 1px dashed #ccc }
+.catItemExtraFields ul,
+.genericItemExtraFields ul,
+.itemExtraFields ul { }
+.catItemExtraFields ul li,
+.genericItemExtraFields ul li,
+.itemExtraFields ul li { display:block; overflow:hidden; border-bottom: 1px dashed #ccc; margin: 0 2px; padding: 3px 20px 3px 4px; }
+.catItemExtraFields ul li span.catItemExtraFieldsLabel,
+.genericItemExtraFields ul li span.genericItemExtraFieldsLabel,
+.itemExtraFields ul li span.itemExtraFieldsLabel { display:block; float:left; font-weight:bold; margin:0 4px 0 0; width:30%; }
+.catItemExtraFields ul li span.catItemExtraFieldsValue,
+.itemExtraFields ul li span.itemExtraFieldsValue { margin-left:30%; display:block; }
+span.itemDateModified { display:block; font-size:11px; font-style:italic; margin:16px 0 4px; padding:4px; text-align:right; color: #585048 }
+.latestItemLinks,
+.userItemLinks,
+.catItemLinks,
+.itemLinks { margin:0 0 4px; padding:0; font-size: 11px; }
+.catItemHitsBlock,
+.itemHitsTwitter,
+.itemCategory,
+.latestItemTagsBlock,
+.userItemTagsBlock,
+.catItemTagsBlock,
+.itemTagsBlock,
+.itemSocialLinksBlock { padding:4px; border-bottom: 1px solid #eee }
+span.itemHitsTwitterSep { padding:0 8px; color:#ccc; }
+span.itemTwitterLink a { background:url(../images/social/twitter_16.png) no-repeat 0 50%; padding:2px 0 0 20px; margin:8px 0; text-decoration:none; }
+span.itemTwitterLink a:hover { text-decoration:none; }
+.latestItemCategory,
+.genericItemCategory,
+.userItemCategory,
+.catItemCategory { font-size:11px; }
+.latestItemCategory a,
+.genericItemCategory a,
+.userItemCategory a,
+.catItemCategory a { }
+.latestItemCategory a:hover,
+.genericItemCategory a:hover,
+.userItemCategory a:hover,
+.catItemCategory a:hover { }
+.itemCategory span { padding:0 12px 0 0; }
+.latestItemTagsBlock span,
+.userItemTagsBlock span,
+.catItemTagsBlock span,
+.itemTagsBlock span { padding:0 12px 0 0; }
+.latestItemTagsBlock ul.latestItemTags,
+.userItemTagsBlock ul.userItemTags,
+.catItemTagsBlock ul.catItemTags,
+.itemTagsBlock ul.itemTags { list-style:none; padding:0; margin:0; display:inline; }
+.latestItemTagsBlock ul.latestItemTags li,
+.userItemTagsBlock ul.userItemTags li,
+.catItemTagsBlock ul.catItemTags li,
+.itemTagsBlock ul.itemTags li { display:inline; list-style:none; margin:0 6px 0 0; text-align:center; }
+.latestItemTagsBlock ul.latestItemTags li a,
+.userItemTagsBlock ul.userItemTags li a,
+.catItemTagsBlock ul.catItemTags li a,
+.itemTagsBlock ul.itemTags li a { background: transparent url('../images/style1/color_bg.png') no-repeat center center; color: #fff; line-height: 1; padding: 2px 8px; }
+.latestItemTagsBlock ul.latestItemTags li a:hover,
+.userItemTagsBlock ul.userItemTags li a:hover,
+.catItemTagsBlock ul.catItemTags li a:hover,
+.itemTagsBlock ul.itemTags li a:hover { background: #000} 
+.itemSocialLinksBlock span { padding:0 24px 0 0; float:left; display:block; }
+.itemSocialLinksBlock ul.itemSocialLinks { list-style:none; padding:0; margin:0; clear: none; float:left; }
+.itemSocialLinksBlock ul.itemSocialLinks li { float:left; list-style:none; padding:0 4px; margin:0; }
+.itemSocialLinksBlock ul.itemSocialLinks li a { float:left; display:block; width:16px; height:16px; background-position:0 0; background-repeat:no-repeat; }
+.itemSocialLinksBlock ul.itemSocialLinks li a:hover { }
+.itemSocialLinksBlock ul.itemSocialLinks li a span { display:none; }
+a.delicious { background-image: url(../images/social/delicious_16.png); }
+a.digg { background-image: url(../images/social/digg_16.png); }
+a.facebook { background-image: url(../images/social/facebook_16.png); }
+a.googlebuzz { background-image: url(../images/social/googlebuzz_16.png); }
+a.myspace { background-image: url(../images/social/myspace_16.png); }
+a.reddit { background-image: url(../images/social/reddit_16.png); }
+a.stumble { background-image: url(../images/social/stumbleupon_16.png); }
+a.technorati { background-image: url(../images/social/technorati_16.png); }
+.catItemAttachmentsBlock,
+.itemAttachmentsBlock { padding:4px; border-bottom:1px dotted #ccc; }
+.catItemAttachmentsBlock span,
+.itemAttachmentsBlock span { font-weight:bold; padding:0 4px 0 0; }
+.catItemAttachmentsBlock ul.catItemAttachments,
+.itemAttachmentsBlock ul.itemAttachments { list-style:none; padding:0; margin:0; display:inline; }
+.catItemAttachmentsBlock ul.catItemAttachments li,
+.itemAttachmentsBlock ul.itemAttachments li { display:inline; list-style:none; padding:0 4px; margin:0; text-align:center; }
+.catItemAttachmentsBlock ul.catItemAttachments li span,
+.itemAttachmentsBlock ul.itemAttachments li span { font-size:10px; color:#999; font-weight:normal; }
+.modulePretext { margin:0 0 12px!important; padding:6px 12px !important; background: #f9f9f9; border: 1px solid #eee; font-size: 11px; }
+/* Author block & User block*/
+
+
+.itemAuthorBlock { margin:26px 0; padding:2px 0 0; }
+.itemAuthorBlock img.itemAuthorAvatar,
+.latestItemsUser img,
+.userBlock img { display:block; float:left; margin:20px; }
+.latestItemsUser img,
+.userBlock img { margin: 0 24px 0 0; }
+.itemAuthorBlock .itemAuthorDetails,
+.latestItemsUser,
+.userBlock { margin:0; padding: 6px; background: #f7f7f7; }
+.itemAuthorBlock .itemAuthorDetails > div,
+.latestItemsUser > div,
+.userBlock > div { border: 1px dashed #d5d5d5; padding: 12px 12px 0 12px; }
+.itemAuthorBlock .itemAuthorDetails a,
+.latestItemsUser a,
+.userBlock a { }
+.itemAuthorBlock .itemAuthorDetails a:hover,
+.latestItemsUser a:hover,
+.userBlock a:hover { }
+.itemAuthorBlock .itemAuthorDetails h3.itemAuthorName,
+.latestItemsUser h2,
+.userBlock h2 { margin:0 0 4px 0; padding:0; font-size: 24px; line-height: 32px; }
+.itemAuthorBlock .itemAuthorDetails p { margin:6px 0; font-size: 90%; }
+.latestItemsUser,
+.userBlock { font-size: 90%; }
+.userBlock { margin-bottom: 32px; }
+.itemAuthorBlock .itemAuthorDetails span.itemAuthorUrl { border-right:1px solid #ccc; padding:0 8px 0 0; margin:0 4px 0 0; font-size: 11px; }
+.itemAuthorBlock .itemAuthorDetails span.itemAuthorEmail { font-weight:bold; }
+.itemAuthorBlock .itemAuthorDetails span.itemAuthorUrl a,
+.itemAuthorBlock .itemAuthorDetails span.itemAuthorEmail a { font-weight:normal; }
+.latestItemsUser p.ulatestItemsUserDescription,
+.userBlock p.userDescription { padding:0!important; margin:0!important; }
+.latestItemsUser p.latestItemsUserAdditionalInfo,
+.userBlock p.userAdditionalInfo { padding:8px 0 6px; margin:5px 12px 0; font-size: 11px; }
+.userBlock p.userAdditionalInfo span { margin-right: 16px; }
+.userBlock p.userAdditionalInfo span a { font-weight: normal; margin: 0 6px; }
+/* Author latest  &  Related by tag */
+
+
+.itemRelated,
+.itemAuthorLatest { float:right; overflow:hidden; overflow: hidden; border: 1px solid #eee; padding: 12px; width:44%; }
+.itemAuthorLatest { float:left; }
+.itemRelated h3,
+.itemAuthorLatest h3 { color: #333; font-size: 18px; font-weight: normal; line-height: 18px; margin: 0 0 8px 4px; padding: 0 18px 0 0; }
+.itemAuthorLatest ul,
+.itemRelated ul { padding:0; }
+.itemRelated ul li,
+.itemAuthorLatest ul li { background: url("../images/style1/bul_li_menu.png") no-repeat scroll 0 15px transparent !important;
+    border-top: 1px solid #EEEEEE;
+    padding: 6px 20px !important; }
+.itemRelated ul li a,
+.itemAuthorLatest ul li a { font-size: 12px;  color: #555; font-family: Arial, Helvetica, sans-serif; }
+.itemRelated ul li a:hover,
+.itemAuthorLatest ul li a:hover { color: #000}
+
+/* Video */
+
+
+.latestItemVideoBlock,
+.catItemVideoBlock,
+.itemVideoBlock { margin:0 0 16px 0; padding:16px; background:#010101 url(../images/system/videoplayer-bg.gif) repeat-x bottom; }
+.catItemVideoBlock .catItemVideoEmbedded,
+.itemVideoBlock .itemVideoEmbedded { text-align:center; } /* for embedded videos (not using AllVideos) */
+.latestItemVideoBlock span.latestItemVideo,
+.catItemVideoBlock span.catItemVideo,
+.itemVideoBlock span.itemVideo { display:block; overflow:hidden; }
+.itemVideoBlock span.itemVideoCaption { color:#eee; float:left; display:block; font-size:11px; font-weight:bold; width:60%; }
+.itemVideoBlock span.itemVideoCredits { color:#eee; float:right; display:block; font-style:italic; font-size:11px; width:35%; text-align:right; }
+/* Image Gallery */
+
+
+.catItemImageGallery,
+.itemImageGallery { margin:0 0 16px 0; padding:0; }
+/* Article navigation */
+
+
+.itemNavigation { font-size:14px; text-transform: uppercase; margin:23px 0 0; padding:4px 8px; }
+.itemNavigation span.itemNavigationTitle { color:#202020; }
+.itemNavigation a.itemPrevious { padding:0 12px; }
+.itemNavigation a.itemNext { padding:0 12px; }
+/* Comments */
+
+
+.itemComments { margin: 32px 0 0}
+.itemCommentsForm { padding: 12px 0; }
+.itemComments ul.itemCommentsList { margin:16px 0; padding:0; list-style:none; }
+.itemComments ul.itemCommentsList li { border: 1px solid #eee; background: #f9f9f9; margin: 0; padding: 18px; }
+.itemComments ul.itemCommentsList li.odd { border-top: none}
+.itemComments ul.itemCommentsList li.authorResponse { background:url(../images/system/stripes.png) repeat; }
+.itemComments ul.itemCommentsList li img { border:1px dashed #ccc; float:left; margin:6px 20px 0 0; padding:5px; }
+.itemComments ul.itemCommentsList li span.commentAuthorName,
+.itemComments ul.itemCommentsList li span.commentDate { color: #454545; font-size: 18px; }
+.itemComments ul.itemCommentsList li span.commentAuthorName a:hover { }
+.itemComments ul.itemCommentsList li span.commentAuthorName { margin: 0 12px 0 80px; }
+.itemComments ul.itemCommentsList li span.commentDate { font-size: 11px; font-weight: normal; }
+.itemComments ul.itemCommentsList li p { padding:4px 0 4px 80px; margin-bottom: 6px; color: #656565 }
+.itemComments ul.itemCommentsList li span.commentAuthorEmail { display:none; }
+.itemComments ul.itemCommentsList li span.commentLink a { display: block; float: right; font-size: 10px; text-transform: uppercase; margin-top: 12px; padding: 16px 0 0; }
+.itemComments ul.itemCommentsList li span.commentLink a:hover { background-position: -20px -599px; color: #222; }
+.itemCommentsPagination { padding:4px; margin:0 0 24px 0; }
+.itemCommentsPagination span.pagination { display:block; float:right; clear:both; }
+.itemComments h3 { overflow: hidden; color: #373636;
+    font-weight: bold;
+	font-size: 320%;
+    line-height: 110%;
+    margin: 0;
+    padding: 0; }
+.itemCommentsForm p.itemCommentsFormNotes { font-size:11px; margin-bottom: 18px;  }
+.itemCommentsForm form { }
+.itemCommentsForm form label { display:block; color: #878787; font-size: 11px; padding: 0 0 4px; }
+.itemCommentsForm form label.formName { display:block; margin:12px 0 0 2px; }
+.itemCommentsForm form label.formEmail { display:block; margin:12px 0 0 2px; }
+.itemCommentsForm form label.formUrl { display:block; margin:12px 0 0 2px; }
+.itemCommentsForm form label.formRecaptcha { display:block; margin:12px 0 0 2px; }
+.itemCommentsForm form textarea.inputbox { display:block; width:350px; height:160px; margin:0; }
+.itemCommentsForm form input.inputbox { display:block; width:350px; margin:0; }
+.itemCommentsForm form input#submitCommentButton { margin:12px 0 0 0; }
+.itemCommentsForm form span#formLog { margin:0 0 0 20px; padding:0 0 0 20px; font-weight:bold; color:#CF1919; }
+.itemCommentsForm form .formLogLoading { background:url(../images/system/loading.gif) no-repeat left center; }
+/* Back to top link */
+
+
+.itemBackToTop { text-align:right; margin-bottom:20px; }
+.itemBackToTop a { }
+.latestItemsContainer { float:left; }
+/* --- Category block --- */
+
+
+.latestItemsCategory,
+.itemListCategory { margin:-32px 0 36px; padding:12px; border: 1px dashed #ccc; }
+span.catItemAddLink,
+span.userItemAddLink { clear:both; display:block; text-align:right; padding:4px; margin:0 0 4px 0; border-bottom:1px dashed #ccc; }
+.latestItemsCategoryImage { text-align:center; }
+.latestItemsCategoryImage img,
+.itemListCategory img { float:left; display:block; background:#fff; padding:4px; border:1px dashed #ccc; margin:0 8px 0 0; }
+.latestItemsCategory h2,
+.itemListCategory h2 { font-size:125%; font-weight:normal; margin:0 0 4px; padding:0; }
+.latestItemsCategory p,
+.itemListCategory p { margin:2px 0!important; }
+/* --- Sub-category block --- */
+
+
+	.itemListSubCategories h3 { font-size:125%; margin:30px 0 12px 0; }
+.subCategoryContainer { float:left; }
+.subCategory { margin:4px 12px 12px 0; }
+.subCategory a.subCategoryImage,
+.subCategory a.subCategoryImage:hover { text-align:center; display:block; }
+.subCategory a.subCategoryImage img { background:none repeat scroll 0 0 #fff; margin:0 8px 0 0; padding:6px; width: 100%; }
+.subCategory a.subCategoryImage:hover img { }
+.subCategory h2 { font-size:180%; font-weight:normal; margin:16px 0 0; }
+/* --- Item groups --- */
+
+
+#itemListLinks { border-top: 1px dashed #ccc; margin:8px 0; padding:8px; }
+.itemContainer { float:left; margin:0; }
+.catItemTitle { font-size: 12px; }
+/* --- Item block for each item group --- */
+
+.latestItemList { margin: 32px 0 0 }
+.catItemView,
+.latestItemView { padding:0 20px 0 0; margin: 0 0 40px; }
+.catItemView { margin-bottom: 40px; }
+/* this is the item container for this view - we add a generic padding so that items don't get stuck with each other */
+/* Additional class appended to the element above for further styling per group item */
+
+
+	.groupLinks { padding:0; margin:0; }
+/* Anchor link to comments */
+
+
+.latestItemCommentsLink,
+.catItemCommentsLink,
+.userItemCommentsLink { font-size:100%; display:inline; margin:0 8px 0 4px; padding:0 8px 0 0; border-right:1px solid #f0f0f0; }
+/* Read more link */
+
+
+.latestItemReadMore,
+.userItemReadMore,
+.catItemReadMore { font-size:100%; display:inline; }
+.latestItemReadMore a.k2ReadMore,
+.userItemReadMore a.k2ReadMore,
+.catItemReadMore a.k2ReadMore { }
+.latestItemReadMore a:hover.k2ReadMore,
+.userItemReadMore a:hover.k2ReadMore,
+.catItemReadMore a:hover.k2ReadMore { }
+.genericItemReadMore { font-size:100%; }
+/* Modified date */
+
+
+span.catItemDateModified { display:block; text-align:right; padding:4px; margin:4px 0; color:#999; border-top:1px dashed #ccc; }
+/* Items presented in a list */
+
+
+h2.latestItemTitleList { font-size:14px; padding:2px 0; margin:8px 0 2px 0; font-family:Arial, Helvetica, sans-serif; border-bottom:1px dotted #ccc; line-height:normal; }
+/*----------------------------------------------------------------------
+	Component: Register & profile page views (register.php & profile.php)
+----------------------------------------------------------------------*/
+.k2AccountPage table tr td label { white-space:nowrap; }
+img.k2AccountPageImage { border:1px dashed #ccc; margin:10px 0; padding:0; display:block; }
+.k2AccountPage .k2AccountPageNotice { padding:8px; }
+.k2AccountPage .k2AccountPageUpdate { border-top:1px dotted #ccc; margin:8px 0; padding:8px; text-align:right; }
+/*----------------------------------------------------------------------
+	Modules: mod_k2_comments
+----------------------------------------------------------------------*/
+/* Latest Comments */
+.k2LatestCommentsBlock ul li { background: none !important; margin:0 0 12px!important; padding: 12px 0 0; font-style:italic; line-height:1.5!important; }
+.k2LatestCommentsBlock ul li a.lcAvatar img { display:block; float:right; margin:2px 0 2px 10px; padding: 5px; background: #fff; }
+.k2LatestCommentsBlock ul li a { margin-bottom: 12px; }
+.k2LatestCommentsBlock ul li a:hover { }
+.k2LatestCommentsBlock ul li span.lcUsername { display: block; font-size: 11px; line-height: 50%; margin: 6px 0 0; padding: 12px 0 0; }
+.k2LatestCommentsBlock ul li span.lcCommentDate { font-size:10px; color: #878787 }
+/* Top Commenters */
+.k2TopCommentersBlock ul li span.tcLatestCommentDate { color:#000; }
+/*----------------------------------------------------------------------
+	Modules: mod_k2_content
+----------------------------------------------------------------------*/
+.k2ItemsBlock ul li { margin:0 0 12px; padding:12px!important; background: #f9f9f9 !important; border: 1px solid #eee }
+.k2ItemsBlock ul li.odd { }
+.k2ItemsBlock ul li a.moduleItemTitle { display:block; color: #000; font-size: 14px; line-height: 18px; }
+.k2ItemsBlock ul li a:hover.moduleItemTitle { }
+.k2ItemsBlock ul li .moduleItemAuthor { color:#666; font-size:90%; }
+.k2ItemsBlock ul li a.moduleItemAuthorAvatar img { border:1px dotted #dadada; display:block; float:right; height:auto; margin:0 4px 0 0; padding:2px; width:14px; }
+.k2ItemsBlock ul li .moduleItemIntrotext { display:block; padding:8px 0; line-height:1.6; }
+.k2ItemsBlock ul li .moduleItemIntrotext a.moduleItemImage img { float:left; overflow: hidden; margin:4px 0; }
+.moduleItemExtraFields ul li span.moduleItemExtraFieldsLabel { display:block; float:left; font-weight:bold; margin:0 4px 0 0; width:30%; }
+.k2ItemsBlock ul li a.moduleItemCategory { font-size:90%; }
+.k2ItemsBlock ul li .moduleItemTags { font-size:90%; }
+.k2ItemsBlock ul li .moduleItemTags a { padding:0 2px; }
+.k2ItemsBlock ul li .moduleAttachments { font-size:90%; }
+.k2ItemsBlock ul li a.moduleItemComments { border-right:1px dashed #dadada; padding:0 4px 0 0; margin:0 8px 0 0; }
+.k2ItemsBlock ul li span.moduleItemHits { font-size:90%; border-right:1px dashed #dadada; padding:0 4px 0 0; margin:0 8px 0 0; }
+.k2ItemsBlock ul li a.moduleItemReadMore { }
+.k2ItemsBlock ul li a:hover.moduleItemReadMore { color: #000; }
+.k2ItemsBlock a.moduleCustomLink { font-size:90%; }
+/*--- Modules: mod_k2_login ---*/
+
+.k2LoginBlock fieldset.input { margin:0; padding:0 0 8px 0; }
+.k2LoginBlock fieldset.input p { margin:0; padding:0 0 4px 0; }
+.k2LoginBlock fieldset.input p label { display:block; }
+.k2LoginBlock fieldset.input p input { display:block; }
+.k2LoginBlock fieldset.input p#form-login-remember label,
+.k2LoginBlock fieldset.input p#form-login-remember input { display:inline; }
+.k2UserBlock p.ubGreeting { border-bottom:1px dotted #ccc; }
+.k2UserBlock .k2UserBlockDetails span.ubName { display:block; font-weight:bold; font-size:14px; }
+/* --- Modules: mod_k2_tools ---*/
+/* --- Authors --- */
+
+.k2AuthorsListBlock ul li a.abAuthorLatestItem { display:block; clear:both; }
+/* --- Breadcrumbs --- */
+
+.k2BreadcrumbsBlock span.bcTitle { padding:0 4px 0 0; color:#999; }
+.k2BreadcrumbsBlock span.bcSeparator { padding:0 4px; font-size:14px; }
+/* --- Calendar --- */
+
+.k2CalendarBlock { height:190px; margin-bottom:8px; } /* use this height value so that the calendar height won't change on Month change via ajax */
+.k2CalendarLoader { background:#fff url(../images/system/k2CalendarLoader.gif) no-repeat 50% 50%; }
+table.calendar { margin:0 auto; background:#fff; border-collapse:collapse; }
+table.calendar tr td { text-align:center; vertical-align:middle; padding:2px; border:1px solid #f4f4f4; background:#fff; }
+table.calendar tr td.calendarNavMonthPrev { background:#f3f3f3; text-align:left; }
+table.calendar tr td.calendarNavMonthPrev a { font-size:20px; text-decoration:none; }
+table.calendar tr td.calendarNavMonthPrev a:hover { font-size:20px; text-decoration:none; }
+table.calendar tr td.calendarCurrentMonth { background:#f3f3f3; }
+table.calendar tr td.calendarNavMonthNext { background:#f3f3f3; text-align:right; }
+table.calendar tr td.calendarNavMonthNext a { font-size:20px; text-decoration:none; }
+table.calendar tr td.calendarNavMonthNext a:hover { font-size:20px; text-decoration:none; }
+table.calendar tr td.calendarDayName { background:#e9e9e9; font-size:11px; width:14.2%; }
+table.calendar tr td.calendarDateEmpty { background:#fbfbfb; }
+table.calendar tr td.calendarDate { }
+table.calendar tr td.calendarDateLinked { padding:0; }
+table.calendar tr td.calendarDateLinked a { display:block; padding:2px; text-decoration:none; background:#eee; }
+table.calendar tr td.calendarDateLinked a:hover { display:block; background:#135cae; color:#fff; padding:2px; text-decoration:none; }
+table.calendar tr td.calendarToday { background:#135cae; color:#fff; }
+table.calendar tr td.calendarTodayLinked { background:#135cae; color:#fff; padding:0; }
+table.calendar tr td.calendarTodayLinked a { display:block; padding:2px; color:#fff; text-decoration:none; }
+table.calendar tr td.calendarTodayLinked a:hover { display:block; background:#BFD9FF; padding:2px; text-decoration:none; }
+/* --- Category Tree Select Box --- */
+
+.k2CategorySelectBlock form select { width:auto; }
+/* --- Category List/Menu --- */
+
+.k2CategoriesListBlock { margin: 0; }
+.k2CategoriesListBlock ul li { padding: 6px 20px!important; border-top: 1px solid #eee; background: url('../images/style1/bul_li_menu.png') no-repeat 0 15px !important; }
+.k2CategoriesListBlock ul.level0>li { border: none !important }
+.k2CategoriesListBlock ul li li { margin: 0 -20px }
+.k2CategoriesListBlock ul ul { margin: 6px 0 0 20px; }
+.k2CategoriesListBlock ul li a { text-transform: uppercase; font-weight: bold; font-size: 11px; color: #373636 }
+.k2CategoriesListBlock ul li a:hover { color: #000  }
+/* --- Tag Cloud --- */
+
+.k2TagCloudBlock { padding:8px 0; }
+.k2TagCloudBlock a { float:left; display:block; margin: 4px; padding: 3px 8px; line-height: 1.0; color: #fff;  background: #aeaeae;}
+.k2TagCloudBlock a:hover { background: url('../images/style1/color_bg.png') no-repeat 50% 50%; color: #fff; }
+/* --- Google Search --- */
+
+#k2Container .gsc-branding-text { text-align:right; }
+#k2Container .gsc-control { width:100%; }
+#k2Container .gs-visibleUrl { display:none; }
+/* --- Modules: mod_k2_users ---*/
+
+a.ubUserFeedIcon,
+a.ubUserFeedIcon:hover { display:inline-block; margin:0 2px 0 0; padding:0; width:16px; height:16px; background:url(../images/fugue/feed.png) no-repeat 50% 50%; }
+a.ubUserFeedIcon span,
+a.ubUserFeedIcon:hover span { display:none; }
+a.ubUserURL,
+a.ubUserURL:hover { display:inline-block; margin:0 2px 0 0; padding:0; width:16px; height:16px; background:url(../images/fugue/globe.png) no-repeat 50% 50%; }
+a.ubUserURL span,
+a.ubUserURL:hover span { display:none; }
+span.ubUserEmail { display:inline-block; margin:0 2px 0 0; padding:0; width:16px; height:16px; background:url(../images/fugue/mail.png) no-repeat 50% 50%; overflow:hidden; }
+span.ubUserEmail a { display:inline-block; margin:0; padding:0; width:16px; height:16px; text-indent:-9999px; }
+.k2UsersBlock ul li h3 { clear:both; margin:8px 0 0 0; padding:0; }
+/* module siffixes */
+
+.dark .k2LatestCommentsBlock ul li span.lcCommentDate { color: #B5AE9C; }
+.dark .k2ItemsBlock ul li .moduleItemIntrotext a.moduleItemImage img { background: #efebe2; }

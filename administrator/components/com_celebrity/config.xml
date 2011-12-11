@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <params addpath="/administrator/components/com_celebrity/elements">
+        <param menu="hide" name="" type="header" default="General Settings" label="" description="" />
+        <param name="image_location" type="text" default="images/stories/com_celebrity/" label="Images Location" description="This is the location where all search results and profile images for each celebrity will be located" size="60" />
+        <param name="max_file_size" type="text" default="1000" label="Max file size (Kb)" description="The maximum size of the file to be uploaded for the celebrity photo." />
+        <param menu="hide" name="@spacer" type="spacer" default="" label="" description="" />
+        <param menu="hide" name="" type="header" default="Results Settings" label="" description="" />
+        <param name="allowed_files" type="text" default="jpeg,jpg,png,gif,bmp" label="Allowed Files" description="Comma separated list of the type of files that a user can upload for the celebrity photo." size="30" />
+        <param name="results_file_size" type="text" default="1000" label="Max file size (Kb)" description="The maximum size of the file to be uploaded for the celebrity photo." />
+        <param name="results_image_location" type="text" default="images/stories/com_celebrity/results" label="Images Location" description="This is the location where all images for address results will be located" size="60" readonly="readonly" />
+        <param name="max_image_uploads" type="list" default="2" label="Max Image Uploads" description="This is the maximum number of images a user can upload when submitting their results from an address mailing">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </param>
+        <param name="results_displayed" type="list" default="5" label="Results per page" description="This is the number of results that will be displayed per page">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="30">30</option>            
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </param>
+    </params>
+</config>

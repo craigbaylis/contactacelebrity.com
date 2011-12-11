@@ -1,0 +1,46 @@
+/*
+#------------------------------------------------------------------------
+# Musicity - #2 2011 template (for Joomla 1.5)
+#
+# Copyright (C) 2007-2010 Gavick.com. All Rights Reserved.
+# License: Copyrighted Commercial Software
+# Website: http://www.gavick.com
+# Support: support@gavick.com   
+#------------------------------------------------------------------------ 
+# Based on T3 Framework
+#------------------------------------------------------------------------
+# Copyright (C) 2004-2009 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+# @license - GNU/GPL, http://www.gnu.org/copyleft/gpl.html
+# Author: J.O.O.M Solutions Co., Ltd
+# Websites: http://www.joomlart.com - http://www.joomlancers.com
+#------------------------------------------------------------------------
+*/
+
+#gk-left .gk-l2 .gk-left1, #gk-left .gk-l2 .gk-left2,
+#gk-right .gk-r2 .gk-right1, #gk-right .gk-r2 .gk-right2 { width: 49.99%; }
+#gk-left .gk-l2 .gk-left2, #gk-right .gk-r2 .gk-right2 { float: right; }
+.cols2 .article_column { width: 49.99%; }
+.cols3 .article_column { width: 33.3%; }
+.cols4 .article_column { width: 24.99%; }
+.cols5 .article_column { width: 19.99%; }
+
+.blog-columns,
+.k2Container{zoom:1;}
+.k2Container,
+.itemComments,
+.itemCommentsForm{overflow:hidden;}
+.itemBackToTop{float:right!important;width:auto!important;}
+
+.itemNavigation{clear:both;}
+
+div.clr{height:1px!important;}
+
+input[type=radio],
+input[type=checkbox] { background: none!important; border: none!important; }
+
+ul li a { cursor: pointer!important; }
+#gk-main{ margin-left: -1px!important; }
+#gk-nav { width: 1000px; margin-left: auto; margin-top:0!important; }
+
+#gk-nav ul.level0>li>div.childcontent div.childcontent { margin-top: -30px; }
+#gk-current-content-wrap1 { overflow:hidden!important; }

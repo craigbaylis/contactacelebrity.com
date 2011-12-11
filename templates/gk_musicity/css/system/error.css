@@ -1,0 +1,127 @@
+/*
+#------------------------------------------------------------------------
+# Musicity - #2 2011 template (for Joomla 1.5)
+#
+# Copyright (C) 2007-2010 Gavick.com. All Rights Reserved.
+# License: Copyrighted Commercial Software
+# Website: http://www.gavick.com
+# Support: support@gavick.com   
+#------------------------------------------------------------------------ 
+# Based on T3 Framework
+#------------------------------------------------------------------------
+# Copyright (C) 2004-2009 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+# @license - GNU/GPL, http://www.gnu.org/copyleft/gpl.html
+# Author: J.O.O.M Solutions Co., Ltd
+# Websites: http://www.joomlart.com - http://www.joomlancers.com
+#------------------------------------------------------------------------
+*/
+
+body {
+  line-height:1.8;
+  min-height:100%;
+  background: #000 url('../../images/error.jpg') no-repeat 50% 50%;
+  color: #d0d0d0;
+  font-family: Arial, Verdana, sans-serif;
+  font-size: 12px;
+}
+a {
+  color: #BC3726;
+  text-decoration: none
+}
+a:hover, a:active, a:focus {
+  color: #fff
+}
+/* containers */
+#wrapper {
+  width: 800px;
+  margin: 0 auto;
+}
+#logo {
+  background:transparent url('../../images/logo2.png') no-repeat 0 0;
+  height:60px;
+  padding:0;
+  width:261px;
+  margin: 42px auto;
+}
+#frame {
+  float: right;
+  padding: 6px;
+  margin: 0;
+}
+#outline {
+  padding: 20px;
+}
+#errorboxbody {
+  width:450px;
+}
+/* logo */
+#gk-top {
+  float: left;
+}
+#gk-top h1 {
+  display:block;
+  height:88px;
+  display:table-cell;
+  white-space:pre;
+}
+.logo {
+  height: 88px;
+  width: 404px;
+  margin: 35px 0 0;
+  font-size: 180%;
+  line-height: 100%;
+}
+h1.logo {
+  margin-top: 0;
+}
+h1.logo a {
+  background: url('../../images/style1/logo.png') no-repeat 0 0;
+  display: block;
+  height: 88px;
+  margin: 0;
+  text-indent: -999em;
+  width:404px;
+}
+h1, h2 {
+  line-height: 140px;
+  font-size: 160px;
+  font-family:WinterthurCondensed, sans-serif;
+  font-weight: normal;
+  padding: 0;
+  color: #BC3726;
+}
+h1 {
+  margin: 0 0 0px;
+}
+h2 {
+  font: normal 24px/40px WinterthurCondensed, sans-serif;
+  margin: 0 0 32px 24px;
+  padding: 0;
+}
+ul {
+  list-style-type: square;
+  padding: 0 0 0 36px;
+}
+ol {
+  padding: 0;
+  list-style-position: inside;
+  color: #666
+}
+ol li,  ol li strong {
+  font-size: 13px !important;
+  line-height: 120%;
+  font-weight: normal
+}
+#techinfo {
+  text-align:center;
+}
+p.info {
+  width: 100%;
+  margin: 20px auto 10px;
+  text-align:center;
+  color: #fff;
+}
+p>strong {
+  font: 17px/40px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  color: #888;
+}

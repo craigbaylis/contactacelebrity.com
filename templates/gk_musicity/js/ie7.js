@@ -1,0 +1,3 @@
+window.addEvent("load", function() {
+	
+});

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+    <name>Celebrity Addresses</name>
+    <author>Kevin Campbell</author>
+    <version>1.0.0</version>
+    <description>Displays a list of celebrity addresses</description>
+    <files>
+        <filename>mod_celebrityaddresses.xml</filename>
+        <filename module="mod_celebrityaddresses">mod_celebrityaddresses.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <folder>tmpl</folder>
+        <folder>assets</folder>
+    </files>
+    <params>
+    </params>
+</install>

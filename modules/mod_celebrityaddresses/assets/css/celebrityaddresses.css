@@ -1,0 +1,56 @@
+.address-container{
+    display:inline-block;
+    width: 180px;
+}
+.address-header {
+  background-color: #000000;
+  color: #FFFFFF;
+  font-size: 12px;
+  height: 35px;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+}
+.address-footer div{
+    text-align: center;
+}
+.address-footer a {
+  background-color: #C42426;
+  border: 2px solid #000000;
+  color: #FFFFFF;
+  display: inline-block;
+  font-size: 11px;
+  padding: 5px;
+}
+.address-body{
+    border: 3px solid #DDD;
+}
+.address-footer{
+    background-color: #DDD;
+}
+.address-body div {
+  margin: 8px 4px;
+}
+.address-results-successes, .address-results-failures {
+  display: inline-block;
+  padding: 0 2px;
+}
+.address-results-count {
+    text-align: center;
+}
+.address-successes, .address-failures {
+    display: inline-block;
+    width: 18px;
+    height: 15px;
+}
+.address-successes {
+    background: transparent no-repeat center center url(../images/successes.png);
+}
+.address-failures {
+    background: transparent no-repeat center center url(../images/failures.png);
+}
+.address-header-text {
+    float: left;
+    line-height: 35px;
+    margin-left: 10px;
+}

@@ -1,0 +1,28 @@
+/*
+#------------------------------------------------------------------------
+# Musicity - #2 2011 template (for Joomla 1.5)
+#
+# Copyright (C) 2007-2010 Gavick.com. All Rights Reserved.
+# License: Copyrighted Commercial Software
+# Website: http://www.gavick.com
+# Support: support@gavick.com   
+#------------------------------------------------------------------------ 
+# Based on T3 Framework
+#------------------------------------------------------------------------
+# Copyright (C) 2004-2009 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+# @license - GNU/GPL, http://www.gnu.org/copyleft/gpl.html
+# Author: J.O.O.M Solutions Co., Ltd
+# Websites: http://www.joomlart.com - http://www.joomlancers.com
+#------------------------------------------------------------------------
+*/
+
+#gk-buttons,
+.latestItemTagsBlock ul.latestItemTags li a,
+.userItemTagsBlock ul.userItemTags li a,
+.catItemTagsBlock ul.catItemTags li a,
+.itemTagsBlock ul.itemTags li a,
+ul.pagination li a,
+ul.pagination li span,
+.k2TagCloudBlock a { border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+#mod_search_searchword { border-radius: 1px; -moz-border-radius: 1px; -webkit-border-radius: 1px; }
+#gk-top-shadow { box-shadow: 0 0 5px #000; -moz-box-shadow: 0 0 5px #000; -webkit-box-shadow: 0 0 5px #000; }
