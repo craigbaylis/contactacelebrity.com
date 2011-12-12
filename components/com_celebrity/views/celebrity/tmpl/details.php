@@ -127,7 +127,7 @@ $document->addScriptDeclaration($domready);
 	
 			</div><!-- div#right440 close -->
 		
-		
+			
 	</div>
     <!-- div#gavickModule close -->
 <?php /*?><div id="celebrity-profile">
