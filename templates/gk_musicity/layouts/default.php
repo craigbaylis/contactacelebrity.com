@@ -109,14 +109,23 @@ define('GK_LOGIN', $this->countModules('login'));
 		          <div id="gk-mainbody" style="width:<?php echo $this->getColumnWidth('mw') ?>%">
 		                <?php $this->loadBlock('left') ?>
 		                <?php $this->loadBlock('main') ?>
+                        
 		          </div>
 		          <?php $this->loadBlock('right') ?>
+                 
 		    </div>
 		</div>
 		<?php endif; ?>
-		<!-- USER MODULES -->
+        
+        <?php if(JRequest::getCmd('task') == "details"){?>
+        	<div class="width640detail">
+            <!--content-->		
 		<?php $this->loadBlock('usersl') ?>
-	</div>
+            <!--content-->
+			</div>
+           
+   		 <?php }?>
+         
 </div>
 <div id="gk-bottom-wrap" class="clear">
 	<!-- BOTTOM MODULES -->

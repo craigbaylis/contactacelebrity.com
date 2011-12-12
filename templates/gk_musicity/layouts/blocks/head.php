@@ -31,6 +31,11 @@
 	$document->addStylesheet($this->templateurl() . '/css/gk_stuff.css');
 	$document->addStylesheet($this->templateurl() . '/css/typo.css');
 	$document->addStylesheet($this->templateurl() . '/css/formalize.css');
+	/*custom css*/
+	$document->addStylesheet($this->templateurl() . '/css/style4.css');
+	$document->addStylesheet($this->templateurl() . '/css/reset4.css');
+	$document->addStylesheet($this->templateurl() . '/css/webkitStyle4.css');
+	/*custom css*/
     
     $template_style = '';
     if($this->getParam("stylearea", 1)) $template_style = (isset($_COOKIE['gk48_style']) ? $_COOKIE['gk48_style'] : $this->getParam("template_color", 1));

@@ -10,9 +10,37 @@ $cid = JRequest::getInt('cid');
 $i = 1;
 $user = JFactory::getUser();
 ?>
+            <div id="gavickModule">
+				<ul id="gModule">
+					<li><a href="#">Postal Addresses</a></li>
+					<li><a href="#">Email Addresses</a></li>
+					<li><a href="#">Websites</a></li>
+				</ul>
+				<ul id="nextButtons">
+					<li class="nextCircle"><a href="#"></a></li>
+					<li class="nextCircle"><a href="#"></a></li>
+					<li class="nextCircle"><a href="#"></a></li>
+					<li id="backwardsArrow"><a href="#"></a></li>
+					<li id="forwardArrow"><a href="#"></a></li>
+				</ul>
+			</div>		
+<div class="addressList">
 <?php if ($addresses) : ?>
 <?php foreach ($addresses AS $key => $address) : ?>
-<div class="address-container">
+
+<div class="individualAddress">
+					<ul>
+						<li class="addressTitle"><?php echo JText::_('Address').''.$i ?></li>
+						<li class="viewDetail"><a href="#"></a></li>
+						<li class="addressLine1"><?php echo ($address->company)? $address->company: $address->name ?></li>
+						<li class="addressLine2"><?php echo ($user->get('id')) ? $address->line_1 : substr($address->line_1,0,4).' ****' ?></li>
+						<li class="city_state_zip"><?php echo $address->city.', '.$address->state.' '.$address->zipcode ?></li>
+						<li class="submission">Submitted by: <a href="#"><?php echo $address->date ?></a></li>
+						<li class="success"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/success_check.png" alt="success" title="success"/>Success  <img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/success_green.png" alt="successNumber" title="successNumber"><a class="green" href="#"><?php echo (!empty($successCounts[$key]->total_success)) ? $successCounts[$key]->total_success : '0' ?></a><a class="red" href="#"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/unsuccess_red.png" alt="unsuccessNumber" title="unsuccessNumber"/><?php echo (!empty($returnedCounts[$key]->total_returned)) ? $returnedCounts[$key]->total_returned : '0' ?></a></li>
+					</ul>
+				
+				</div>
+<?php /*?><div class="address-container">
     <div class="address-header">
         <div class="address-header-text"><?php echo JText::_('Address').' #'.$i ?></div>
         <div class="address-results-successes">
@@ -40,10 +68,11 @@ $user = JFactory::getUser();
         </div>
     </div>
 </div>
-<?php
+<?php */?><?php
 $i++; 
 endforeach; 
 ?>
+</div>
 <?php else : ?>
 <div>No Addresses Found</div>
 <?php endif; ?>

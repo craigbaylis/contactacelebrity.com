@@ -86,6 +86,8 @@ class CelebrityViewSearch extends JView
             $this->assignRef('celebrities',$celebrities);
             $search = JText::_('All');
             $this->assignRef('search', $search);
+			$total = $this->get('Total');
+            $this->assignRef('total', $total);
             $this->assign('searchType','search');
             break;
         }        

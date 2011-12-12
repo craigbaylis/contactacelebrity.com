@@ -187,7 +187,7 @@ p {
 }
 #mod_search_searchword {
 	width: 122px;
-	padding:5px 20px 5px 5px;
+	padding:0 20px 5px 5px;
 	border:none!important;
 	background:#fff url('../images/search_icon.png') no-repeat 104px center;
 	color:#888;
@@ -295,6 +295,10 @@ h1.logo.text .site-slogan {
   overflow: hidden;
   margin-top: 18px !important;
   background: #fff;
+}
+#mainPage .moduletablenew{
+  overflow: hidden;
+  margin-top: 18px !important; 
 }
 #mainPage .moduletable:first-child, #mainPage .moduletable_menu:first-child, #mainPage .moduletable_text:first-child {
   margin-top: 0!important;
@@ -805,7 +809,7 @@ a.search-letter:hover {
 body {
     font:13.34px helvetica,arial,freesans,clean,sans-serif;
 }
-
+/*
 ul.tabs{
     margin-left:10px;
 }
@@ -842,7 +846,7 @@ ul.contents {
 
 ul.contents li{
     margin:10px
-}
+}*/
 .component-header {
   color: #FFFFFF;
   display: inline;
@@ -882,7 +886,52 @@ h2#browseSearch_fukidashi {
   font-weight: bold;
   text-align: center;  
 }
+/*searchResult.html*/
 
+h2#browseSearchbox_fukidashi {
+	font-family: Trade Gothic, Helvetica, sans-serif;
+	color: #656565;
+	font-size: 20px;
+	font-weight: bold;	
+	text-align: center;
+	background-image: url("../images/style/fukidashi.png");
+	background-repeat: no-repeat;
+	background-position: center center;	
+	padding: 98px 0 70px 0;
+
+}
+#rightsearch {
+	width: 440px;
+	float: left;
+	padding: 40px 0 0 0;
+	background-image: url("../images/style/arrowPattern.png");
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+
+
+
+#rightsearch h3 {
+	color: #b45b46;
+	font-size: 25px;
+	text-align: center;
+	font-family: Trade Gothic, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+#rightsearch h3 span#bigOrange {
+	font-size: 40px;
+}
+
+#rightsearch p {
+	color: #656565;
+	font-family: Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 16px;
+	padding: 20px;
+}
+/*searchResult.html*/
 h1.search {
   background-image: url("../images/style/moduleH3.png");
   background-position: left top;
@@ -994,8 +1043,10 @@ a.viewButton:hover {
   background-color: #FFFFFF;
   line-height: 1;
   margin-top: 20px;
+  margin-right:40px;
   overflow: hidden;
   width: 302px;
+  
 }
 img.ebayLogo {
   float: right;

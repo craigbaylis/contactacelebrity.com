@@ -71,8 +71,7 @@
 							
 							<?php if(($this->_tpl->params->get('mainbody_pos') == 1 && !$this->checkMainbody()) || $this->_tpl->params->get('mainbody_pos') != 1) : ?>
 							
-							
-							<div id="gk-current-content-wrap" class="gk-mass">
+							<div <?php if(!JRequest::getCmd('searchword') && JRequest::getCmd('task') != "details"){?>id="gk-current-content-wrap" <?php }?> class="gk-mass">
 							      <?php if($this->countModules('breadcrumb') || $this->getTools()) : ?>
 	                              <div id="gk-top-nav" class="clear gk-mass clearfix">
 	                            	<?php if($this->countModules('breadcrumb')) : ?>

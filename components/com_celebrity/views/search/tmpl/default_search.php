@@ -18,7 +18,11 @@ $alansworkip = '174.31.231.205';
 $kevinshomeip = '189.24.194.252';
 $localhost = '127.0.0.1';
 $blockips = array();
+if(!JRequest::getCmd('letter')){
+$letter = JRequest::getCmd('searchword');	
+} else {
 $letter = JRequest::getCmd('letter');
+}
 
 //set the text dependeding on if the user chose a letter or a number search from the browse search
 if($this->searchType == 'browse'){
@@ -31,6 +35,7 @@ if($this->searchType == 'browse'){
 } else {
     $browsetype = 'all';
 }
+
 ?>
 <script type="text/javascript">
     GS_googleAddAdSenseService("ca-pub-7953222348963766");
@@ -61,13 +66,13 @@ $document->addStyleDeclaration($style);
 <div class="width960">
     <div id="left">
         <h1 class="search"><?php echo JText::_('MATCHESFOR') ?></h1>
-        <p id="browseSearchP"><?php echo JText::_('FOUNDSTARTINGWITH') ?></p>
-        <h2 id="browseSearch_fukidashi">"
+<?php /*?>        <p id="browseSearchP"><?php echo JText::_('FOUNDSTARTINGWITH') ?></p>
+<?php */?>        <h2 id="browseSearchbox_fukidashi">"
             <?php echo strtoupper($letter) ?>
         "</h2>
     </div>
         
-    <div id="right">
+    <div id="rightsearch">
         <h3><?php echo JText::sprintf('TOTALSEARCHRESULTS',$this->total) ?><br><span id="bigOrange"><?php echo JText::_('SEERESULTS') ?></span></h3>
         <p><?php echo JText::sprintf('BROWSESEACHDESC',$browsetype,$letter) ?></p>
     </div>
@@ -132,12 +137,14 @@ $document->addStyleDeclaration($style);
         </a>
     </div>
 </div>
+<div style="margin-right:40px;float: right;">
 <!-- browse_RT1_300x250 -->
 <?php if(!in_array($_SERVER['REMOTE_ADDR'], $blockips)): ?>
 <script type='text/javascript'>
 GA_googleFillSlot("<?php echo $this->searchType ?>_RT1_300x250");
 </script>
 <?php endif; ?>
+</div>
 <div style="float: right;">
     <div id="ebay">
             <h1 class="search"><?php echo JText::_('FUNITEMS') ?></h1>
