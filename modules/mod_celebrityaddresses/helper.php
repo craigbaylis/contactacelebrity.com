@@ -8,7 +8,6 @@
  * @license        Private
  * Displays a list of celebrity addresses
  */
- 
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
