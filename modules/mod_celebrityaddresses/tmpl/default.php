@@ -11,7 +11,7 @@ $user = JFactory::getUser();
 ?>
  
 											<?php if ($addresses) : ?>
-                                            <?php //foreach ($addresses AS $key => $address) : ?>
+                                            <?php foreach ($addresses AS $key => $address) : ?>
                                             <div class="individualAddress">
                                               <ul>
                                                 <li class="addressTitle"><?php echo JText::_('Address').''.$i ?></li>
