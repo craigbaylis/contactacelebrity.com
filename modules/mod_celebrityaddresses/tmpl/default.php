@@ -9,7 +9,7 @@ $cid = JRequest::getInt('cid');
 $i = 1;
 $user = JFactory::getUser();
 ?>
- 
+									<!--<div class="gk_tab_item_space"></div>-->
 											<?php if ($addresses) : ?>
                                             <?php foreach ($addresses AS $key => $address) : ?>
                                             <div class="individualAddress">
@@ -22,7 +22,6 @@ $user = JFactory::getUser();
                                                 <li class="submission">Submitted by: <a href="#"><?php echo $address->date ?></a></li>
                                                 <li class="success"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/success_check.png" alt="success" title="success"/>Success  <img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/success_green.png" alt="successNumber" title="successNumber"><a class="green" href="#"><?php echo (!empty($successCounts[$key]->total_success)) ? $successCounts[$key]->total_success : '0' ?></a><a class="red" href="#"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/unsuccess_red.png" alt="unsuccessNumber" title="unsuccessNumber"/><?php echo (!empty($returnedCounts[$key]->total_returned)) ? $returnedCounts[$key]->total_returned : '0' ?></a></li>
                                         </ul>
-										<!--<div class="gk_tab_item_space"></div>-->
 										</div>
 										
 
