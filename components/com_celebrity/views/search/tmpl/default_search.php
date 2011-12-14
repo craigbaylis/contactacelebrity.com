@@ -64,6 +64,15 @@ $document = JFactory::getDocument();
 $document->addStyleDeclaration($style);
 ?>
 <div class="width960">
+<?php if(JRequest::getCmd('sr')){?>
+    <div id="left">
+        <h1 class="search"><?php echo JText::_('No matches were found') ?></h1>
+        <p id="browseSearchP"><?php echo 'No matches for "'.JRequest::getCmd('sr').'" were found...we returned celebs starting with the letter '.$letter.'..please search again';?></p>
+        <h2 id="browseSearchbox_fukidashi">"
+            <?php echo strtoupper($letter) ?>
+        "</h2>
+    </div>
+<?php } else {?>
     <div id="left">
         <h1 class="search"><?php echo JText::_('MATCHESFOR') ?></h1>
 <?php /*?>        <p id="browseSearchP"><?php echo JText::_('FOUNDSTARTINGWITH') ?></p>
@@ -71,6 +80,7 @@ $document->addStyleDeclaration($style);
             <?php echo strtoupper($letter) ?>
         "</h2>
     </div>
+    <?php }?>
         
     <div id="rightsearch">
         <h3><?php echo JText::sprintf('TOTALSEARCHRESULTS',$this->total) ?><br><span id="bigOrange"><?php echo JText::_('SEERESULTS') ?></span></h3>
@@ -159,4 +169,4 @@ GA_googleFillSlot("<?php echo $this->searchType ?>_RT1_300x250");
             <span class="big">"</span><?php echo JText::_('CACTHANKYOU') ?>
         </p>
     </div>
-</div>
+	</div>

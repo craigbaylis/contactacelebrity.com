@@ -89,6 +89,19 @@ class CelebrityViewSearch extends JView
 			$total = $this->get('Total');
             $this->assignRef('total', $total);
             $this->assign('searchType','search');
+			
+			/***
+			* Custom 
+			***/ 
+			if($total==0) 
+			{
+			$search = JRequest::getCmd('searchword');
+			$url2 = 'index.php?option=com_celebrity&view=search&task=search&type=alpha&letter='.$search[0].'&Itemid=63&sr='.$search; 
+			header("location: $url2");
+			}
+			/***
+			* Custom end
+			***/
             break;
         }        
         
