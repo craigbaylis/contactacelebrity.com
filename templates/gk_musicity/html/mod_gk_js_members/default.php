@@ -60,7 +60,7 @@ defined('_JEXEC') or die('Restricted access');
 			for($i = 0; $i < count($keys); $i++) :
 		?>
 
-			<div class="gk_js_members">
+			<div class="gk_js_members" >
 
 				<div class="gk_js_members_scroll1" style="width:<?php echo $this->config['module_width']; ?>px;">		
 
@@ -71,13 +71,25 @@ defined('_JEXEC') or die('Restricted access');
 							$member_counter = 0;
 
 							$total = count($this->content[$keys[$i]]);
+							
 							if($total==0){
-							echo "No Information found.<br><br><br><br>";}else{
+							if($keys[$i] == "newest"){
+								?>								
+                        <div class="noRightBorder" id="addAnotherAddress">
+<a href="<?php echo JURI::base();?>index.php?option=com_celebrity&task=add&controller=address&cid=<?php echo $_GET['cid'];?>&Itemid=61"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="114" height="133" /></a>
+</div>
+<?php } else {?>
+No information found.<br /><br /><br /><br /><br />
+<?php }?>
+							
+                          <!-- div.individualAddress close -->
+                            <?php
+							}else{
 $j=1;
+
 
 							foreach($this->content[$keys[$i]] as $member) : 
 							
-
 						?>			
 
 						
@@ -87,7 +99,7 @@ $j=1;
 							<div class="gk_js_members_wrap" style="width:<?php echo $this->config['module_width']; ?>px;">
 
 							<?php endif; ?>
-							<div class="gk_js_member" style="width:<?php echo floor(($this->config['module_width']) / ($this->config['cols'])); ?>px;">
+							<div class="gk_js_member" style="width:<?php echo floor(($this->config['module_width']) / ($this->config['cols'])); ?>px; border-bottom:1px solid #000;">
 								<div class="gk_js_member_wrap">
 
 									
@@ -108,29 +120,59 @@ $j=1;
 
 									<?php endif; ?>
 <?php */?>
+ <?php if($member->name ||  $member->email ||  $member->url ){?>
 									   <div class="individualAddress" <?php if($member->email || $member->url){?>style="height:70px"<?php }?>>
                                               <ul>
-                                                <li class="addressTitle"><?php if($member->company){ echo JText::_('Address').''. $j++; } if($member->email){ echo JText::_('Email Address').''. $j++;}if($member->url){ echo JText::_('Web Address').''. $j++;}?></li>
-                                                 <?php if($member->company){
+                                              <?php if($member->name){?>
+                                                <li class="addressTitle"><?php echo JText::_('Address').''. $j++;?>
+                                                </li>
+                                                <?php }?>
+                                                 <?php if($member->email){?>
+                                                <li class="addressTitle"><?php echo JText::_('Email Address').''. $j++;?>
+                                                </li>
+                                                <?php }?>
+                                                 <?php if($member->url){?>
+                                                <li class="addressTitle"><?php echo JText::_('Web Address').''. $j++;?>
+                                                </li>
+                                                <?php }?>
+                                                
+                                                 <?php if($member->name){
 													 ?>
                                                 <li class="viewDetail"><a href="#"></a></li>
                                                 <?php } ?>
-                                                <li class="addressLine1"><?php //echo ($member->company)? $member->company: $member->name
-										if($member->company){echo $member->company;} if($member->email){ echo $member->email;} if($member->url){ echo $member->url;} ?>		
-												 </li>
-                                                 <?php if($member->company){
+                                               <?php if($member->name){?>
+                                                <li class="addressLine1">
+												<?php echo ($member->company=="")?$member->name:$member->company;?>
+                                                 </li>
+                                                 <?php }?>
+                                                      <?php if($member->email){?>
+                                                <li class="addressLine1">
+												<?php echo $member->email;?>
+                                                 </li>
+                                                 <?php }?>
+                                                      <?php if($member->url){?>
+                                                <li class="addressLine1">
+												<?php echo $member->url;?>
+                                                 </li>
+                                                 <?php }?>
+									
+												
+                                                 <?php if($member->name){
 													 ?>
                                                 <li class="addressLine2"><?php
 												$user =& CFactory::getUser($member->id);
 												echo ($user->get('id')) ? $member->line_1 : substr($member->line_1,0,4).' ****' ?></li>
                                                 <li class="city_state_zip"><?php echo $member->city.', '.$member->state.' '.$member->zipcode ?></li>
-                                                <li class="submission">Submitted by: <a href="#"><?php echo $member->date ?></a></li>
+                                                <li class="submission">Submitted by: <a href="index.php?option=com_community&view=profile&userid=<?php echo $member->created_by_uid;?>&Itemid=41"><?php echo $member->username;?></a></li>
                                       <li class="success"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/success_check.png" alt="success" title="success"/>Success  <img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/success_green.png" alt="successNumber" title="successNumber"><a class="green" href="#"><?php echo (!empty($successCounts[$key]->total_success)) ? $successCounts[$key]->total_success : '0' ?></a><a class="red" href="#"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/unsuccess_red.png" alt="unsuccessNumber" title="unsuccessNumber"/><?php echo (!empty($returnedCounts[$key]->total_returned)) ? $returnedCounts[$key]->total_returned : '0' ?></a></li>  
                                       <?php
-												 }
-									  ?>         
-                                        </ul>
-										</div>       
+										}
+									  ?>
+									</ul>
+                                       
+										</div> 
+                                      <?php }?>
+                                       	
 
 									<?php /*?><?php if( $this->config['show_name'] ) : ?>
 
@@ -191,22 +233,21 @@ $j=1;
 								</div>
 
 							</div>
-
-							
-
-						<?php 
-
-							
-
+  						
+		<?php 
 							$member_counter++;
-
 							if($member_counter % $this->config['cols'] == 0) echo '<div class="clearfix"></div>';
 
 							
 
 						?>
 
+						<?php
 						
+						 if($member->name && $member_counter==$total){?>
+                        <div class="noRightBorder" id="addAnotherAddress">
+<a href="<?php echo JURI::base();?>index.php?option=com_celebrity&task=add&controller=address&cid=<?php echo $_GET['cid'];?>&Itemid=61"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="114" height="133" /></a>
+</div><?php }?>
 
 						<?php 
 
@@ -233,40 +274,26 @@ $j=1;
 							endif; 
 
 							endforeach; 
+							?>
+                          
+							<?php
 							}
 						?>
-
-					</div>
-
 				</div>
-
+				</div>
 				<?php if($this->config['pages'] > 1 && $total > ($this->config['rows'] * $this->config['cols'])): ?>
-
 				<div class="gk_js_interface">
-
 					<div class="clearfix">
-
 						<?php for($x = 0; $x < ceil($total / ($this->config['rows'] * $this->config['cols']));$x++) : ?>
-
 						<span class="gk_js_page"><?php echo $x+1; ?></span>
-
 						<?php endfor; ?>
 						<span class="gk_js_prev">&laquo;</span>
-
 						<span class="gk_js_next">&raquo;</span>
-
 					</div>
-
 				</div>	
-
                 <?php endif; ?>		
 
 			</div>
-
-
-
-
-
 			<?php endfor; ?>
 
 			<div class="gk_js_overlay"></div>
