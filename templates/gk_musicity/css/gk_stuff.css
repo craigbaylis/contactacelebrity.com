@@ -288,7 +288,7 @@ a.nsp_comments { }
 .gk_js_members_main .gk_js_members_scroll2{width:100000px; overflow:hidden; }
 .gk_js_members_main .gk_js_members_wrap{float:left; }
 .gk_js_members_main .gk_js_members:first-child{display:block; }
-.gk_js_members_main .gk_js_member{ float:left; overflow:hidden; padding-top: 18px; }
+.gk_js_members_main .gk_js_member{ float:left; overflow:hidden; /* padding-top: 18px; */ }
 .gk_js_members_main .gk_js_member > div{ padding-right: 7px; }
 .gk_js_members_main .gk_js_avatar{ display: block; }
 .gk_js_members_main .gk_js_avatar img{ display: block; opacity: 0.8; filter:alpha(opacity=80); }
