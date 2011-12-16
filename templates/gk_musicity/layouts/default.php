@@ -120,7 +120,7 @@ define('GK_LOGIN', $this->countModules('login'));
         <?php if(JRequest::getCmd('task') == "details"){?>
         	<div class="width640detail">
             <!--content-->		
-		<?php $this->loadBlock('usersl') ?>
+		<?php $this->loadBlock('usersl') ?>      
             <!--content-->
 			</div>
            
