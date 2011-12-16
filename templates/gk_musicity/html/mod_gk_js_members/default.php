@@ -79,7 +79,9 @@ defined('_JEXEC') or die('Restricted access');
 <a href="<?php echo JURI::base();?>index.php?option=com_celebrity&task=add&controller=address&cid=<?php echo $_GET['cid'];?>&Itemid=61"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="114" height="133" /></a>
 </div>
 <?php } else {?>
-No information found.<br /><br /><br /><br /><br />
+                        <div class="noRightBorder" id="addAnotherAddress">
+<a href="<?php echo JURI::base();?>index.php?option=com_celebrity&task=add&controller=address&cid=<?php echo $_GET['cid'];?>&Itemid=61"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="114" height="133" /></a>
+</div>
 <?php }?>
 							
                           <!-- div.individualAddress close -->
