@@ -26,7 +26,9 @@
 
 defined('_JEXEC') or die('Restricted access');
 
-
+//get user
+//$user =& JFactory::getUser();
+//$getuser=$user->get('id');			
 
 ?>
 <div class="gk_js_members_main" id="<?php echo $this->config['module_unique_id']; ?>" style="width:<?php echo $this->config['module_width']; ?>px;">
@@ -123,7 +125,7 @@ $j=1;
 									<?php endif; ?>
 <?php */?>
  <?php if($member->name ||  $member->email ||  $member->url ){?>
-									   <div class="individualAddress" <?php if($member->email || $member->url){?>style="height:70px"<?php }?>>
+									   <div class="individualAddress" <?php /*?><?php if($member->email || $member->url){?>style="height:70px"<?php }?><?php */?>>
                                               <ul>
                                               <?php if($member->name){?>
                                                 <li class="addressTitle"><?php echo JText::_('Address').''. $j++;?>
@@ -148,11 +150,20 @@ $j=1;
                                                  </li>
                                                  <?php }?>
                                                       <?php if($member->email){?>
+                                                  <li>&nbsp;</li>
+                                                    <li>&nbsp;</li>
                                                 <li class="addressLine1">
 												<?php echo $member->email;?>
                                                  </li>
+                                               
+                                               
+                                                 <li>&nbsp;</li>
+                                                 <li>&nbsp;</li>
+                                                 <li>&nbsp;</li>
                                                  <?php }?>
                                                       <?php if($member->url){?>
+                                                       <li>&nbsp;</li>
+                                                    <li>&nbsp;</li>
                                                 <li class="addressLine1">
 												<?php echo $member->url;?>
                                                  </li>
@@ -240,16 +251,45 @@ $j=1;
 							$member_counter++;
 							if($member_counter % $this->config['cols'] == 0) echo '<div class="clearfix"></div>';
 
-							
-
+				
 						?>
 
 						<?php
+						//check a session user.
+						$getuser =$_SESSION[__default][user]->id;
 						
+						//personal address
 						 if($member->name && $member_counter==$total){?>
                         <div class="noRightBorder" id="addAnotherAddress">
+                        <?php if($getuser == "0"){?>
+                        <a href="<?php echo JRoute::_('index.php?option=com_user&view=login') ?>" class="general_login"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="114" height="133" /></a>
+                        <?php } else {?>
 <a href="<?php echo JURI::base();?>index.php?option=com_celebrity&task=add&controller=address&cid=<?php echo $_GET['cid'];?>&Itemid=61"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="114" height="133" /></a>
+<?php }?>
+</div>
+
+<?php }?>
+<?php
+//email address
+ if($member->email && $member_counter==$total){?>
+                        <div class="noRightBorder" id="addAnotherAddress">
+                          <?php if($getuser == "0"){?>
+                        <a href="<?php echo JRoute::_('index.php?option=com_user&view=login') ?>" class="general_login"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="114" height="133" /></a>
+                        <?php } else {?>
+<a href="<?php echo JURI::base();?>index.php?option=com_celebrity&task=add&controller=address&cid=<?php echo $_GET['cid'];?>&Itemid=61"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="113" height="133" /></a>
+<?php }?>
 </div><?php }?>
+<?php
+//website address
+ if($member->url && $member_counter==$total){?>
+                        <div class="noRightBorder" id="addAnotherAddress">
+                          <?php if($getuser == "0"){?>
+                        <a href="<?php echo JRoute::_('index.php?option=com_user&view=login') ?>" class="general_login"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="114" height="133" /></a>
+                        <?php } else {?>
+<a href="<?php echo JURI::base();?>index.php?option=com_celebrity&task=add&controller=address&cid=<?php echo $_GET['cid'];?>&Itemid=61"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="114" height="133" /></a>
+<?php }?>
+</div><?php }?>
+
 
 						<?php 
 
