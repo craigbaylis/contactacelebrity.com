@@ -20,6 +20,8 @@ $document->addScriptDeclaration($domready);
 //load module helper to display addresses module
 //jimport('joomla.application.module.helper');
 //$module = JModuleHelper::getModule('mod_celebrityaddresses');
+//get user details
+$user =& JFactory::getUser();
 ?>
 <div class="width960">
 			<div id="left">
@@ -41,7 +43,13 @@ $document->addScriptDeclaration($domready);
 						<li id="chat"><a href="#"><?php echo JText::_('Chat about ').$this->details->name ?></a></li>
 						<li id="gallery"><a href="#"><?php echo JText::_('Photo Gallery') ?></a></li>
 						<li id="deceased"><a href="#"><?php echo JText::_('Report '.$this->details->name.' as deceased') ?></a></li>
+                        <?php
+					if($user->get('id') == "0"){
+						?>
+                        <li id="addNewAddress"><a href="<?php echo JRoute::_('index.php?option=com_user&view=login') ?>" class="general_login"><?php echo JText::_('Add New Address') ?></a></li>                        
+                        <?php } else {?>
 						<li id="addNewAddress"><a href="<?php echo JRoute::_('index.php?option=com_celebrity&task=add&controller=address&cid='.$this->details->id.'&Itemid='.$this->itemid) ?>"><?php echo JText::_('Add New Address') ?></a></li>
+                        <?php }?>
 					</ul>
 				</div><!-- div#userInteraction close -->
 		
@@ -266,7 +274,12 @@ $style = "
 $document = JFactory::getDocument();
 $document->addStyleDeclaration($style);
 ?>
-
+<?php /*?><?php
+$document   = &JFactory::getDocument();
+$renderer   = $document->loadRenderer('module');
+$params   = array('style'=>'moduletablenew');
+echo $renderer->render(JModuleHelper::getModule('mod_gk_js_members'), $params);
+?><?php */?>
 <?php 
 $blockips = array();
 //if(!in_array($_SERVER['REMOTE_ADDR'], $blockips)): ?>
