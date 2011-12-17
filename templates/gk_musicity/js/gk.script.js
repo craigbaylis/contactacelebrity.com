@@ -88,7 +88,7 @@ window.addEvent('load', function() {
     	});
     }
     //HACK added address_login option
-    if($('btn_login') || $('btn_register') || $$('.address_login')) {
+    if($('btn_login') || $('btn_register') || $$('.address_login') || $$('.general_login')) {
     	var popup_overlay = $('gk-popup-overlay');
     	popup_overlay.setStyle('display', 'block');
     	var popup_overlay_fx = new Fx.Style(popup_overlay, 'opacity', {duration:200}).set(0);
@@ -148,6 +148,19 @@ window.addEvent('load', function() {
             popup_login_h = popup_login.getElement('.gk-popup-wrap').getSize().size.y + 8;
             popup_login_fx = new Fx.Styles(popup_login, {duration:200, transition: Fx.Transitions.Circ.easeInOut}).set({'opacity': 0, 'height': 0, 'margin-top':0}); 
             $$('.address_login').addEvent('click', function(e) {
+                new Event(e).stop();
+                popup_overlay_fx.start(0.85);
+                popup_login_fx.start({'opacity':1, 'margin-top': -popup_login_h / 2, 'height': popup_login_h});
+                opened_popup = 'login';
+            });
+        }
+		//details page login
+		 if($$('.general_login')) {
+            popup_login = $('gk-popup-login');
+            popup_login.setStyle('display', 'block');
+            popup_login_h = popup_login.getElement('.gk-popup-wrap').getSize().size.y + 8;
+            popup_login_fx = new Fx.Styles(popup_login, {duration:200, transition: Fx.Transitions.Circ.easeInOut}).set({'opacity': 0, 'height': 0, 'margin-top':0}); 
+            $$('.general_login').addEvent('click', function(e) {
                 new Event(e).stop();
                 popup_overlay_fx.start(0.85);
                 popup_login_fx.start({'opacity':1, 'margin-top': -popup_login_h / 2, 'height': popup_login_h});
