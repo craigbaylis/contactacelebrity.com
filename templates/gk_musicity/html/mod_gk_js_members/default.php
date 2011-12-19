@@ -28,8 +28,8 @@ defined('_JEXEC') or die('Restricted access');
 
 //get user
 //$user =& JFactory::getUser();
-//$getuser=$user->get('id');			
-
+//$getuser=$user->get('id');	
+$getuid =$_SESSION[__default][user]->id;
 ?>
 <div class="gk_js_members_main" id="<?php echo $this->config['module_unique_id']; ?>" style="width:<?php echo $this->config['module_width']; ?>px;">
 
@@ -42,7 +42,6 @@ defined('_JEXEC') or die('Restricted access');
 			<div class="gk_js_tab"><span><?php echo JText::_('EMAIL ADDRESSES'); ?></span></div>
 
 			<div class="gk_js_tab"><span><?php echo JText::_('WEBSITES'); ?></span></div>
-
 		</div>
 
 	</div>	
@@ -153,7 +152,11 @@ $j=1;
                                                   <li>&nbsp;</li>
                                                     <li>&nbsp;</li>
                                                 <li class="addressLine1">
-												<?php echo $member->email;?>
+												<?php 
+											list($username1,$domain1)=split('@',$member->email);
+											echo ($getuid!='') ? $username1 : str_replace(substr($username1,0,5),"*****",$username1); echo JText::_('@');
+											echo ($getuid!='') ? $domain1 : str_replace(substr($domain1,2,6),"*****",$domain1); ?> 
+						
                                                  </li>
                                                
                                                
@@ -168,13 +171,12 @@ $j=1;
 												<?php echo $member->url;?>
                                                  </li>
                                                  <?php }?>
-									
-												
                                                  <?php if($member->name){
 													 ?>
                                                 <li class="addressLine2"><?php
 												$user =& CFactory::getUser($member->id);
-												echo ($user->get('id')) ? $member->line_1 : substr($member->line_1,0,4).' ****' ?></li>
+												echo $getuid;
+												echo ($getuid!='') ? $member->line_1 : str_replace(substr($member->line_1,5),"********",$member->line_1); ?></li>
                                                 <li class="city_state_zip"><?php echo $member->city.', '.$member->state.' '.$member->zipcode ?></li>
                                                 <li class="submission">Submitted by: <a href="index.php?option=com_community&view=profile&userid=<?php echo $member->created_by_uid;?>&Itemid=41"><?php echo $member->username;?></a></li>
                                       <li class="success"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/success_check.png" alt="success" title="success"/>Success  <img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/success_green.png" alt="successNumber" title="successNumber"><a class="green" href="#"><?php echo (!empty($successCounts[$key]->total_success)) ? $successCounts[$key]->total_success : '0' ?></a><a class="red" href="#"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/unsuccess_red.png" alt="unsuccessNumber" title="unsuccessNumber"/><?php echo (!empty($returnedCounts[$key]->total_returned)) ? $returnedCounts[$key]->total_returned : '0' ?></a></li>  
@@ -256,7 +258,7 @@ $j=1;
 
 						<?php
 						//check a session user.
-						$getuser =$_SESSION[__default][user]->id;
+						$getuser =$getuid;
 						
 						//personal address
 						 if($member->name && $member_counter==$total){?>
@@ -339,11 +341,8 @@ $j=1;
 			<?php endfor; ?>
 
 			<div class="gk_js_overlay"></div>
-
 		</div>	
-
 	</div>		
-
 </div>
 
 <script type="text/javascript">
