@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>MyEbay_Search module</name>
+	<author>edeetion.com</author>
+	<creationDate>March 2011</creationDate>
+	<copyright>Copyright (C) edeetion.com. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>info@edeetion.com</authorEmail>
+	<authorUrl>www.edeetion.com</authorUrl>
+	<version>2.1</version>
+	<description>This module allows to display a search result page of auctions, depending on one search parameter. if you want to display horizontal display, you need to have a column of at least 400px width, and display pictures activated.</description>
+	
+	<files>
+		<filename module="mod_MyEbay_Search">mod_MyEbay_Search.php</filename>
+		<filename>tmpl/default.php</filename>
+		<filename>tmpl/index.html</filename>
+		<filename>css/style.css</filename>
+		<filename>css/index.html</filename>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<params>
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+
+		<param name="tags" type="text" size="100" default="" label="search terms" description="search tags" />
+		<param name="searchtype" type="radio" default="1" label="Search type" description="Tags should be searched in title or title and description">
+			<option value="1">title only</option>
+			<option value="2">title and description</option>
+		</param>
+		
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		
+		<param name="limitAuction" type="text" size="2" default="10" label="number of auctions" description="number of auctions" />
+		
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		
+		<param name="category" type="text" size="20" default="" label="main category ID" description="main category ID (optional)-please refer to your category tree in your country" />
+		
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		
+		<param name="title_length" type="text" size="20" default="50" label="maximum of number of character" description="maximum of characters in auction title" />
+		
+        <param name="@spacer" type="spacer" default="" label="" description="" />
+
+		<param name="picture" type="radio" default="1" label="Auction Image" description="Show the image associated with each auction">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+	
+		<param name="sortdesign" type="list" default="efirst" label="Disposition (2 or 1 column)" description="horizontal (2 columns) or vertical">
+			<option value="vertical">vertical</option>
+			<option value="horizontal">horizontal</option>
+		</param>
+
+		<param name="sortorder" type="list" default="efirst" label="Order" description="which order should be used to sort auctions">
+			<option value="efirst">Auctions Ending First</option>
+			<option value="hprice">Highest Price First</option>
+			<option value="bmatch">Best Match</option>
+			<option value="nlisted">Newly Listed Auctions</option>
+			<option value="priceaslow">Price and Shipping with Lowest First</option>
+		</param>
+		
+		<param name="auctiontype" type="list" default="all" label="Type of auction" description="Which type of auctions in the listing">
+			<option value="all">All</option>
+			<option value="auctiononly">Auction only</option>
+			<option value="binonly">Buy it now only</option>
+		</param>
+	</params>
+	<params group="advanced">
+		<param name="cache" type="list" default="0" label="Caching" description="Select whether to cache the content of this module">
+			<option value="1">Use global</option>
+			<option value="0">No caching</option>
+		</param>
+        <param name="cache_time" type="text" default="15" label="Cache Time" description="The time in seconds before the module is re-cached." />
+	</params>
+</install>

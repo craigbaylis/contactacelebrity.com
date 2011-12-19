@@ -37,20 +37,17 @@ $user =& JFactory::getUser();
 				</div><!-- div#photo close -->
 			
 				<div id="userInteraction">
-			
-					<ul>
-						<li id="emailAlert"><a href="#"> <?php echo JText::_('Send me email alerts') ?></a></li>
-						<li id="chat"><a href="#"><?php echo JText::_('Chat about ').$this->details->name ?></a></li>
-						<li id="gallery"><a href="#"><?php echo JText::_('Photo Gallery') ?></a></li>
-						<li id="deceased"><a href="#"><?php echo JText::_('Report '.$this->details->name.' as deceased') ?></a></li>
+						<span id="emailAlert"><a href="#"><span class="aligning"><?php echo JText::_('Send me email alerts') ?></span></a></span><br />
+						<span id="chat"><a href="#"><span class="aligning"><?php echo JText::_('Chat about ').$this->details->name ?></span></a></span><br />
+						<span id="gallery"><a href="#"><span class="aligning"><?php echo JText::_('Photo Gallery') ?></span></a></span><br />
+						<span id="deceased"><a href="#"><span class="aligning"><?php echo JText::_('Report '.$this->details->name.' as deceased') ?></span></a></span><br />
                         <?php
 					if($user->get('id') == "0"){
 						?>
-                        <li id="addNewAddress"><a href="<?php echo JRoute::_('index.php?option=com_user&view=login') ?>" class="general_login"><?php echo JText::_('Add New Address') ?></a></li>                        
+                        <span id="addNewAddress"><a href="<?php echo JRoute::_('index.php?option=com_user&view=login') ?>" class="general_login"><span class="aligning"><?php echo JText::_('Add New Address') ?></span></a></span><br />
                         <?php } else {?>
-						<li id="addNewAddress"><a href="<?php echo JRoute::_('index.php?option=com_celebrity&task=add&controller=address&cid='.$this->details->id.'&Itemid='.$this->itemid) ?>"><?php echo JText::_('Add New Address') ?></a></li>
+						<span id="addNewAddress"><a href="<?php echo JRoute::_('index.php?option=com_celebrity&task=add&controller=address&cid='.$this->details->id.'&Itemid='.$this->itemid) ?>"><span class="aligning"><?php echo JText::_('Add New Address') ?></span></a></span><br />
                         <?php }?>
-					</ul>
 				</div><!-- div#userInteraction close -->
 		
 			</div><!-- div#left close -->
