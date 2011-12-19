@@ -156,6 +156,19 @@ GA_googleFillSlot("<?php echo $this->searchType ?>_RT1_300x250");
 <?php endif; ?>
 </div>
 <div style="float: right;">
+<?php
+if(JRequest::getCmd('searchword'))
+{
+?>
+    <div id="ebay">
+            <h1 class="search"><?php echo JText::_('FUNITEMS') ?></h1>
+            <?php 
+                $myEbay = JModuleHelper::getModule('MyEbay_Search','MyEbay_Search module');
+                echo JModuleHelper::renderModule($myEbay);
+            ?>
+            <img title="ebay" alt="ebay" src="<?php echo JURI::base() ?>templates/gk_musicity/images/style/ebayLogo.png" class="ebayLogo">
+    </div>
+    <?php } else { ?>
     <div id="ebay">
             <h1 class="search"><?php echo JText::_('FUNITEMS') ?></h1>
             <?php 
@@ -164,6 +177,8 @@ GA_googleFillSlot("<?php echo $this->searchType ?>_RT1_300x250");
             ?>
             <img title="ebay" alt="ebay" src="<?php echo JURI::base() ?>templates/gk_musicity/images/style/ebayLogo.png" class="ebayLogo">
     </div>
+    
+    <?php } ?>
     <div id="thankYou">
         <p>
             <span class="big">"</span><?php echo JText::_('CACTHANKYOU') ?>
