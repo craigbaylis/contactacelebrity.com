@@ -46,7 +46,7 @@ class modMyEbay_SearchHelper
         FROM
           `jos_celebrity_browse` `a`
         WHERE
-          `a`.`celeb_name` LIKE '%$letter%'
+          `a`.`alpha` = '$letter[0]'
     ";
      $db->setQuery($query);
      $result = $db->loadResultArray();
