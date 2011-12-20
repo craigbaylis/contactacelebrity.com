@@ -271,12 +271,14 @@ $style = "
 $document = JFactory::getDocument();
 $document->addStyleDeclaration($style);
 ?>
-<?php /*?><?php
+<div class="width640detail">
+<?php
 $document   = &JFactory::getDocument();
 $renderer   = $document->loadRenderer('module');
 $params   = array('style'=>'moduletablenew');
 echo $renderer->render(JModuleHelper::getModule('mod_gk_js_members'), $params);
-?><?php */?>
+?>
+</div>
 <?php 
 $blockips = array();
 //if(!in_array($_SERVER['REMOTE_ADDR'], $blockips)): ?>
@@ -289,7 +291,7 @@ GA_googleFillSlot("browse_RT1_300x250");
 	<div id="ebaynew" >
 		<h1 id="details"><?php echo JText::_('FUNITEMS') ?></h1>
 		<?php 
-                $myEbay = JModuleHelper::getModule('myebay','MyEbay module');
+                $myEbay = JModuleHelper::getModule('MyEbay_Search','MyEbay_Search module');
                 echo JModuleHelper::renderModule($myEbay);
             ?>
             <img title="ebay" alt="ebay" src="<?php echo JURI::base() ?>templates/gk_musicity/images/style/ebayLogo.png" class="ebayLogo">
