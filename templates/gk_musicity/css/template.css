@@ -1075,6 +1075,13 @@ img.ebayLogo {
   background-color: #FFFFFF;
   width: 100%;
 }
+/*ebay module*/
+
+.vertical ul li .ebaylist_MyEbay_Search {
+  background-color: #FFFFFF;
+  width: 100%;
+}
+
 .search-image{
     width: 75px;
     margin: 0 20px;
@@ -1152,6 +1159,11 @@ li#rss a:active {
 .ebaytitle_myebay {
   text-align: center;
 }
+/*ebay search*/
+.ebaytitle_MyEbay_Search {
+  text-align: center;
+}
+
 ul.pagination {
     clear: left;
 }
