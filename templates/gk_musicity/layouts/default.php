@@ -117,14 +117,14 @@ define('GK_LOGIN', $this->countModules('login'));
 		</div>
 		<?php endif; ?>
         
-        <?php if(JRequest::getCmd('task') == "details"){?>
+<?php /*?>        <?php if(JRequest::getCmd('task') == "details"){?>
         	<div class="width640detail">
             <!--content-->		
 		<?php $this->loadBlock('usersl') ?>      
             <!--content-->
 			</div>
            
-   		 <?php }?>
+   		 <?php }?><?php */?>
          
 </div>
 <div id="gk-bottom-wrap" class="clear">
