@@ -10,10 +10,8 @@
 * other free or open source software licenses.
 * See COPYRIGHT.php for copyright notices and details.
 */
-
 /** ensure this file is being included by a parent file */
 defined('_JEXEC') or die('Direct Access to this location is not allowed.');
-
 class modMyEbay_SearchHelper
 {
   function getMyEbay_Search($params)
@@ -23,7 +21,24 @@ class modMyEbay_SearchHelper
     //$tags = $session->get('celebrity_name_search_result');
     
     //get tags from database table
+	if(JRequest::getCmd('searchword')){
     $letter = JRequest::getCmd('searchword');
+	} else {
+	$cid = JRequest::getCmd('cid');
+	//detail page
+	    $dbdetails = JFactory::getDBO();
+    $querydetails = "
+        SELECT 
+          `a`.`first_name`
+        FROM
+          `jos_celebrity_celebrity` `a`
+        WHERE
+          `a`.`id` = '$cid'
+    ";
+     $dbdetails->setQuery($querydetails);
+     $resultdetails = $dbdetails->loadResultArray();
+	 $letter = $resultdetails[0]; //get a firstname of celebrity		
+	}
     $db = JFactory::getDBO();
     $query = "
         SELECT 
@@ -31,7 +46,7 @@ class modMyEbay_SearchHelper
         FROM
           `jos_celebrity_browse` `a`
         WHERE
-          `a`.`alpha` = '$letter[0]'
+          `a`.`celeb_name` LIKE '%$letter%'
     ";
      $db->setQuery($query);
      $result = $db->loadResultArray();
@@ -77,7 +92,6 @@ class modMyEbay_SearchHelper
 	    $sortorderfinal = "&fsoo=1&fsop=34";
 		break;
 	}
-			
 	$auctiontype = $params->get('auctiontype', 'all');
 	switch ($auctiontype){
 	  case ('all'):
@@ -90,7 +104,6 @@ class modMyEbay_SearchHelper
 		$auctiontypefinal = '&sabfmts=2&sascs=2';
 		break;
 	 }
-	
     $session = JFactory::getSession();
     $source = strtolower($session->get('ip_code'));
     $language = 'en-EN';  
@@ -176,7 +189,6 @@ class modMyEbay_SearchHelper
       default:
         $siteId = 0;
 	}
-		
 	//decide which campaign id to use based on the page being viewd
     $task = JRequest::getCmd('task');
     switch($task)

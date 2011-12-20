@@ -7,7 +7,7 @@ $width= $params->get('sortdesign', 'vertical');
 $limitAuction =  $params->get('limitAuction', '10');
 $title_length =  $params->get('title_length', '50');
 $item = 1;
-$css = JURI::base().'modules/mod_myebay_search/css/style.css';
+$css = JURI::base().'modules/mod_MyEbay_Search/css/style.css';
 $document = JFactory::getDocument();
 $document->addStyleSheet($css);
 ?>
