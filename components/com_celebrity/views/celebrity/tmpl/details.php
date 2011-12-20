@@ -273,10 +273,12 @@ $document->addStyleDeclaration($style);
 ?>
 <div class="width640detail">
 <?php
-$document   = &JFactory::getDocument();
+/*$document   = &JFactory::getDocument();
 $renderer   = $document->loadRenderer('module');
 $params   = array('style'=>'moduletablenew');
 echo $renderer->render(JModuleHelper::getModule('mod_gk_js_members'), $params);
+*/$myEbaye = JModuleHelper::getModule('gk_js_members','tabselection');
+echo JModuleHelper::renderModule($myEbaye);
 ?>
 </div>
 <?php 
@@ -288,7 +290,8 @@ GA_googleFillSlot("browse_RT1_300x250");
 <?php //endif; ?>
 <!-- browse_RT1_300x250 -->
 	</div>
-	<div id="ebaynew" >
+    <div style="float: right;">
+	<div id="ebay" >
 		<h1 id="details"><?php echo JText::_('FUNITEMS') ?></h1>
 		<?php 
                 $myEbay = JModuleHelper::getModule('MyEbay_Search','MyEbay_Search module');
@@ -296,4 +299,6 @@ GA_googleFillSlot("browse_RT1_300x250");
             ?>
             <img title="ebay" alt="ebay" src="<?php echo JURI::base() ?>templates/gk_musicity/images/style/ebayLogo.png" class="ebayLogo">
 	</div><!-- div#ebay close -->
+
+	</div>
 
