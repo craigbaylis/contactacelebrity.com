@@ -18,7 +18,7 @@
 }
 
 .description table { font-size:12px;}
-.description table tr td{ vertical-align:top;}
+.description table tr td{ vertical-align:top; padding-left:5px;}
 .description table tr td img{ border:1px solid #ccc;}
 .horizontal ul li {width: 49%;}
 
@@ -38,17 +38,18 @@
   padding:0 0 5px 0px;
   float: left;  border-bottom: 1px solid #000;
 }
-
 .vertical ul li .ebaylist_MyEbay_Search{ display: block; border-bottom: 1px solid #E1E1E1; float: left; width: 99%}
 .vertical ul li .ebaylist_MyEbay_Search a{text-decoration: none}
 .ebaytitle_MyEbay_Search {
-  font-size:15px;
-  font-weight:normal;
-  text-align: left;
-  margin: 0px;
-  padding: 0 0 15px 3px;
-}
-
+font-size: 15px;
+    font-weight: normal;
+    line-height: 1.5;
+    margin-left: 5px;
+    padding-bottom: 5px;
+    padding-left: 3px;
+    padding-right: 0;
+    padding-top: 0;
+	}
 .ebaytitleSmall_MyEbay_Search {
   display: block;
   float: left;
@@ -56,9 +57,7 @@
   width: 70%;
   font-size:90%;
   margin-right:5px;
- 
 }
-
 .price{ text-align:right; font-size:80%}
 
 .description {text-align: left;}

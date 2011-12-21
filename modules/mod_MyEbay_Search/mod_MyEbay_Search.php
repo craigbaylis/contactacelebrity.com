@@ -31,7 +31,13 @@ if (!is_writable($cacheDir))
 $feedtotal = array();
 
 $picture =  $params->get('picture', '1');
-$feed = modMyEbay_SearchHelper::getMyEbay_Search($params);
+$feeds = modMyEbay_SearchHelper::getMyEbay_Search($params);
+if(count($feeds->items) == "0"){
+	$feed = modMyEbay_SearchHelper::getListmyCelebrityLetter($params);
+} else {
+	$feed = modMyEbay_SearchHelper::getMyEbay_Search($params);	
+}
+
 for ($a=0; $a<count($feed->items); $a++) {
 	$feedtotal[$a]["date"] = $feed->items[$a]->get_date('H:i');
 	$feedtotal[$a]["dateU"] = $feed->items[$a]->get_date('U');
