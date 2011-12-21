@@ -18,12 +18,12 @@ $alansworkip = '174.31.231.205';
 $kevinshomeip = '189.24.194.252';
 $localhost = '127.0.0.1';
 $blockips = array();
+
 if(!JRequest::getCmd('letter')){
 $letter = JRequest::getCmd('searchword');	
 } else {
 $letter = JRequest::getCmd('letter');
 }
-
 //set the text dependeding on if the user chose a letter or a number search from the browse search
 if($this->searchType == 'browse'){
     if ($letter == '9') {
@@ -72,7 +72,17 @@ $document->addStyleDeclaration($style);
             <?php echo strtoupper($letter) ?>
         "</h2>
     </div>
-<?php } else {?>
+<?php } elseif(JRequest::getCmd('searchword')) {
+	$sr= str_replace("+"," ",$_POST['searchword']);
+	?>
+    <div id="left">
+        <h1 class="search"><?php echo JText::_('MATCHESFOR') ?></h1>
+<?php /*?>        <p id="browseSearchP"><?php echo JText::_('FOUNDSTARTINGWITH') ?></p>
+<?php */?>        <h2 id="browseSearchbox_fukidashi">"
+            <?php echo strtoupper($sr) ?>
+        "</h2>
+    </div>
+    <?php } else {?>
     <div id="left">
         <h1 class="search"><?php echo JText::_('MATCHESFOR') ?></h1>
 <?php /*?>        <p id="browseSearchP"><?php echo JText::_('FOUNDSTARTINGWITH') ?></p>
