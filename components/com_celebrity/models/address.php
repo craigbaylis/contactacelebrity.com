@@ -397,6 +397,21 @@ class CelebrityModelAddress extends JModel
            return true;
        }       
    } 
+   
+    public function getAddressPagination()
+    {
+        $cid  = $this->_cid;
+        if (!$cid) JError::raiseError(500,'Missing address identification code');
+        $db = JFactory::getDBO();
+        //build query
+        $query = "SELECT a.address_id,a.celebrity_id FROM #__celebrity_address a WHERE a.celebrity_id = $cid";
+		
+		$db->setQuery($query);
+		$row = $db->loadRowList();
+        return $row;     
+          
+    }    
+   
 }
 
 ?>

@@ -154,6 +154,7 @@ jimport('joomla.error.error');
                   `a`.`eye_color`,
                   `a`.`biography`,
                   `a`.`middle_name`,
+				  `a`.`album_catid`,
                   `a`.`is_deceased`,
                   GROUP_CONCAT(`c`.`name`) AS `profession`,
                   `d`.`username` AS `celebrity_submitted_by`
