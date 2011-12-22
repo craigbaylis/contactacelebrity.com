@@ -146,6 +146,10 @@ class CelebrityViewAddress extends JView
                 $addressModel = $this->getModel();
                 $address = $addressModel->getMailingAddress();
                 $this->assignRef('address',$address);
+				//pagination
+				$addressModel3 = $this->getModel();
+				$addressPage = $addressModel3->getAddressPagination();
+				$this->assignRef('addressPage',$addressPage);
                 break;
                 
                 case 'email':
