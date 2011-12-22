@@ -141,9 +141,11 @@ $j=1;
                                                 </li>
                                                 <?php }?>
                                                 
-                                                 <?php if($member->name){
+                                                 <?php if($member->name){	
+												// print_r($member);
 													 ?>
-                                                <li class="viewDetail"><a href="#"></a></li>
+                                                     
+                                                <li class="viewDetail"><a href="index.php?option=com_celebrity&view=address&task=details&type=address&aid=<?php echo $member->id;?>&cid=<?php echo Jrequest::getCmd('cid');?>&anumber=<?php echo $j-1;?>&Itemid=60"></a></li>
                                                 <?php } ?>
                                                <?php if($member->name){?>
                                                 <li class="addressLine1" style="width:520px; float:left;margin-left:-7px;">
