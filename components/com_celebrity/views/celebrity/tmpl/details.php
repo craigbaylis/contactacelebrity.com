@@ -39,7 +39,13 @@ $user =& JFactory::getUser();
 				<div id="userInteraction">
 						<span id="emailAlert"><a href="#"><span class="aligning"><?php echo JText::_('Send me email alerts') ?></span></a></span><br />
 						<span id="chat"><a href="#"><span class="aligning"><?php echo JText::_('Chat about ').$this->details->name ?></span></a></span><br />
-						<span id="gallery"><a href="#"><span class="aligning"><?php echo JText::_('Photo Gallery') ?></span></a></span><br />
+						<span id="gallery">
+                        <?php if($this->details->album_catid == "0"):?>
+                        <a href="javascript:;"><span class="aligning"><?php echo JText::_('Photo Gallery') ?></span></a>
+                       <?php else:?>
+                         <a href="index.php?option=com_phocagallery&view=category&id=<?php echo $this->details->album_catid;?>:<?php echo strtolower($this->details->first_name);?>-<?php echo strtolower($this->details->last_name);?>&Itemid=59"><span class="aligning"><?php echo JText::_('Photo Gallery') ?></span></a>
+                         <?php endif;?>
+                        </span><br />
 						<span id="deceased"><a href="#"><span class="aligning"><?php echo JText::_('Report '.$this->details->name.' as deceased') ?></span></a></span><br />
                         <?php
 					if($user->get('id') == "0"){
