@@ -400,17 +400,97 @@ class CelebrityModelAddress extends JModel
    
     public function getAddressPagination()
     {
-        $cid  = $this->_cid;
+ 		$aid  = $this->_aid;
+		$cid  = $this->_cid;
         if (!$cid) JError::raiseError(500,'Missing address identification code');
-        $db = JFactory::getDBO();
+        
         //build query
-        $query = "SELECT a.address_id,a.celebrity_id FROM #__celebrity_address a WHERE a.celebrity_id = $cid";
-		
-		$db->setQuery($query);
-		$row = $db->loadRowList();
-        return $row;     
+        $query = "
+            SELECT 
+              a.address_id,
+			  a.celebrity_id            
+            FROM
+              #__celebrity_celebrity_address a                    
+            WHERE
+              a.celebrity_id = $cid
+        ";
+        $db = JFactory::getDBO();
+        $db->setQuery($query);
+        $result = $db->loadResultArray();
+        return $result; 
           
-    }    
+    }   
+	
+	 public function getSucessfullMailing($receivedtype)
+    {
+
+ 		$aid  = $this->_aid;
+        if (!$aid) JError::raiseError(500,'Missing address identification code');
+		
+        if($receivedtype == "1")
+		//build query
+        $query = "
+            SELECT 
+             COUNT(*) as Smailingcount          
+            FROM
+              #__celebrity_result  a                    
+            WHERE
+              a.address_id = $aid and received_type_id =1
+        ";
+		else
+		//build query
+        $query = "
+            SELECT 
+             COUNT(*) as Smailingcount          
+            FROM
+              #__celebrity_result  a                    
+            WHERE
+              a.address_id = $aid and received_type_id =2
+        ";
+		
+        $db = JFactory::getDBO();
+        $db->setQuery($query);
+        $result = $db->loadResultArray();
+        return $result; 
+          
+    } 
+	
+	
+	public function getResultOfAddress()
+    {
+ 		$aid  = $this->_aid;
+        if (!$aid) JError::raiseError(500,'Missing address identification code');
+		//pagination
+         $app = JFactory::getApplication();
+         $limit = JRequest::getVar('limit', 10);
+         $limitstart = JRequest::getVar('limitstart', 0);     
+		 //pagination
+        //build query
+        $query = "
+            SELECT 
+             a.address_id,
+			 a.created_by_id,
+			 DATE_FORMAT(a.date_sent,'%m/%d/%Y') AS datesent,
+			 DATE_FORMAT(a.date_received,'%m/%d/%Y') AS datereceive,
+			 DATE_FORMAT(a.date_created,'%a, %b %d %Y %h:%i%p') AS datecreate,			 
+			 a.comments,
+			 u.username,
+			 c.thumb  
+            FROM
+              #__celebrity_result a  
+			  INNER JOIN #__users u ON (a.created_by_id = u.id)
+			  INNER JOIN #__community_users c ON (u.id = c.userid)                  
+            WHERE
+              a.address_id = $aid and
+			  a.published=1
+        ";
+        $db = JFactory::getDBO();
+		
+        $db->setQuery($query);
+        $result = $db->loadObjectList();
+        return $result; 
+          
+    }   
    
 }
 
