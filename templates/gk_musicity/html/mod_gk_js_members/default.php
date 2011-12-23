@@ -141,11 +141,15 @@ $j=1;
                                                 </li>
                                                 <?php }?>
                                                 
-                                                 <?php if($member->name){	
-												// print_r($member);
-													 ?>
+                                                 <?php if($member->name){?>
                                                      
-                                                <li class="viewDetail"><a href="index.php?option=com_celebrity&view=address&task=details&type=address&aid=<?php echo $member->id;?>&cid=<?php echo Jrequest::getCmd('cid');?>&anumber=<?php echo $j-1;?>&Itemid=60"></a></li>
+                                                <li class="viewDetail">
+                                                <?php if(!$getuid):?>
+                                                <a href="<?php echo JRoute::_('index.php?option=com_user&view=login') ?>" class="general_login"></a>
+                                                <?php else:?>
+                                                  <a href="index.php?option=com_celebrity&view=address&task=details&type=address&aid=<?php echo $member->id;?>&cid=<?php echo Jrequest::getCmd('cid');?>&anumber=<?php echo $j-1;?>&Itemid=60"></a>
+                                                <?php endif;?>
+                                                </li>
                                                 <?php } ?>
                                                <?php if($member->name){?>
                                                 <li class="addressLine1" style="width:520px; float:left;margin-left:-7px;">
