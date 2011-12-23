@@ -943,6 +943,19 @@ h1.search {
   margin-top: 15px;
   padding: 15px 0 10px 10px;
 }
+/*individual_address.html*/
+h1.searchAddressDetails {
+  background-image: url("../images/style/moduleH3.png");
+  background-position: left top;
+  background-repeat: repeat;
+  color: #FFFFFF;
+  font-family: Trade Gothic,Helvetica,sans-serif;
+  font-size: 20px;
+  height: 16px;
+  margin-top: 15px;
+  padding: 15px 0 10px 10px;
+}
+
 #right {
   background-image: url("../images/style/arrowPattern.png");
   background-position: center center;
