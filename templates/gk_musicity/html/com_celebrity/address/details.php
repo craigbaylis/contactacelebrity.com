@@ -140,7 +140,6 @@ $user =& JFactory::getUser();
 <div class="width640">
 
 		<h1 class="search">Result For This Address</h1>
-	
 			<div class="pagenationNumbers">
 					<ul>
 						<li class="backwards_button"><a href="#"></a></li>
@@ -373,9 +372,10 @@ $user =& JFactory::getUser();
 			
 		</div><!-- div#userCommentList close -->
 					
+			<?php echo $this->pagination->getPagesLinks() ?>
+			
 					
-					
-			<ul id="pagination">
+		<!--	<ul id="pagination">
 				<li class="roundedSquare"><a href="#">Prev</a></li>
 				<li class="roundedSquare"><a href="#">1</a></li>
 				<li class="roundedSquare"><a href="#">2</a></li>
@@ -383,7 +383,7 @@ $user =& JFactory::getUser();
 				<li class="roundedSquare"><a href="#">4</a></li>
 				<li class="roundedSquare"><a href="#">5</a></li>
 				<li class="roundedSquare"><a href="#">Next</a></li>
-			</ul> 
+			</ul> -->
             <?php endif;?>
 
 </div><!-- div#width640 close -->
