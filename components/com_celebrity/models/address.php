@@ -21,13 +21,41 @@ jimport('joomla.error.error');
 class CelebrityModelAddress extends JModel
 {
     var $_cid;
-    var $_aid;      
-    
+    var $_aid; 
+	/*pagination*/     
+    var $_total = null;
+  	var $_pagination = null;
+	var $_ResultOfAddress = null;
+	var $_query = null;
+	 var $_default_limit;
+	/*pagination*/
     function __construct()
     {
-        parent::__construct();
         $this->_cid = JRequest::getInt('cid');
         $this->_aid = JRequest::getInt('aid');
+		
+		/*pagination*/
+		 $app    =& JFactory::getApplication();
+        
+       //set the limit for results returned per page
+       $params = JComponentHelper::getParams('com_celebrity'); 
+       $this->_default_limit = $params->get('results_displayed', '5');
+        
+        // Call the parents constructor
+        parent::__construct();
+
+        $context = 'com_celebrity.address.';
+        
+        // Get the pagination request variables
+        $limit        = $app->getUserStateFromRequest( $context, 'limit', $this->_default_limit, 'int' );
+        $limitstart    = JRequest::getInt('limitstart', 0);
+
+        // In case limit has been changed, adjust limitstart accordingly
+        $limitstart = ($limit != 0 ? (floor($limitstart / $limit) * $limit) : 0);
+
+        $this->setState('limit', $limit);
+        $this->setState('limitstart', $limitstart);
+		/*pagination*/
     }
     
     // get data
@@ -461,9 +489,10 @@ class CelebrityModelAddress extends JModel
  		$aid  = $this->_aid;
         if (!$aid) JError::raiseError(500,'Missing address identification code');
 		//pagination
-         $app = JFactory::getApplication();
-         $limit = JRequest::getVar('limit', 10);
-         $limitstart = JRequest::getVar('limitstart', 0);     
+        $app = JFactory::getApplication();
+		$limit = JRequest::getVar('limit', $this->_default_limit);
+		$limitstart = JRequest::getVar('limitstart', 0);            
+		$db =& $this->_db;     
 		 //pagination
         //build query
         $query = "
@@ -484,13 +513,43 @@ class CelebrityModelAddress extends JModel
               a.address_id = $aid and
 			  a.published=1
         ";
-        $db = JFactory::getDBO();
 		
-        $db->setQuery($query);
-        $result = $db->loadObjectList();
-        return $result; 
-          
-    }   
+		 $this->_query = $query;
+            $this->_ResultOfAddress = $this->_getList($query, $limitstart, $limit);
+            if ($db->getErrorNum()) JError::raiseWarning(500,'There was a problem getting the celebrity data');
+       
+        $this->_total =  $this->getTotal();
+        return $this->_ResultOfAddress;         
+     
+    } 
+	
+	 /**
+     * Method to get a pagination object of the weblink items for the category
+     *
+     * @access public
+     * @return integer
+     */
+    function getPagination()
+    {
+        // Lets load the content if it doesn't already exist
+        if (empty($this->_pagination))
+        {
+            jimport('joomla.html.pagination');
+            $this->_pagination = new JPagination( $this->getTotal(), $this->getState('limitstart'), $this->getState('limit') );
+        }
+
+        return $this->_pagination;
+    }
+    
+    function getTotal()
+    {
+        if ($this->_total) {
+            return $this->_total;
+        } else {
+            $this->_total = $this->_getListCount($this->_query);
+            return $this->_total;
+        }
+    }      
    
 }
 
