@@ -106,7 +106,7 @@ class CelebrityControllerResult extends JController
             foreach($sent_types as $key => $value){
                 $data = array();
                 $data['id'] = null;
-                $data['result_id'] = JRequest::getInt('result_id',null,'POST');
+                $data['result_id'] = $result_id;//JRequest::getInt('result_id',null,'POST');
                 $data['sent_type_id'] = $value;
                 $data['date_created'] = JRequest::getVar('date_created',null,'POST');
                 $resultSentModel->save($data);
