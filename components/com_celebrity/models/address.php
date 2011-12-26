@@ -497,6 +497,7 @@ class CelebrityModelAddress extends JModel
         //build query
         $query = "
             SELECT 
+			 a.id,
              a.address_id,
 			 a.created_by_id,
 			 DATE_FORMAT(a.date_sent,'%m/%d/%Y') AS datesent,
@@ -504,24 +505,43 @@ class CelebrityModelAddress extends JModel
 			 DATE_FORMAT(a.date_created,'%a, %b %d %Y %h:%i%p') AS datecreate,			 
 			 a.comments,
 			 u.username,
-			 c.thumb  
+			 c.thumb,
+			 r.label,
+			 q.quality			 
             FROM
               #__celebrity_result a  
 			  INNER JOIN #__users u ON (a.created_by_id = u.id)
-			  INNER JOIN #__community_users c ON (u.id = c.userid)                  
+			  INNER JOIN #__community_users c ON (u.id = c.userid)
+			  INNER JOIN #__celebrity_result_received_type r ON (a.received_type_id = r.id)
+			  LEFT OUTER JOIN #__celebrity_result_quality q ON (q.id=a.quality_id)  
+			          
             WHERE
               a.address_id = $aid and
-			  a.published=1
+			  a.published=1 order by a.id desc
         ";
-		
 		 $this->_query = $query;
             $this->_ResultOfAddress = $this->_getList($query, $limitstart, $limit);
             if ($db->getErrorNum()) JError::raiseWarning(500,'There was a problem getting the celebrity data');
+			
        
         $this->_total =  $this->getTotal();
         return $this->_ResultOfAddress;         
      
     } 
+	
+	
+		public function getMemberSent($result_id) {
+ 		$aid  = $this->_aid;
+        if (!$aid) JError::raiseError(500,'Missing address identification code');
+		
+        //build query
+        $query = "select rst.label from #__celebrity_result a,#__celebrity_result_sent rs,#__celebrity_result_sent_type as rst where a.id = rs.result_id and  rst.id = rs.sent_type_id and a.id=".$result_id;
+		 $db = JFactory::getDBO();
+        $db->setQuery($query);
+        $result = $db->loadResultArray();
+        return $result;   
+     
+   		} 
 	
 	 /**
      * Method to get a pagination object of the weblink items for the category
