@@ -95,7 +95,8 @@ class CelebrityViewSearch extends JView
 			***/ 
 			if($total==0) 
 			{
-			$search = JRequest::getCmd('searchword');
+				
+			$search = $_POST['searchword'];//JRequest::getCmd('searchword');
 			$url2 = 'index.php?option=com_celebrity&view=search&task=search&type=alpha&letter='.$search[0].'&Itemid=63&sr='.$search; 
 			header("location: $url2");
 			}
