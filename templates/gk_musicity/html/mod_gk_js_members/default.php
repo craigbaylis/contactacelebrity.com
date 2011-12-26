@@ -142,13 +142,7 @@ $j=1;
                                                 <?php }?>
                                                 
                                                  <?php if($member->name){?>
-                                                     
-                                                <li class="viewDetail">
-                                                <?php if(!$getuid):?>
-                                                <a href="<?php echo JRoute::_('index.php?option=com_user&view=login') ?>" class="general_login"></a>
-                                                <?php else:?>
-                                                  <a href="index.php?option=com_celebrity&view=address&task=details&type=address&aid=<?php echo $member->id;?>&cid=<?php echo Jrequest::getCmd('cid');?>&anumber=<?php echo $j-1;?>&Itemid=60"></a>
-                                                <?php endif;?>
+                                                 <li class="viewDetail"><a href="index.php?option=com_celebrity&view=address&task=details&type=address&aid=<?php echo $member->id;?>&cid=<?php echo Jrequest::getCmd('cid');?>&anumber=<?php echo $j-1;?>&Itemid=60"></a>
                                                 </li>
                                                 <?php } ?>
                                                <?php if($member->name){?>

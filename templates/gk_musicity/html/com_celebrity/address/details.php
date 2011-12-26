@@ -47,6 +47,9 @@ $nexturl = JRoute::_('index.php?option=com_celebrity&view=address&task=details&t
 $adjustlen = 295 + strlen($this->celebrity->full_name.' - '.JText::_('Address').$this->anumber);
 //get user section
 $user =& JFactory::getUser();
+
+//get member sent
+$newmodel = $this->getModel();
 ?>
 <div id="wrapper">
 		
@@ -142,7 +145,7 @@ $user =& JFactory::getUser();
 		<h1 class="search">Result For This Address</h1>
 			<div class="pagenationNumbers">
 					<ul>
-						<li class="backwards_button"><a href="#"></a></li>
+						<!--<li class="backwards_button"><a href="#"></a></li>
 						<li><a href="#">prev</a></li>
 						<li><a href="#">1</a></li>
 						<li><a href="#">2</a></li>
@@ -150,7 +153,7 @@ $user =& JFactory::getUser();
 						<li><a href="#">4</a></li>
 						<li><a href="#">5</a></li>
 						<li><a href="#">next</a></li>
-						<li class="forward_button"><a href="#"></a></li>
+						<li class="forward_button"><a href="#"></a></li>-->
 					</ul>
 			</div><!-- div#pagenationNumbers close -->
 
@@ -173,16 +176,32 @@ $user =& JFactory::getUser();
 				<ul>
 					<li class="postedBy">Posted by <a href="#"><?php echo $this->ResultAddress[$m]->username;?></a><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /></li>
 					<li class="postingDate"><?php echo $this->ResultAddress[$m]->datecreate;?></li>
-					<li class="status">Status:<span class="greenText">Success</span></li>
-					
-					<li class="successType">Success Type: Definitely Authentic</li>
+					<li class="status">Status:<span class="greenText"><?php echo $this->ResultAddress[$m]->label;?></span></li>
+					<?php if(!$this->ResultAddress[$m]->quality):?>
+                    <?php else:?>
+					<li class="successType">Success Type: <?php echo $this->ResultAddress[$m]->quality;?></li>
+                    <?php endif;?>
 					<li class="dateSent">Date Sent: <?php echo $this->ResultAddress[$m]->datesent;?></li>
 					<li class="dateReceived">Date Received: <?php echo $this->ResultAddress[$m]->datereceive;?></li>
-					<li class="memberSent">Member Sent: Letter</li>
+<li class="memberSent">Member Sent: <?php
+$getmodel = $newmodel->getMemberSent($this->ResultAddress[$m]->id);
+$resultstr = array();
+if(!$getmodel){
+echo "-";
+} else {
+foreach($getmodel as $getlist){$resultstr[] =  $getlist;}
+$result = implode(",",$resultstr);
+echo $result;
+}
+?></li>
 				</ul>
 			</div><!-- div.successStatus close -->
 			
 			<div class="user_comment">
+            <?php 
+
+			
+			?>
 				<!--<ul>
 					<li class="readButton"><a href="#">Read</a></li>
 					<li class="commentNumber">5 Comments</li>
@@ -367,13 +386,61 @@ $user =& JFactory::getUser();
 				<p>Sent the letter asking for a signed picture for my sisters' birthday. She is the most coolest girl ever I love her CD identified it reminds me of how I left my boyfriend, but it was so nice to leave a message...</p>		
 			</div><!-- div.user_comment close -->
 		</div><!-- avatar_speachBubble close -->	<?php */?>		
-		
+		<style>
+ul.pagination_result li a, ul.pagination_result li span{
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+ul.pagination_result {
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 10px;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 3px;
+    text-align: center;
+    width: auto;
+}
+ul.pagination_result {
+    clear: left;
+}
+
+		ul.pagination_result li a {
+			background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    display: inline-block;
+		}
+		ul.pagination_result li a, ul.pagination_result li span {
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 2px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 2px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+}
+		</style>
 		
 			
 		</div><!-- div#userCommentList close -->
 					
 			<?php echo $this->pagination->getPagesLinks() ?>
-			
 					
 		<!--	<ul id="pagination">
 				<li class="roundedSquare"><a href="#">Prev</a></li>

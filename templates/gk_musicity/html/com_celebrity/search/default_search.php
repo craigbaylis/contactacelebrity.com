@@ -20,7 +20,11 @@ $localhost = '127.0.0.1';
 $blockips = array();
 
 if(!JRequest::getCmd('letter')){
-$letter = JRequest::getCmd('searchword');	
+	if(isset($_POST['searchword'])){
+		$letter = str_replace("+"," ",$_POST['searchword']);//JRequest::getCmd('searchword');	
+	} else {
+		$letter = str_replace("+"," ",$_GET['searchword']);
+	}
 } else {
 $letter = JRequest::getCmd('letter');
 }
@@ -35,7 +39,6 @@ if($this->searchType == 'browse'){
 } else {
     $browsetype = 'all';
 }
-
 ?>
 <script type="text/javascript">
     GS_googleAddAdSenseService("ca-pub-7953222348963766");
@@ -64,7 +67,7 @@ $document = JFactory::getDocument();
 $document->addStyleDeclaration($style);
 ?>
 <div class="width960">
-<?php if(JRequest::getCmd('sr')){?>
+<?php /*?><?php if(JRequest::getCmd('sr')){?>
     <div id="left">
         <h1 class="search"><?php echo JText::_('No matches were found') ?></h1>
         <p id="browseSearchP"><?php echo 'No matches for "'.JRequest::getCmd('sr').'" were found...we returned celebs starting with the letter '.$letter.'..please search again';?></p>
@@ -77,21 +80,36 @@ $document->addStyleDeclaration($style);
 	?>
     <div id="left">
         <h1 class="search"><?php echo JText::_('MATCHESFOR') ?></h1>
-<?php /*?>        <p id="browseSearchP"><?php echo JText::_('FOUNDSTARTINGWITH') ?></p>
-<?php */?>        <h2 id="browseSearchbox_fukidashi">"
+       <h2 id="browseSearchbox_fukidashi">"
             <?php echo strtoupper($sr) ?>
         "</h2>
     </div>
     <?php } else {?>
     <div id="left">
         <h1 class="search"><?php echo JText::_('MATCHESFOR') ?></h1>
-<?php /*?>        <p id="browseSearchP"><?php echo JText::_('FOUNDSTARTINGWITH') ?></p>
-<?php */?>        <h2 id="browseSearchbox_fukidashi">"
+              <h2 id="browseSearchbox_fukidashi">"
             <?php echo strtoupper($letter) ?>
         "</h2>
     </div>
-    <?php }?>
-        
+    <?php }?><?php */?>
+    <?php if(JRequest::getCmd('sr') && JRequest::getCmd('letter')){?>
+     <div id="left">
+        <h1 class="search"><?php echo JText::_('No matches were found') ?></h1>
+        <p id="browseSearchP"><?php echo 'No matches for "'.str_replace("+"," ",$_GET['sr']).'" were found...we returned celebs starting with the letter '.$letter.'..please search again';?></p>
+        <h2 id="browseSearchbox_fukidashi">"
+            <?php echo strtoupper($letter) ?>
+        "</h2>
+    </div>
+   <?php } elseif(JRequest::getCmd('searchword') || JRequest::getCmd('letter')) {?>
+     <div id="left">
+        <h1 class="search"><?php echo JText::_('MATCHESFOR') ?></h1>
+       <h2 id="browseSearchbox_fukidashi">"
+            <?php echo strtoupper($letter) ?>
+        "</h2>
+    </div>
+      
+<?php }?>
+     
     <div id="rightsearch">
         <h3><?php echo JText::sprintf('TOTALSEARCHRESULTS',$this->total) ?><br><span id="bigOrange"><?php echo JText::_('SEERESULTS') ?></span></h3>
         <p><?php echo JText::sprintf('BROWSESEACHDESC',$browsetype,$letter) ?></p>
