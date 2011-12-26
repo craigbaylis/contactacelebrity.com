@@ -22,7 +22,7 @@ class modMyEbay_SearchHelper
     
     //get tags from database table
 	if(JRequest::getCmd('searchword')){
-    $letter = str_replace("+"," ",$_POST['searchword']);
+    $letter = str_replace("+"," ",JRequest::getCmd('searchword'));
 	} else {
 	$cid = JRequest::getCmd('cid');
 	//detail page
@@ -272,7 +272,7 @@ class modMyEbay_SearchHelper
   
   function getListmyCelebrityLetter($params){
 	  if(JRequest::getCmd('searchword')){
-    $letter = str_replace("+"," ",$_POST['searchword']);
+    $letter = str_replace("+"," ",JRequest::getCmd('searchword'));
 	} else {
 	$cid = JRequest::getCmd('cid');
 	//detail page
