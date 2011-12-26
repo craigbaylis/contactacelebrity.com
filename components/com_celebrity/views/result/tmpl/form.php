@@ -22,6 +22,13 @@ $document->addScriptDeclaration($phpjsvariables);
 $document->addScript($resultsform);
 $document->addStyleSheet($css);
 ?>
+<style>
+#photo {
+	text-align: center;
+	width:0px;
+	float:none;
+}
+</style>
 <div id="addresult">
   <h1 class="componentheading" style="text-align: center;"><?php echo JText::_('My Mail Results for ') ?><span class="celebrity-name"><?php echo $this->celebrity->first_name.' '.$this->celebrity->last_name ?></span></h1>
   <p><?php echo JText::_('If you\'ve sent something to ') ?><span class="celebrityname"><?php echo $this->celebrity->first_name.' '.$this->celebrity->last_name ?></span><?php echo JText::_(' at the address below, please share your results with our Community!') ?></p>
