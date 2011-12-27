@@ -195,6 +195,27 @@ jimport('joomla.error.error');
                 JError::raiseWarning(500,$error);
             }
         }
+		
+		/*lightbox upload*/
+		
+		 public function getCelebrityUpload()  {
+     		$cid = JRequest::getInt('cid');
+            $db = $this->_db;
+        	if (!$cid) JError::raiseError(500,'Missing address identification code');
+            //build query
+            $query = "
+            SELECT             
+              CONCAT_WS(' ', `b`.`first_name`, `b`.`middle_name`, `b`.`last_name`) AS `full_name`            
+            FROM
+              #__celebrity_celebrity b
+            WHERE
+              b.id = $cid
+            ";
+            $result = $this->_getList($query);
+       
+        return $result;            
+    	}
+		/*lightbox upload*/
 
 	}
 ?>
