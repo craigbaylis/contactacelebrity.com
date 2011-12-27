@@ -116,6 +116,14 @@ class CelebrityViewCelebrity extends JView
                 $this->assignRef('details',$details);
                 $this->assignRef('profile_image',$profile_image);
                 break;
+				/*add an image module*/
+				 case 'lightupload':
+				 $lightmodel = &$this->getModel();
+       			 $celebname = $lightmodel->getCelebrityUpload();
+				  $this->assignRef('celebname', $celebname);
+				 $this->setLayout('lightupload');
+				 break;
+				/*add an image module*/
             default:
                 $this->setLayout('default');
                 //build profession dropdown

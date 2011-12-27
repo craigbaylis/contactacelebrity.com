@@ -33,7 +33,17 @@ $user =& JFactory::getUser();
 			
 				<div id="photo">
                  <img name="" src="<?php echo $this->profile_image ?>" width="140" height="180" alt="" />
-				<p><a href="#">[+] Add Image</a></p>
+				<p>
+                <?php if($user->get('id') == "0"):?>
+                <a href="<?php echo JRoute::_('index.php?option=com_user&view=login') ?>" class="general_login" >[+] Add Image</a>
+                <?php else:?>
+                 <?php if($this->details->album_catid == "0"):?>
+                <a href="index.php?option=com_celebrity&view=celebrity&task=lightupload&cid=<?php echo Jrequest::getcmd("cid"); ?>" >[+] Add Image</a>
+                <?php else:?>
+                 <a href="index.php?option=com_celebrity&view=celebrity&task=lightupload&cid=<?php echo Jrequest::getcmd("cid"); ?>&album_id=<?php echo $this->details->album_catid;?>" >[+] Add Image</a>
+                <?php endif;?>
+                <?php endif;?>
+                </p>
 				</div><!-- div#photo close -->
 			
 				<div id="userInteraction">
