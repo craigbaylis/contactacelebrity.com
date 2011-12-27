@@ -156,8 +156,8 @@ $j=1;
                                                 <li class="addressLine1">
 												<?php 
 											list($username1,$domain1)=split('@',$member->email);
-											echo ($getuid!='') ? $username1 : str_replace(substr($username1,0,5),"*****",$username1); echo JText::_('@');
-											echo ($getuid!='') ? $domain1 : str_replace(substr($domain1,2,6),"*****",$domain1); ?> 
+											echo ($getuid!='') ? wordwrap($username1, 15, "\n", true) : wordwrap(str_replace(substr($username1,0,5),"*****",$username1), 15, "\n", true); echo JText::_('@');
+											echo ($getuid!='') ? wordwrap($domain1, 10, "\n", true) :  wordwrap(str_replace(substr($domain1,2,6),"*****",$domain1), 10, "\n", true); ?> 
 						
                                                  </li>
                                                
@@ -170,7 +170,7 @@ $j=1;
                                                        <li>&nbsp;</li>
                                                     <li>&nbsp;</li>
                                                 <li class="addressLine1">
-												<?php echo $member->url;?>
+												<?php echo wordwrap($member->url, 20, "\n", true);?>
                                                  </li>
                                                  <?php }?>
                                                  <?php if($member->name){

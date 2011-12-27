@@ -93,7 +93,8 @@ function pagination_list_render($list)
 {
 	// Initialize variables
 	$lang =& JFactory::getLanguage();
-	$html = "<ul class=\"pagination\">";
+	$changepagination = (Jrequest::getcmd('anumber')&&Jrequest::getcmd('type')=="address")?'pagination_result':'pagination';
+	$html = "<ul class=\"$changepagination\">";
 	$html .= '<li><span>&laquo;</span></li>';
 	// Reverse output rendering for right-to-left display
 	if($lang->isRTL())
