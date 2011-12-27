@@ -299,6 +299,120 @@ class CelebrityControllerCelebrity extends JController {
         $view->display();
       }       
    }
+   
+   
+   public function lightuploadsave(){
+	   
+	   	       //Check the token for security
+       JRequest::checkToken() or JError::raiseError( JText::_( 'INVAILDTOKEN' ), JText::_('INVALIDTOKENERROR') );
+       
+       // import JFolder
+       jimport('joomla.filesystem.folder');
+       
+       //get the data from the form
+       $post = JRequest::get('POST');
+	   
+       //if (!$post['celebrity_photo']) JError::raiseError('Error in upload a image');
+	   
+       //force a new record to be created
+       $post['id'] = false;
+       
+       //set extra variables
+       $user    =& JFactory::getUser();
+       $date   =& JFactory::getDate();
+       $post['created_by_uid'] = $user->get('id');
+       
+       
+       //TODO -c com_celebrity :check for allowed files types and allow file size, define allowed file types somewhere else
+	   
+       
+       //save data to celebrity table
+ 		$cid = $post['cid'];	
+       
+       /*Create the folder for phoca gallery */
+       $category = array();
+       require_once(JPATH_ROOT.DS.'components'.DS.'com_celebrity'.DS.'helpers'.DS.'utilities.php');
+       $name = $post['celebrity_name'];
+       $alias = CelebrityUtilitiesHelper::getAliasName($name);
+       $path = md5($alias);
+       $category['userfolder'] = substr($path,0,1).DS.substr($path,1,2).DS.$alias.'-'.$cid;
+       if(!file_exists($category['userfolder'])) CelebrityUtilitiesHelper::createFolder($category['userfolder']);
+       
+       	//add the data to the phocagallery_galleries table
+        $category['id'] = null;
+		$category['parent_id'] = ($post['album_id'])?$post['album_id']:'0';
+        $category['title'] = $name;
+        $category['description'] = 'Photo gallery for '.$name;
+        $category['alias'] = $alias;
+        $category['image_position'] = 'left';
+        $category['date'] = '';
+        $category['approved'] = 1;
+        $category['image_position'] = 'left';
+        $category['published'] = 1;
+        $category['accessuserid'] = '0';
+        $category['uploaduserid'] = '-2';
+        $category['deleteuserid'] = '-2';
+        
+        require_once(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_phocagallery'.DS.'libraries'.DS.'loader.php');
+        phocagalleryimport('phocagallery.path.path');
+        phocagalleryimport('phocagallery.file.file');
+        phocagalleryimport('phocagallery.file.filethumbnail');
+        phocagalleryimport('phocagallery.file.fileupload');
+        phocagalleryimport('phocagallery.render.renderadmin');
+        phocagalleryimport('phocagallery.text.text');
+        phocagalleryimport('phocagallery.render.renderprocess');
+        
+        //add paths to phocagallery models
+        $this->addModelPath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_phocagallery'.DS.'models');
+        $this->addModelPath(JPATH_ROOT.DS.'components'.DS.'com_phocagallery'.DS.'models');
+        
+        $model = $this->getModel('PhocaGalleryC','PhocaGalleryCpModel');
+        $model->addTablePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_phocagallery'.DS.'tables');
+			
+        $model->store($category);        
+       //update the celebrity table with the phocagallery catid
+       $db = JFactory::getDBO();
+       $celebupdate = array();
+	   $getcatid = $db->insertid();
+       $album_catid = ($post['album_id'])?$post['album_id']:$db->insertid();
+       $query = "
+            UPDATE
+              `#__celebrity_celebrity` `a`
+            SET
+              `album_catid` = $album_catid
+            WHERE
+              `a`.`id` = $cid       
+       ";
+       $db->setQuery($query);
+       $db->query();
+	
+       
+       //save the image(s) to the folder
+       require_once(JPATH_ROOT.DS.'components'.DS.'com_phocagallery'.DS.'controller.php');
+       require_once(JPATH_ROOT.DS.'components'.DS.'com_phocagallery'.DS.'controllers'.DS.'user.php');
+       JRequest::setVar( 'folder', $category['userfolder']);
+       JRequest::setVar( 'format', 'html');
+       JRequest::setVar( 'return-url', null, 'post');
+       JRequest::setVar( 'viewback', '', 'post');
+       JRequest::setVar( 'catid', $album_catid, 'post');
+       $phocagalleryuploadtitle = JRequest::getVar('image_title', null, 'post');
+       $phocagalleryuploaddescription = JRequest::getVar('image_description', '', 'post');
+       JRequest::setVar( 'phocagalleryuploadtitle', $phocagalleryuploadtitle);
+       JRequest::setVar( 'phocagalleryuploaddescription', $phocagalleryuploaddescription);       
+       $object = new PhocaGalleryControllerUser();
+       $errUploadMsg    = '';
+       $redirectUrl     = '';
+       if(is_array($_FILES)) {
+        foreach ($_FILES as $file => $fileArray) {
+            if (!$object->_singleFileUpload($errUploadMsg, $fileArray, $redirectUrl)) {
+                $errUploadMsg = JText::_($errUploadMsg);
+                return false;
+            }
+        }           
+       }
+		 
+		 header("location: index.php?option=com_celebrity&view=celebrity&task=details&cid=$cid&Itemid=60");
+   }
 
 }
 ?>
