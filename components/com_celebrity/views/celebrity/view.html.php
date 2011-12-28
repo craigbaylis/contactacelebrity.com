@@ -77,7 +77,25 @@ class CelebrityViewCelebrity extends JView
             case 'details':
                 //get the celebrity details data
                 $details = $this->get('Details');
-                
+				/*celebrity Photo*/
+				 $celebphoto = &$this->getModel();
+				 $getphoto = $celebphoto->getCelebrityPhoto($details->album_catid);
+				  
+				  if ($getphoto) {
+					 
+					$params = JComponentHelper::getParams('com_celebrity');
+					$pathexplode = explode("/",$getphoto[0]->photoceleb); 
+                    $image_location = 'images/phocagallery/'.$pathexplode[0].'/'.$pathexplode[1].'/'.$pathexplode[2].'/thumbs/phoca_thumb_m_'.$pathexplode[3];
+					 $file_path = JPATH_SITE.DS.str_replace('/', DS, $image_location);
+					 if (!file_exists($file_path)) {
+                        $celeb_image = JURI::base().'/components/com_celebrity/assets/images/m-head.png';
+                    } else {
+                        $celeb_image = JURI::root().$image_location;
+                    }
+				  }  else {
+                    $celeb_image = JURI::base().'/components/com_celebrity/assets/images/m-head.png';
+                  }
+				/*celebrity Photo*/
                 //get the celebrity profile photo
                 $photoModel = $this->getModel('Photo');
                 $photo = $photoModel->getPhoto();
@@ -112,6 +130,7 @@ class CelebrityViewCelebrity extends JView
                 }                
                 
                 //pass data to the layout
+				$this->assignRef('celeb_image',$celeb_image);
                 $this->assignRef('profile_image',$profile_image);
                 $this->assignRef('details',$details);
                 $this->assignRef('profile_image',$profile_image);

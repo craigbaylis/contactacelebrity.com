@@ -8,13 +8,35 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 $tinytab = JURI::base().'components/com_celebrity/js/tinytab.js';
+/*custom*/
+$mooltools  = JURI::base().'components/com_celebrity/js/mootools-1.2.5.1-more.js';
+$lightbox = JURI::base().'components/com_celebrity/js/LightFace.js';
+$more = JURI::base().'components/com_celebrity/js/LightFace.IFrame.js';
+/*custom*/
+$scripid = Jrequest::getcmd("cid");
+$albumid = $this->details->album_catid;
+$titleceleb = $this->details->name;
 $domready = <<<SCRIPT
 window.addEvent('domready',function(){
     tb = new TinyTab($$('ul.tabs li'),$$('ul.contents li'));
+	document.id('start').addEvent('click',function() {				
+				light = new LightFace.IFrame({ height:250, width:525, url: 'index.php?option=com_celebrity&view=celebrity&task=lightupload&cid=$scripid&album_id=$albumid', title: '$titleceleb' }).addButton('Close', function() { light.close(); },true).open();
+				
+			});
 });
 SCRIPT;
+$celebrityCss = JURI::base().'components/com_celebrity/assets/css/Assets/LightFace.css';
 $document = JFactory::getDocument();
+
+
+
 $document->addScript($tinytab);
+/*custom*/
+$document->addScript($mooltools);
+$document->addScript($lightbox);
+$document->addScript($more);
+$document->addStyleSheet($celebrityCss);
+/*custom*/
 $document->addScriptDeclaration($domready);
 
 //load module helper to display addresses module
@@ -23,6 +45,7 @@ $document->addScriptDeclaration($domready);
 //get user details
 $user =& JFactory::getUser();
 ?>
+
 <div class="width960">
 			<div id="left">
 				<h1 id="details">Addresses For <?php echo $this->details->name ?></h1>
@@ -32,15 +55,16 @@ $user =& JFactory::getUser();
 				</div><!-- div#name close -->
 			
 				<div id="photo">
-                 <img name="" src="<?php echo $this->profile_image ?>" width="140" height="180" alt="" />
+                 <img name="" src="<?php echo $this->celeb_image ?>" width="140" height="180" alt="" />
 				<p>
                 <?php if($user->get('id') == "0"):?>
                 <a href="<?php echo JRoute::_('index.php?option=com_user&view=login') ?>" class="general_login" >[+] Add Image</a>
                 <?php else:?>
                  <?php if($this->details->album_catid == "0"):?>
-                <a href="index.php?option=com_celebrity&view=celebrity&task=lightupload&cid=<?php echo Jrequest::getcmd("cid"); ?>" >[+] Add Image</a>
+                <a href="javascript:;" id="start" >[+] Add Image</a>
                 <?php else:?>
-                 <a href="index.php?option=com_celebrity&view=celebrity&task=lightupload&cid=<?php echo Jrequest::getcmd("cid"); ?>&album_id=<?php echo $this->details->album_catid;?>" >[+] Add Image</a>
+                 <a href="javascript:;" id="start">[+] Add Image</a>
+                <?php /*?> index.php?option=com_celebrity&view=celebrity&task=lightupload&cid=<?php echo Jrequest::getcmd("cid"); ?>&album_id=<?php echo $this->details->album_catid;?>index.php?option=com_celebrity&view=celebrity&task=lightupload&cid=<?php echo Jrequest::getcmd("cid"); ?><?php */?>
                 <?php endif;?>
                 <?php endif;?>
                 </p>
