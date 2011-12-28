@@ -216,6 +216,26 @@ jimport('joomla.error.error');
         return $result;            
     	}
 		/*lightbox upload*/
+		
+		/*get celebrity photo*/
+		public function getCelebrityPhoto($album_id)  {
+     		$cid = JRequest::getInt('cid');
+            $db = $this->_db;
+        	if (!$cid) JError::raiseError(500,'Missing address identification code');
+            //build query
+            $query = "
+            SELECT             
+              b.filename AS `photoceleb`            
+            FROM
+              #__phocagallery b
+            WHERE
+              b.catid = $album_id order by b.id asc
+            ";
+            $result = $this->_getList($query);
+       
+        return $result;            
+    	}
+		/*get celebrity photo*/
 
 	}
 ?>
