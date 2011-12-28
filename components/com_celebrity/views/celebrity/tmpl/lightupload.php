@@ -40,7 +40,7 @@ margin-top:-20px
 <form id="celebrity" name="celebrity" method="post" action="index.php?option=com_celebrity&task=lightuploadsave&controller=celebrity" target="_parent" enctype="multipart/form-data">
     
     <fieldset id="Step3" class="wizard-page">
-<div class="step_header"><span>Upload a celebrity -  <?php echo $this->celebname[0]->full_name;?></span></div>
+<div class="step_header"><span>Upload a photo -  <?php echo $this->celebname[0]->full_name;?></span></div>
 
   <div id="photo_upload" class="field">
             <label for="celebrity_photo" class="label"><?php echo JText::_('UPLOADIMAGE') ?></label>
