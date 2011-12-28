@@ -340,7 +340,6 @@ class CelebrityControllerCelebrity extends JController {
        
        	//add the data to the phocagallery_galleries table
         $category['id'] = null;
-		$category['parent_id'] = ($post['album_id'])?$post['album_id']:'0';
         $category['title'] = $name;
         $category['description'] = 'Photo gallery for '.$name;
         $category['alias'] = $alias;
@@ -368,12 +367,14 @@ class CelebrityControllerCelebrity extends JController {
         
         $model = $this->getModel('PhocaGalleryC','PhocaGalleryCpModel');
         $model->addTablePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_phocagallery'.DS.'tables');
-			
+		if($post['album_id']):
+		else:	
         $model->store($category);        
+		endif;
        //update the celebrity table with the phocagallery catid
        $db = JFactory::getDBO();
        $celebupdate = array();
-	   $getcatid = $db->insertid();
+	  // $getcatid = $db->insertid();
        $album_catid = ($post['album_id'])?$post['album_id']:$db->insertid();
        $query = "
             UPDATE
@@ -410,8 +411,7 @@ class CelebrityControllerCelebrity extends JController {
             }
         }           
        }
-		 
-		 header("location: index.php?option=com_celebrity&view=celebrity&task=details&cid=$cid&Itemid=60");
+		 $this->setRedirect('index.php?option=com_celebrity&view=celebrity&task=details&cid='.$cid.'&Itemid=60',"Celebrity Image added succesfuly");
    }
 
 }
