@@ -15,7 +15,7 @@ $more = JURI::base().'components/com_celebrity/js/LightFace.IFrame.js';
 /*custom*/
 $scripid = Jrequest::getcmd("cid");
 $albumid = $this->details->album_catid;
-$titleceleb = $this->details->name;
+$titleceleb = addslashes($this->details->name);
 $domready = <<<SCRIPT
 window.addEvent('domready',function(){
     tb = new TinyTab($$('ul.tabs li'),$$('ul.contents li'));
