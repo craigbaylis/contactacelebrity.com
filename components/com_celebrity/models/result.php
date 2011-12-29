@@ -80,4 +80,114 @@ class CelebrityModelResult extends JModel{
         }
             
     }
+	
+	public function getResultOfAddress()
+    {
+ 		$aid  = Jrequest::getcmd("aid");
+		$id  = Jrequest::getcmd("id");
+        if (!$aid) JError::raiseError(500,'Missing address identification code');
+        //build query
+		$db =& JFactory::getDBO();
+        $query = "
+            SELECT 
+			 a.id,
+             a.address_id,
+			 a.created_by_id,
+			 DATE_FORMAT(a.date_sent,'%m/%d/%Y') AS datesent,
+			 DATE_FORMAT(a.date_received,'%m/%d/%Y') AS datereceive,
+			 DATE_FORMAT(a.date_created,'%a, %b %d %Y %h:%i%p') AS datecreate,			 
+			 a.comments,
+			 u.username,
+			 c.thumb,
+			 r.label,
+			 q.quality			 
+            FROM
+              #__celebrity_result a  
+			  INNER JOIN #__users u ON (a.created_by_id = u.id)
+			  INNER JOIN #__community_users c ON (u.id = c.userid)
+			  INNER JOIN #__celebrity_result_received_type r ON (a.received_type_id = r.id)
+			  LEFT OUTER JOIN #__celebrity_result_quality q ON (q.id=a.quality_id)  
+			          
+            WHERE
+              a.id = $id and
+			  a.published=1 order by a.id desc
+        ";
+        $db->setQuery( $query );
+		$this->_data = $db->loadObject();
+
+		return $this->_data;     
+     
+    } 
+	
+	public function getMemberSent($result_id) {
+ 		$aid  = Jrequest::getcmd("aid");
+        if (!$aid) JError::raiseError(500,'Missing address identification code');
+		
+        //build query
+        $query = "select rst.label from #__celebrity_result a,#__celebrity_result_sent rs,#__celebrity_result_sent_type as rst where a.id = rs.result_id and  rst.id = rs.sent_type_id and a.id=".$result_id;
+		 $db = JFactory::getDBO();
+        $db->setQuery($query);
+        $result = $db->loadResultArray();
+        return $result;   
+     
+   	} 
+	
+	public function getCelebrityDetail() {
+ 		$cid  = Jrequest::getcmd("cid");
+        if (!$cid) JError::raiseError(500,'Missing celebrity identification code');
+		
+        //build query
+		$db =& JFactory::getDBO();
+        $query = "
+                SELECT 
+                  `a`.`id`,
+                  `a`.`first_name`,
+                  `a`.`last_name`,
+                  CONCAT_WS(' ', `a`.`first_name`, `a`.`middle_name`, `a`.`last_name`) AS `full_name`,
+                  CONCAT_WS(' ', `a`.`first_name`, `a`.`last_name`) AS `name`,
+                  CONCAT(`a`.`first_name`, ' ', `a`.`last_name`, IF((SUBSTRING(`a`.`last_name`, -1) = 's'), '\'', '\'s')) AS `ownership_name`,
+                  `a`.`gender`,
+                  DATE_FORMAT(`a`.`birth_date`, '%M %e, %Y') AS `birth_date`,
+                  `a`.`birth_place`,
+                  `a`.`famous_for`,
+                  `a`.`hair_color`,
+                  `a`.`eye_color`,
+                  `a`.`biography`,
+                  `a`.`middle_name`,
+				  `a`.`album_catid`,
+                  `a`.`is_deceased`,
+                  GROUP_CONCAT(`c`.`name`) AS `profession`,
+                  `d`.`username` AS `celebrity_submitted_by`
+                FROM
+                  `#__celebrity_celebrity_profession` `b`
+                  RIGHT OUTER JOIN `#__celebrity_celebrity` `a` ON (`b`.`celebrity_id` = `a`.`id`)
+                  LEFT OUTER JOIN `#__celebrity_profession` `c` ON (`b`.`profession_id` = `c`.`id`)
+                  LEFT OUTER JOIN `#__users` `d` ON (`a`.`created_by_uid` = `d`.`id`)
+                WHERE
+                  `a`.`published` = 1 AND 
+                  `a`.`id` = $cid
+                GROUP BY
+                  `a`.`id`,
+                  `a`.`first_name`,
+                  `a`.`last_name`,
+                  CONCAT_WS(' ', `a`.`first_name`, `a`.`middle_name`, `a`.`last_name`),
+                  CONCAT_WS(' ', `a`.`first_name`, `a`.`last_name`),
+                  CONCAT(`a`.`first_name`, ' ', `a`.`last_name`, IF((SUBSTRING(`a`.`last_name`, -1) = 's'), '\'', '\'s')),
+                  `a`.`gender`,
+                  DATE_FORMAT(`a`.`birth_date`, '%M %e, %Y'),
+                  `a`.`birth_place`,
+                  `a`.`famous_for`,
+                  `a`.`hair_color`,
+                  `a`.`eye_color`,
+                  `a`.`biography`,
+                  `a`.`middle_name`,
+                  `a`.`is_deceased`,
+                  `d`.`username`           
+            ";
+		 $db->setQuery( $query );
+		$this->_data = $db->loadObject();
+
+		return $this->_data;     
+     
+   	} 
 }
