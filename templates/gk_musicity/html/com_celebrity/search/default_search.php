@@ -140,7 +140,9 @@ $document->addStyleDeclaration($style);
             <ul class="listAnswer">
                 <li><?php echo $celebrity->name ?></li>
                 <li><?php echo ($celebrity->profession) ? $celebrity->profession: JText::_('Currently Not Available') ?></li>
-                <li><?php echo ($celebrity->famous_for) ? $celebrity->famous_for: JText::_('Currently Not Available') ?></li>
+                <li><?php
+				$more = (strlen($celebrity->famous_for)>19)?'...':'';
+				 echo ($celebrity->famous_for) ? substr($celebrity->famous_for,0,19).$more: JText::_('Currently Not Available') ?></li>
                 <li><?php echo ($celebrity->birthday) ? $celebrity->birthday: JText::_('Currently Not Available') ?></li>
             </ul>
         </li>
