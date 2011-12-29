@@ -225,11 +225,13 @@ echo $result;
 
 			
 			?>
-				<!--<ul>
-					<li class="readButton"><a href="#">Read</a></li>
-					<li class="commentNumber">5 Comments</li>
-					<li class="addComment"><a href="#">+ Add Comment</a></li>
-				</ul>-->
+				<ul>
+                <?php if($this->ResultAddress[$m]->label == "Success"):?>
+					<li class="readButton"><a href="<?php echo JRoute::_( "index.php?option=com_celebrity&view=result&id=".$this->ResultAddress[$m]->id."&cid=".Jrequest::getcmd("cid")."&aid=".Jrequest::getcmd("aid")."&anumber=".Jrequest::getcmd("anumber")."&Itemid=60");?>">Read</a></li>
+                    <?php endif;?>
+					<!--<li class="commentNumber">5 Comments</li>
+					<li class="addComment"><a href="#">+ Add Comment</a></li>-->
+				</ul>
 				<p><!--Sent the letter asking for a signed picture for my sisters' birthday. She is the most coolest girl ever I love her CD identified it reminds me of how I left my boyfriend, but it was so nice to leave a message...--><?php echo ($this->ResultAddress[$m]->comments=="")?'No Comment':$this->ResultAddress[$m]->comments;?></p>		
 			</div><!-- div.user_comment close -->			
 		</div><!-- avatar_speachBubble close -->	
