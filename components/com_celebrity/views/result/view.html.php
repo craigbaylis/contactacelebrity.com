@@ -95,6 +95,10 @@ class CelebrityViewResult extends JView
             break;
             
             default:
+			$ResultAddress = $this->get('ResultOfAddress');
+			$this->assignRef('ResultAddress',$ResultAddress);
+			$CelebrityDetail = $this->get('CelebrityDetail');
+			$this->assignRef('CelebrityDetail',$CelebrityDetail);			
             $data = $this->get('Data');
             $this->assignRef('data', $data);
         }
