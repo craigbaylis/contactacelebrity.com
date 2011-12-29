@@ -30,6 +30,7 @@ defined('_JEXEC') or die('Restricted access');
 //$user =& JFactory::getUser();
 //$getuser=$user->get('id');	
 $getuid =$_SESSION[__default][user]->id;
+
 ?>
 <div class="gk_js_members_main" id="<?php echo $this->config['module_unique_id']; ?>" style="width:<?php echo $this->config['module_width']; ?>px;">
 
@@ -180,7 +181,20 @@ $j=1;
 												echo ($getuid!='') ? $member->line_1 : str_replace(substr($member->line_1,5),"********",$member->line_1); ?></li>
                                                 <li class="city_state_zip" style="width:520px; float:left;margin-left:-7px;"><?php echo substr($member->city,0,10).', '.$member->state.' '.substr($member->zipcode,0,6); ?></li>
                                                 <li class="submission" style="width:520px; float:left;margin-left:-7px;">Submitted by: <a href="index.php?option=com_community&view=profile&userid=<?php echo $member->created_by_uid;?>&Itemid=41"><?php echo $member->username;?></a></li>
-                                      <li class="success" style="width:520px; float:left;margin-left:-7px;"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/success_check.png" alt="success" title="success"/>Success  <img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/success_green.png" alt="successNumber" title="successNumber"><a class="green" href="#"><?php echo (!empty($successCounts[$key]->total_success)) ? $successCounts[$key]->total_success : '0' ?></a><a class="red" href="#"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/unsuccess_red.png" alt="unsuccessNumber" title="unsuccessNumber"/><?php echo (!empty($returnedCounts[$key]->total_returned)) ? $returnedCounts[$key]->total_returned : '0' ?></a></li>  
+                                      <li class="success" style="width:520px; float:left;margin-left:-7px;">
+                                      <?php
+									//success
+									 	$getsucess = $this->getResults($member->id,'success');
+										$successvote = new stdClass();
+										$successvote = $getsucess[$member->id];	
+										//failure
+										$getfailure = $this->getResults($member->id,'returned');
+										$failurevote = new stdClass();
+										$failurevote = $getfailure[$member->id];									
+
+									 ?>
+									
+                                      <img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/success_check.png" alt="success" title="success"/>Success  <img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/success_green.png" alt="successNumber" title="successNumber"><a class="green" href="#"><?php echo (!empty($successvote->total_success)) ? $successvote->total_success : '0' ?></a><a class="red" href="#"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/unsuccess_red.png" alt="unsuccessNumber" title="unsuccessNumber"/><?php echo (!empty($failurevote->total_returned)) ? $failurevote->total_returned : '0' ?></a></li>  
                                       <?php
 										}
 									  ?>
