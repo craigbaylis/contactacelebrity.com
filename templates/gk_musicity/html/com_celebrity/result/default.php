@@ -4,6 +4,19 @@ $data = $this->data;
 $link = JRoute::_( "index.php?option=com_celebrity&view=result&id={$data->id}" );
 //get member sent
 $newmodel = $this->getModel();
+
+//lightbox
+/*add a js and css file*/
+$mooltools  = JURI::base().'components/com_celebrity/js/mootools-1.2.5.1-more.js';
+$slimbox = JURI::base().'components/com_celebrity/js/slimbox.js';
+$slimboxCss = JURI::base().'components/com_celebrity/assets/css/ResultLight/slimbox.css';
+$document = JFactory::getDocument();
+$document->addScript($mooltools);
+$document->addScript($slimbox);
+$document->addStyleSheet($slimboxCss);
+
+
+//lightbox
 ?>
 <style>
 #gk-current-content-wrap{
@@ -26,7 +39,7 @@ background-color:transparent;
 			
 			<div id="userInfo">	
 				<ul>
-					<li class="postedBy">Posted by <a href="#"><?php echo $this->ResultAddress->username;?></a><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /></li>
+					<li class="postedBy">Posted by <a href="<?php echo JRoute::_('index.php?option=com_community&view=profile&userid='.$this->ResultAddress->created_by_id) ?>"><?php echo $this->ResultAddress->username;?></a><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /></li>
 					<li class="postingDate"><?php echo $this->ResultAddress->datecreate;?></li>
 					<li class="status">Status:<span class="greenText"><?php echo $this->ResultAddress->label;?></span></li>
 					<?php if(!$this->ResultAddress->quality):?>
@@ -62,16 +75,16 @@ echo $result;
 				
 				<div id="middleImageLoader">		
 					<div id="successImage">
-                    <img src="<?php echo JURI::base().'/components/com_celebrity/assets/images/m-head.png';?>" width="200" height="260" />	
+                    <img src="<?php echo $this->result_image;?>" width="200" height="260" />	
 					</div><!-- div#userInteraction close -->
-				<a id="viewFullimage" href="#">View Full Image</a>
+				<a id="viewFullimage" href="<?php echo $this->Lresult_image;?>" rel="lightbox">View Full Image</a>
 				</div><!-- div#middleImageLoader close -->
 				
 				
 				
 		<div id="successResult_SEOtext">
 			<h3> Get Your <?php echo $this->CelebrityDetail->full_name;?>!</h3>
-			<p>Here is a Jude Law Autograph acquired by one of our members. Use our celebrity address database and get your own Jude Law autographed picture. Collecting autograph has never been easier! Start your autograph collection today!</p>
+			<p>Here is a <?php echo $this->CelebrityDetail->full_name;?> Autograph acquired by one of our members. Use our celebrity address database and get your own <?php echo $this->CelebrityDetail->full_name;?> autographed picture. Collecting autograph has never been easier! Start your autograph collection today!</p>
 		</div><!-- div#successResult_SEOtext close -->
 		
 		
