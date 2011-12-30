@@ -133,18 +133,73 @@ class CelebrityControllerResult extends JController
         jimport('joomla.database.table');
         JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_phocagallery'.DS.'tables');
         $object = new PhocaGalleryControllerUser();
+		$errUploadMsg    = '';
+       	$redirectUrl     = '';
         
         //add paths to phocagallery models
         $object->addModelPath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_phocagallery'.DS.'models');
         $object->addModelPath(JPATH_ROOT.DS.'components'.DS.'com_phocagallery'.DS.'models');
-        
-        
+
+
         //get user results folder data
-        $catdata = $imageModel->getCatData;
-        
-        JRequest::setVar('folder',$catdata->folder);
-        JRequest::setVar('catid',$catdata->catid);
-        $object->_realJavaUpload();
+        $catdata = $imageModel->getUserFolder();
+		
+		//if user not have a category id
+		if(!$catdata->catid){ 
+		require_once(JPATH_ROOT.DS.'components'.DS.'com_celebrity'.DS.'helpers'.DS.'utilities.php');		
+		phocagalleryimport('phocagallery.path.path');
+        phocagalleryimport('phocagallery.file.file');
+        phocagalleryimport('phocagallery.file.filethumbnail');
+        phocagalleryimport('phocagallery.file.fileupload');
+        phocagalleryimport('phocagallery.render.renderadmin');
+        phocagalleryimport('phocagallery.render.renderprocess');
+	   $user    =& JFactory::getUser();
+	   $category = array();
+	   $name = $user->username;
+       $category['userfolder'] = $name.'-'.$user->id;
+       if(!file_exists($category['userfolder'])) CelebrityUtilitiesHelper::createFolder($category['userfolder']);
+       
+       //add the data to the phocagallery_galleries table
+        $category['id'] = null;
+		$category['owner_id'] = $user->id;
+        $category['title'] = $name;
+        $category['description'] = 'Photo gallery for '.$name;
+        $category['alias'] = $name;
+        $category['image_position'] = 'left';
+        $category['date'] = '';
+        $category['approved'] = 1;
+        $category['image_position'] = 'left';
+        $category['published'] = 1;
+        $category['accessuserid'] = '0';
+        $category['uploaduserid'] = '-2';
+        $category['deleteuserid'] = '-2';
+		$model = $this->getModel('PhocaGalleryC','PhocaGalleryCpModel');
+        $model->addTablePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_phocagallery'.DS.'tables');
+        $model->store($category);
+	    $db = JFactory::getDBO();
+        $cat_id = $db->insertid();
+		} else {
+		$cat_id = $catdata->catid;
+		}
+		
+        JRequest::setVar('folder',$catdata->userfolder);
+        JRequest::setVar('catid',$cat_id);
+        $object->_realJavaUpload($errUploadMsg,$redirectUrl);
+		
+		//update a result id in phocagallery table
+	   $db = JFactory::getDBO();
+       $phoca_id = $db->insertid();
+       $query = "
+            UPDATE
+              `#__phocagallery` `a`
+            SET
+              `result_id` = $result_id
+            WHERE
+              `a`.`id` = $phoca_id       
+       ";
+       $db->setQuery($query);
+       $db->query();
+		
                 
         //TODO check the that file sizes are correct
         /*
