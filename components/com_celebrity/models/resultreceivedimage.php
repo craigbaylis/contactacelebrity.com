@@ -95,4 +95,29 @@ class CelebrityModelResultreceivedimage extends JModel{
         }        
         return $this->_catdata;
     }
+	
+	
+	public function getUserFolder()
+    {
+        
+            $db = JFactory::getDBO();
+            $user = JFactory::getUser();
+            $uid = $user->get('id');
+            
+            $query = "
+            SELECT 
+              `a`.`userfolder`,
+              `a`.`id` AS `catid`
+            FROM
+              `#__phocagallery_categories` `a`
+            WHERE
+              `a`.`owner_id` = $uid AND 
+              `a`.`published` = 1 AND 
+              `a`.`approved` = 1
+            ";
+            $db->setQuery($query);
+            $result = $db->loadObject();
+      
+        return $result;
+    }
 }

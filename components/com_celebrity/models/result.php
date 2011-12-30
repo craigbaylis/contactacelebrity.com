@@ -190,4 +190,23 @@ class CelebrityModelResult extends JModel{
 		return $this->_data;     
      
    	} 
+	
+	
+	public function getResultPhoto() {
+ 		$id  = Jrequest::getcmd("id");
+        if (!$id) JError::raiseError(500,'Missing address identification code');
+		
+		$db = JFactory::getDBO();
+        //build query
+        $query = " SELECT 
+                  `a`.`filename`
+				  from #__phocagallery `a`
+				  where a.result_id=$id
+				  ";
+        $db->setQuery( $query );
+		$this->_data = $db->loadObject();
+
+		return $this->_data;     
+     
+   	} 
 }
