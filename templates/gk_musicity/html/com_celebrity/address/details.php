@@ -227,7 +227,7 @@ echo $result;
 			?>
 				<ul>
                 <?php if($this->ResultAddress[$m]->label == "Success"):?>
-					<li class="readButton"><a href="<?php echo JRoute::_( "index.php?option=com_celebrity&view=result&id=".$this->ResultAddress[$m]->id."&cid=".Jrequest::getcmd("cid")."&aid=".Jrequest::getcmd("aid")."&anumber=".Jrequest::getcmd("anumber")."&Itemid=60");?>">Read</a></li>
+					<li class="readButton"><a href="<?php echo JRoute::_( "index.php?option=com_celebrity&view=result&id=".$this->ResultAddress[$m]->id."&cid=".Jrequest::getcmd("cid")."&aid=".Jrequest::getcmd("aid")."&anumber=".Jrequest::getcmd("anumber")."&Itemid=60");?>">View Details</a></li>
                     <?php endif;?>
 					<!--<li class="commentNumber">5 Comments</li>
 					<li class="addComment"><a href="#">+ Add Comment</a></li>-->
