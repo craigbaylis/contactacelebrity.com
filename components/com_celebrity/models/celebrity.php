@@ -236,6 +236,26 @@ jimport('joomla.error.error');
         return $result;            
     	}
 		/*get celebrity photo*/
+		
+		/*deceased report*/
+		public function getDeceasedStatus()  {
+     		$cid = JRequest::getInt('cid');
+            $db = $this->_db;
+        	if (!$cid) JError::raiseError(500,'Missing address identification code');
+            //build query
+            $query = "
+            SELECT             
+              b.is_deceased           
+            FROM
+              #__celebrity_celebrity b
+            WHERE
+              b.id = $cid
+            ";
+            $result = $this->_getList($query);
+       
+        return $result;            
+    	}
+		/*deceased report*/
 
 	}
 ?>
