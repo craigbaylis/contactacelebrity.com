@@ -23,6 +23,12 @@ window.addEvent('domready',function(){
 				light = new LightFace.IFrame({ height:250, width:525, url: 'index.php?option=com_celebrity&view=celebrity&task=lightupload&cid=$scripid&album_id=$albumid', title: '$titleceleb' }).addButton('Close', function() { light.close(); },true).open();
 				
 			});
+			
+			//for deceased report
+			document.id('reportdeceased').addEvent('click',function() {				
+				light = new LightFace.IFrame({ height:445, width:525, url: 'index.php?option=com_celebrity&view=celebrity&task=deceased&cid=$scripid', title: '$titleceleb - Report Deceased' }).addButton('Close', function() { light.close(); },true).open();
+				
+			});
 });
 SCRIPT;
 $celebrityCss = JURI::base().'components/com_celebrity/assets/css/Assets/LightFace.css';
@@ -54,8 +60,12 @@ $user =& JFactory::getUser();
 				<h3><?php echo $this->details->name ?></h3>
 				</div><!-- div#name close -->
 			
-				<div id="photo">
-                 <img name="" src="<?php echo $this->celeb_image ?>" width="140" height="180" alt="" />
+				<div id="photo" >
+                 <?php if($this->deceasedstatus[0]->is_deceased == 1):?>
+  <?php /*?>     <img name="" src="imagecreation.php?imageurl=<?php echo $this->celeb_image ?>" width="140" height="180" alt="" />   <?php */?><img name="" src="images/deceased.gif" width="140" height="180" alt="" style="background-image:url(<?php echo $this->celeb_image ?>);background-repeat:no-repeat; width:140px; height:180px;" />
+	          <?php else:?>
+      <img name="" src="<?php echo $this->celeb_image ?>" width="140" height="180" alt="" />
+                 <?php endif;?>
 				<p>
                 <?php if($user->get('id') == "0"):?>
                 <a href="<?php echo JRoute::_('index.php?option=com_user&view=login') ?>" class="general_login" >[+] Add Image</a>
@@ -80,7 +90,15 @@ $user =& JFactory::getUser();
                          <a href="index.php?option=com_phocagallery&view=category&id=<?php echo $this->details->album_catid;?>:<?php echo strtolower($this->details->first_name);?>-<?php echo strtolower($this->details->last_name);?>&Itemid=59"><span class="aligning"><?php echo JText::_('Photo Gallery') ?></span></a>
                          <?php endif;?>
                         </span><br />
-						<span id="deceased"><a href="#"><span class="aligning"><?php echo JText::_('Report '.$this->details->name.' as deceased') ?></span></a></span><br />
+                        <?php if($this->deceasedstatus[0]->is_deceased == 1):?>
+                        <?php else:?>
+                          <?php
+						if($user->get('id') == "0"):
+						?>
+                        <span id="deceased"><a href="javascript:;" class="general_login"><span class="aligning"><?php echo JText::_('Report '.$this->details->name.' as deceased') ?></span></a></span><br />
+					<?php   else:?>
+						<span id="deceased"><a href="javascript:;" id="reportdeceased"><span class="aligning"><?php echo JText::_('Report '.$this->details->name.' as deceased') ?></span></a></span><br />
+                        <?php endif;?>
                         <?php
 					if($user->get('id') == "0"){
 						?>
@@ -88,6 +106,7 @@ $user =& JFactory::getUser();
                         <?php } else {?>
 						<span id="addNewAddress"><a href="<?php echo JRoute::_('index.php?option=com_celebrity&task=add&controller=address&cid='.$this->details->id.'&Itemid='.$this->itemid) ?>"><span class="aligning"><?php echo JText::_('Add New Address') ?></span></a></span><br />
                         <?php }?>
+                        <?php endif;?>
 				</div><!-- div#userInteraction close -->
 		
 			</div><!-- div#left close -->

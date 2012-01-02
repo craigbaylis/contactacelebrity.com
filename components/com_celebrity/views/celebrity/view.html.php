@@ -115,7 +115,9 @@ class CelebrityViewCelebrity extends JView
                 } else {
                     $profile_image = JURI::base().'/components/com_celebrity/assets/images/m-head.png';
                 }
-                
+                $deceasedstatus = $celebphoto->getDeceasedStatus();
+				$this->assignRef('deceasedstatus',$deceasedstatus);
+				
                 //set the layout
                 $this->setLayout('details');
                 
@@ -143,6 +145,19 @@ class CelebrityViewCelebrity extends JView
 				 $this->setLayout('lightupload');
 				 break;
 				/*add an image module*/
+				/*report deceased*/
+				 case 'deceased':
+				 $lightmodel = &$this->getModel();
+       			 $celebname = $lightmodel->getCelebrityUpload();
+				  $this->assignRef('celebname', $celebname);
+				 $this->setLayout('deceased');
+				 break;
+				/*report deceased*/
+				/*watermark deceased*/
+				 case 'watermark_deceased':
+				 $this->setLayout('watermark_deceased');
+				 break;
+				/*watermark deceased*/
             default:
                 $this->setLayout('default');
                 //build profession dropdown
