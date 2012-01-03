@@ -102,7 +102,7 @@ background-attachment: scroll;
 				
 				
 			<div id="grungeAddressBox">
-				<div id="address_bigDisplayed">
+				<div id="address_bigDisplayed" style="overflow-x :auto;padding-bottom:2px;">
 				<h3><?php echo $this->celebrity->full_name ?><br/>
                 <?php if (!empty($this->address->company)) : ?><?php echo $this->address->company ?><br/><?php endif; ?>
                  <?php if (!$this->user->id) : ?>
