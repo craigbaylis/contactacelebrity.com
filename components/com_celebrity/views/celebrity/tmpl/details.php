@@ -62,9 +62,9 @@ $user =& JFactory::getUser();
 			
 				<div id="photo" >
                  <?php if($this->deceasedstatus[0]->is_deceased == 1):?>
-  <?php /*?>     <img name="" src="imagecreation.php?imageurl=<?php echo $this->celeb_image ?>" width="140" height="180" alt="" />   <?php */?><img name="" src="images/deceased.gif" width="140" height="180" alt="" style="background-image:url(<?php echo $this->celeb_image ?>);background-repeat:no-repeat; width:140px; height:180px;" />
+  <?php /*?>     <img name="" src="imagecreation.php?imageurl=<?php echo $this->celeb_image ?>" width="140" height="180" alt="" />   <?php */?><img name="" src="images/deceased.gif" width="140" height="180" alt="<?php echo $this->details->name ?>" style="background-image:url(<?php echo $this->celeb_image ?>);background-repeat:no-repeat; width:140px; height:180px;background-size: 100%;" />
 	          <?php else:?>
-      <img name="" src="<?php echo $this->celeb_image ?>" width="140" height="180" alt="" />
+      <img src="<?php echo $this->celeb_image ?>" width="140" height="180" alt="<?php echo $this->details->name ?>" />
                  <?php endif;?>
 				<p>
                 <?php if($user->get('id') == "0"):?>
