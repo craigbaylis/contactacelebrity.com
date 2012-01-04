@@ -100,28 +100,9 @@ class CelebrityViewResult extends JView
 			$CelebrityDetail = $this->get('CelebrityDetail');
 			$this->assignRef('CelebrityDetail',$CelebrityDetail);
 			//result photo	
-			$ResultPhoto = $this->get('ResultPhoto');
-			if ($ResultPhoto) {		
-			$resultexplode = explode("/",$ResultPhoto->filename); 
-			for($g=0;$g<count($resultexplode)-1;$g++):
-			$getphotopath .= $resultexplode[$g]."/";
-			endfor;
-			$image_location = 'images/phocagallery/'.$getphotopath.'thumbs/phoca_thumb_m_'.end($resultexplode);	
-			$Limage_location = 'images/phocagallery/'.$getphotopath.'thumbs/phoca_thumb_l_'.end($resultexplode);			
-				 $file_path = JPATH_SITE.DS.str_replace('/', DS, $image_location);
-					if (!file_exists($file_path)) {
-                        $result_image = JURI::base().'/components/com_celebrity/assets/images/m-head.png';
-						$Lresult_image = JURI::base().'/components/com_celebrity/assets/images/m-head.png';
-                    } else {
-                        $result_image = JURI::root().$image_location;
-						$Lresult_image = JURI::root().$Limage_location;
-                    }
-				  }  else {
-                    $result_image = JURI::base().'/components/com_celebrity/assets/images/m-head.png';
-					$Lresult_image = JURI::base().'/components/com_celebrity/assets/images/m-head.png';
-                  }
-			$this->assignRef('result_image',$result_image);
-			$this->assignRef('Lresult_image',$Lresult_image);
+			$ResultPhoto = $this->get('ResultPhoto');			
+			$this->assignRef('result_image',$ResultPhoto);
+			//$this->assignRef('Lresult_image',$Lresult_image);
 			//large image
 			
 			//result photo
