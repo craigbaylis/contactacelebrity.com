@@ -178,6 +178,7 @@ $document->addStyleDeclaration($style);
     </div>
 </div>
 <div style="margin-right:40px;float: right;">
+<img src="<?php echo JURI::base().'modules/mod_celebrityaddresses/assets/images/spacer.png' ?>" alt="Successes" width="18" height="1" />
 <!-- browse_RT1_300x250 -->
 <?php if(!in_array($_SERVER['REMOTE_ADDR'], $blockips)): ?>
 <script type='text/javascript'>
@@ -209,9 +210,12 @@ if(JRequest::getCmd('searchword'))
     </div>
     
     <?php } ?>
+</div>
+<div style="margin-right:40px;float: right;">
     <div id="thankYou">
         <p>
             <span class="big">"</span><?php echo JText::_('CACTHANKYOU') ?>
         </p>
     </div>
-	</div>
+</div>
+
