@@ -204,9 +204,35 @@ class CelebrityModelResult extends JModel{
 				  where a.result_id=$id
 				  ";
         $db->setQuery( $query );
-		$this->_data = $db->loadObject();
-
-		return $this->_data;     
+		$this->_data = $db->loadResultArray();
+		$result_image = array();
+		$Lresult_image = array();
+		if ($this->_data) {	
+		foreach($this->_data as $newimage){			
+			$resultexplode = explode("/",$newimage); 
+/*			for($g=0;$g<count($resultexplode)-1;$g++):
+			$getphotopath = $resultexplode[$g]."/";
+			endfor;*/
+			$image_location = 'images/phocagallery/'.$resultexplode[0].'/'.$resultexplode[1].'/'.$resultexplode[2].'/'.$resultexplode[3].'/'.'thumbs/phoca_thumb_m_'.end($resultexplode);	
+			$Limage_location = 'images/phocagallery/'.$resultexplode[0].'/'.$resultexplode[1].'/'.$resultexplode[2].'/'.$resultexplode[3].'/'.'thumbs/phoca_thumb_l_'.end($resultexplode);
+				 $file_path = JPATH_SITE.DS.str_replace('/', DS, $image_location);
+					if (!file_exists($file_path)) {
+                        $result_image[] = JURI::base().'/components/com_celebrity/assets/images/m-head.png';
+						$Lresult_image[] = JURI::base().'/components/com_celebrity/assets/images/m-head.png';
+                    } else {
+                        $result_image[] = JURI::root().$image_location;
+						$Lresult_image[] = JURI::root().$Limage_location;
+                    }
+				 
+			}
+		 }  else {
+				$result_image[] = JURI::base().'/components/com_celebrity/assets/images/m-head.png';
+				$Lresult_image[] = JURI::base().'/components/com_celebrity/assets/images/m-head.png';
+		}
+$smallimage = array("smallimage"=>$result_image);
+$largeimage = array("largeimage"=>$Lresult_image);
+$arraymerge = array_merge($smallimage,$largeimage);
+return $arraymerge;     
      
    	} 
 }
