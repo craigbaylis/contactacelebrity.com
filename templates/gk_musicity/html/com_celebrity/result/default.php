@@ -10,9 +10,37 @@ $newmodel = $this->getModel();
 $mooltools  = JURI::base().'components/com_celebrity/js/mootools-1.2.5.1-more.js';
 $slimbox = JURI::base().'components/com_celebrity/js/slimbox.js';
 $slimboxCss = JURI::base().'components/com_celebrity/assets/css/ResultLight/slimbox.css';
+for($click=0;$click<count($this->result_image);$click++){
+	if($this->result_image['largeimage'][$click]){
+$largeimage .= '["'.$this->result_image['largeimage'][$click].'"], ';	
+	}
+}
+$cropimage = substr($largeimage,0,-2);
+/*$$('#viewFullimage').slimbox({ 
+ 				loop: true,
+				overlayOpacity: 0.6,
+				overlayFadeDuration: 200,
+				resizeDuration: 1000,
+				resizeTransition: Fx.Transitions.Elastic.easeOut,
+				counterText: 'This is image <strong>{x}</strong> on a total of <strong>{y}</strong> in this fabulous Flickr image gallery',
+				previousKeys: [37, 80, 16],
+				nextKeys: [39, 78, 17],
+			}, function(el) {
+				 return /exclusive/i.test(this.title) == /exclusive/i.test(el.title);
+			});*/
+$initialize = "
+window.addEvent('domready',function(){
+	$$('#successImage a').slimbox(function(el) {return [el.href, el.title];});
+
+	$$('#viewFullimage').addEvent('click', function(){
+      Slimbox.open([$cropimage], 0); 
+    });
+	
+});";
 $document = JFactory::getDocument();
 $document->addScript($mooltools);
 $document->addScript($slimbox);
+$document->addScriptDeclaration($initialize);
 $document->addStyleSheet($slimboxCss);
 
 
@@ -72,12 +100,18 @@ echo $result;
 
 </div><!--individualSuccess_story close -->
 
-				
 				<div id="middleImageLoader">		
-					<div id="successImage">
-                    <img src="<?php echo $this->result_image;?>" width="200" height="260" />	
+					<div id="successImage" style="overflow:hidden">
+                    
+			<?php
+			for($img=0;$img<count($this->result_image);$img++){
+				if($this->result_image['smallimage'][$img]){
+			?>
+            
+                  <a  href="<?php echo $this->result_image['largeimage'][$img];?>" rel="lightbox-atomium" title="Celebrity Photo <?php echo $img+1;?>">  <img src="<?php echo $this->result_image['smallimage'][$img];?>" width="200" height="300" class="lighboximg" /></a><br /><br />
+<?php } }?>
 					</div><!-- div#userInteraction close -->
-				<a id="viewFullimage" href="<?php echo $this->Lresult_image;?>" rel="lightbox">View Full Image</a>
+				<a id="viewFullimage" href="javascript:;"  >View Full Image</a>
 				</div><!-- div#middleImageLoader close -->
 				
 				
