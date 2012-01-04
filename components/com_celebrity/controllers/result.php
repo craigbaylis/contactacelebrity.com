@@ -130,6 +130,13 @@ class CelebrityControllerResult extends JController
         require_once( JPATH_ROOT . DS . 'components' . DS . 'com_phocagallery' . DS . 'controller.php');
         require_once( JPATH_ROOT . DS . 'components' . DS . 'com_phocagallery' . DS . 'controllers' . DS . 'user.php');
         phocagalleryimport('phocagallery.text.text');
+		phocagalleryimport('phocagallery.path.path');
+        phocagalleryimport('phocagallery.file.file');
+        phocagalleryimport('phocagallery.file.filethumbnail');
+        phocagalleryimport('phocagallery.file.fileupload');
+        phocagalleryimport('phocagallery.render.renderadmin');
+        phocagalleryimport('phocagallery.render.renderprocess');
+
         jimport('joomla.database.table');
         JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_phocagallery'.DS.'tables');
         $object = new PhocaGalleryControllerUser();
@@ -144,8 +151,32 @@ class CelebrityControllerResult extends JController
         //get user results folder data
         $catdata = $imageModel->getUserFolder();
 		
+		//Image upload in mailing result directory for particular celebrity
+		$category = array();
+       require_once(JPATH_ROOT.DS.'components'.DS.'com_celebrity'.DS.'helpers'.DS.'utilities.php');
+	   //get a celebrity details
+	    $cid = Jrequest::getcmd("cid");
+		
+	   	$celebrity = new stdClass();
+		$catid = new stdClass();
+		
+	    $db = JFactory::getDBO();
+		
+		$query2 = 'select `a`.`first_name`, `a`.`last_name` , `a`.`album_catid` from `#__celebrity_celebrity` `a` where a.id ='.$cid;
+		$db->setQuery($query2);
+		$celebrity = $db->loadObject();	
+		
+		$query3 = 'select `a`.`id` from `#__phocagallery_categories` `a` where a.parent_id ='.$celebrity->album_catid;
+		$db->setQuery($query3);
+		$catid = $db->loadObject();	
+		
+       $name = $celebrity->first_name.' '.$celebrity->last_name;
+       $alias = CelebrityUtilitiesHelper::getAliasName($name);
+       $path = md5($alias);
+       $category['userfolder'] = substr($path,0,1).DS.substr($path,1,2).DS.$alias.'-'.$cid.DS.'Mailing Results';
+       if(!file_exists($category['userfolder'])) CelebrityUtilitiesHelper::createFolder($category['userfolder']);
 		//if user not have a category id
-		if(!$catdata->catid){ 
+		/*if(!$catdata->catid){ 
 		require_once(JPATH_ROOT.DS.'components'.DS.'com_celebrity'.DS.'helpers'.DS.'utilities.php');		
 		phocagalleryimport('phocagallery.path.path');
         phocagalleryimport('phocagallery.file.file');
@@ -156,7 +187,9 @@ class CelebrityControllerResult extends JController
 	   $user    =& JFactory::getUser();
 	   $category = array();
 	   $name = $user->username;
-       $category['userfolder'] = $name.'-'.$user->id;
+	   $alias = CelebrityUtilitiesHelper::getAliasName($name);
+       $path = md5($alias);
+       $category['userfolder'] = substr($path,0,1).DS.substr($path,1,2).DS.$name.'-'.$user->id;
        if(!file_exists($category['userfolder'])) CelebrityUtilitiesHelper::createFolder($category['userfolder']);
        
        //add the data to the phocagallery_galleries table
@@ -180,25 +213,34 @@ class CelebrityControllerResult extends JController
         $cat_id = $db->insertid();
 		} else {
 		$cat_id = $catdata->catid;
-		}
-		
-        JRequest::setVar('folder',$catdata->userfolder);
-        JRequest::setVar('catid',$cat_id);
+		}*/
+
+        JRequest::setVar('folder',$category['userfolder']);
+        JRequest::setVar('catid',$catid->id);
         $object->_realJavaUpload($errUploadMsg,$redirectUrl);
 		
 		//update a result id in phocagallery table
 	   $db = JFactory::getDBO();
-       $phoca_id = $db->insertid();
-       $query = "
+	   $user    =& JFactory::getUser();
+       //$phoca_id = $db->insertid();
+	   $countimage =  count($scannedimages); // count a number of file upload
+	   $getruserid = $user->id;
+	   $query = "select a.id from  `#__phocagallery` `a` where a.userid=$getruserid order by a.id desc limit 0,$countimage";
+	   $db->setQuery($query);
+		$result =$db->loadResultArray();
+		  foreach($result as $getid){
+			$query = "
             UPDATE
               `#__phocagallery` `a`
             SET
               `result_id` = $result_id
             WHERE
-              `a`.`id` = $phoca_id       
-       ";
-       $db->setQuery($query);
-       $db->query();
+              `a`.`id` = $getid       
+       		";
+       		$db->setQuery($query);
+       		$db->query();		
+		 }
+
 		
                 
         //TODO check the that file sizes are correct

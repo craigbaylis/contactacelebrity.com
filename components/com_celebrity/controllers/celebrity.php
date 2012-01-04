@@ -143,6 +143,25 @@ class CelebrityControllerCelebrity extends JController {
        ";
        $db->setQuery($query);
        $db->query();
+	   
+	   //subcategory
+		$subcategory = array();
+		$subcategory['userfolder'] = substr($path,0,1).DS.substr($path,1,2).DS.$alias.'-'.$cid.DS.'Mailing Results';
+       if(!file_exists($subcategory['userfolder'])) CelebrityUtilitiesHelper::createFolder($subcategory['userfolder']);
+		$subcategory['id'] = null;
+		$subcategory['parent_id']= $album_catid;		
+        $subcategory['title'] = 'Mailing Result - '.$name;
+        $subcategory['description'] = 'Mailing Result for '.$name;
+        $subcategory['alias'] = $alias;
+        $subcategory['image_position'] = 'left';
+        $subcategory['date'] = '';
+        $subcategory['approved'] = 1;
+        $subcategory['image_position'] = 'left';
+        $subcategory['published'] = 1;
+        $subcategory['accessuserid'] = '0';
+        $subcategory['uploaduserid'] = '-2';
+        $subcategory['deleteuserid'] = '-2';   
+		$model->store($subcategory) ; 
        
        //save the image(s) to the folder
        require_once(JPATH_ROOT.DS.'components'.DS.'com_phocagallery'.DS.'controller.php');
@@ -351,6 +370,8 @@ class CelebrityControllerCelebrity extends JController {
         $category['accessuserid'] = '0';
         $category['uploaduserid'] = '-2';
         $category['deleteuserid'] = '-2';
+		
+		
         
         require_once(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_phocagallery'.DS.'libraries'.DS.'loader.php');
         phocagalleryimport('phocagallery.path.path');
@@ -369,13 +390,33 @@ class CelebrityControllerCelebrity extends JController {
         $model->addTablePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_phocagallery'.DS.'tables');
 		if($post['album_id']):
 		else:	
-        $model->store($category);        
+        $model->store($category); 
+		 $db = JFactory::getDBO();
+		 $parentid = $db->insertid();  
+		//subcategory
+		$subcategory = array();
+		$subcategory['userfolder'] = substr($path,0,1).DS.substr($path,1,2).DS.$alias.'-'.$cid.DS.'Mailing Results';
+       if(!file_exists($subcategory['userfolder'])) CelebrityUtilitiesHelper::createFolder($subcategory['userfolder']);
+		$subcategory['id'] = null;
+		$subcategory['parent_id']= $parentid;		
+        $subcategory['title'] = 'Mailing Result - '.$name;
+        $subcategory['description'] = 'Mailing Result for '.$name;
+        $subcategory['alias'] = $alias;
+        $subcategory['image_position'] = 'left';
+        $subcategory['date'] = '';
+        $subcategory['approved'] = 1;
+        $subcategory['image_position'] = 'left';
+        $subcategory['published'] = 1;
+        $subcategory['accessuserid'] = '0';
+        $subcategory['uploaduserid'] = '-2';
+        $subcategory['deleteuserid'] = '-2';   
+		$model->store($subcategory) ; 
 		endif;
        //update the celebrity table with the phocagallery catid
        $db = JFactory::getDBO();
        $celebupdate = array();
 	  // $getcatid = $db->insertid();
-       $album_catid = ($post['album_id'])?$post['album_id']:$db->insertid();
+       $album_catid = ($post['album_id'])?$post['album_id']:$parentid;
        $query = "
             UPDATE
               `#__celebrity_celebrity` `a`

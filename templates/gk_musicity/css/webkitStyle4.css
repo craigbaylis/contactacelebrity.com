@@ -1,0 +1,11 @@
+/*Contact A Celebrity chrome and safari fix */
+
+@media screen and (-webkit-min-device-pixel-ratio:0)
+{
+
+#upRightLinks {
+	margin-top: -25px;
+}
+
+
+}
