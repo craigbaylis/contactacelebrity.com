@@ -1643,13 +1643,19 @@ img.ebayLogo {
 
 /*address detail page */
 #ebayaddress {
-	background-color: #FFFFFF;
+/*	background-color: #FFFFFF;
   line-height: 1;
 	width: 302px;
 	float: right;
  margin-top: 20px;
   overflow: hidden;
-	margin-right: 0px;
+	margin-right: 0px;*/
+border: 1px solid #000;
+width: 280px;
+float: right;
+margin-top: 20px;
+padding: 0 20px 0 0;
+background-color:#FFF;
 }
 
 #ebayaddress img#ebayAd {
