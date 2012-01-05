@@ -194,7 +194,7 @@ $j=1;
 
 									 ?>
 									
-                                      <img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/success_check.png" alt="success" title="success"/>Success  <img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/success_green.png" alt="successNumber" title="successNumber"><a class="green" href="#"><?php echo (!empty($successvote->total_success)) ? $successvote->total_success : '0' ?></a><a class="red" href="#"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/unsuccess_red.png" alt="unsuccessNumber" title="unsuccessNumber"/><?php echo (!empty($failurevote->total_returned)) ? $failurevote->total_returned : '0' ?></a></li>  
+                                     <?php $imagecheck = (!empty($successvote->total_success)) ? 'success_check.png' : 'success_uncheck.png' ?> <img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/<?php echo $imagecheck;?>" alt="success" title="success"/>Success  <img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/success_green.png" alt="successNumber" title="successNumber"><a class="green" href="#"><?php echo (!empty($successvote->total_success)) ? $successvote->total_success : '0' ?></a><a class="red" href="#"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/unsuccess_red.png" alt="unsuccessNumber" title="unsuccessNumber"/><?php echo (!empty($failurevote->total_returned)) ? $failurevote->total_returned : '0' ?></a></li>  
                                       <?php
 										}
 									  ?>
