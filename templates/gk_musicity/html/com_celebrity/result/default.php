@@ -12,28 +12,20 @@ $slimbox = JURI::base().'components/com_celebrity/js/slimbox.js';
 $slimboxCss = JURI::base().'components/com_celebrity/assets/css/ResultLight/slimbox.css';
 for($click=0;$click<count($this->result_image);$click++){
 	if($this->result_image['largeimage'][$click]){
-$largeimage .= '["'.$this->result_image['largeimage'][$click].'"], ';	
+$spaceentities = str_replace(" ", "%20",$this->result_image['largeimage'][$click]);
+$countphoto = $click+1;
+$largeimage .= '["'.$spaceentities.'", "'.$this->CelebrityDetail->full_name.' Photo '.$countphoto.'"], ';	
+
 	}
 }
 $cropimage = substr($largeimage,0,-2);
-/*$$('#viewFullimage').slimbox({ 
- 				loop: true,
-				overlayOpacity: 0.6,
-				overlayFadeDuration: 200,
-				resizeDuration: 1000,
-				resizeTransition: Fx.Transitions.Elastic.easeOut,
-				counterText: 'This is image <strong>{x}</strong> on a total of <strong>{y}</strong> in this fabulous Flickr image gallery',
-				previousKeys: [37, 80, 16],
-				nextKeys: [39, 78, 17],
-			}, function(el) {
-				 return /exclusive/i.test(this.title) == /exclusive/i.test(el.title);
-			});*/
+
 $initialize = "
 window.addEvent('domready',function(){
 	$$('#successImage a').slimbox(function(el) {return [el.href, el.title];});
 
 	$$('#viewFullimage').addEvent('click', function(){
-      Slimbox.open([$cropimage], 0); 
+	    Slimbox.open([$cropimage], 0); 
     });
 	
 });";
@@ -101,16 +93,16 @@ echo $result;
 </div><!--individualSuccess_story close -->
 
 				<div id="middleImageLoader">		
-					<div id="successImage" style="overflow:hidden">
+					<div id="successImage" style="overflow:hidden; height:180px;">
                     
 			<?php
 			for($img=0;$img<count($this->result_image);$img++){
 				if($this->result_image['smallimage'][$img]){
 			?>
             
-                  <a  href="<?php echo $this->result_image['largeimage'][$img];?>" rel="lightbox-atomium" title="Celebrity Photo <?php echo $img+1;?>">  <img src="<?php echo $this->result_image['smallimage'][$img];?>" width="200" height="300" class="lighboximg" /></a><br /><br />
+                  <a  href="<?php echo $this->result_image['largeimage'][$img];?>" rel="lightbox-atomium" title="<?php echo $this->CelebrityDetail->full_name;?> Photo <?php echo $img+1;?>">  <img src="<?php echo $this->result_image['smallimage'][$img];?>"  class="lighboximg" width="140" height="180" /></a><br /><br />
 <?php } }?>
-					</div><!-- div#userInteraction close -->
+					</div><!-- div#userInteraction closewidth="200" height="300" -->
 				<a id="viewFullimage" href="javascript:;"  >View Full Image</a>
 				</div><!-- div#middleImageLoader close -->
 				
@@ -136,8 +128,17 @@ echo $result;
 <!-- ============================================================================================== -->	
 
 		<div id="userCommentList">
+		<?php
+		$id = Jrequest::getcmd("id");
 		
-		<div class="primaryComment">	
+		$comments = JPATH_SITE . DS .'components' . DS . 'com_jcomments' . DS . 'jcomments.php';
+		  if (file_exists($comments)) {
+			require_once($comments);
+			echo JComments::showComments($id, 'com_celebrity', $title);
+			
+		  }
+		?>
+		<?php /*?><div class="primaryComment">	
 			<img class="avatar" src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/avatar1.gif" alt="avatar1" width="72" height="71" />	
 			<div class="primaryCommentText">	
 				<ul>
@@ -328,9 +329,9 @@ echo $result;
 		
 <img class="googleAds_468x60" src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/googleAds_468x60.gif" alt="googleAds_468x60" width="468" height="60" />		
 <div class="clr"></div>
-								
-	
-			
+								<?php */?>
+
+
 						
 		</div><!-- div#userCommentList close -->
 					
@@ -346,7 +347,24 @@ echo $result;
 				<li class="roundedSquare"><a href="#">Next</a></li>
 			</ul> 
 			-->
-			
+		
+			<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />	
+	<br />
+<br />
+<br />	
+	<br />
+<br />
+<br />	
+<br />
+<br />	
+	
 </div><!-- div#width640 close -->
 
 
