@@ -81,8 +81,10 @@ $user =& JFactory::getUser();
 				</div><!-- div#photo close -->
 			
 				<div id="userInteraction">
-						<span id="emailAlert"><a href="#"><span class="aligning"><?php echo JText::_('Send me email alerts') ?></span></a></span><br />
-						<span id="chat"><a href="#"><span class="aligning"><?php echo JText::_('Chat about ').$this->details->name ?></span></a></span><br />
+                <!-- Hide for now -->
+					<?php /*?>	<span id="emailAlert"><a href="#"><span class="aligning"><?php echo JText::_('Send me email alerts') ?></span></a></span><br />
+						<span id="chat"><a href="#"><span class="aligning"><?php echo JText::_('Chat about ').$this->details->name ?></span></a></span><br /><?php */?>
+                        <!-- Hide for now -->
 						<span id="gallery">
                         <?php if($this->details->album_catid == "0"):?>
                         <a href="javascript:;"><span class="aligning"><?php echo JText::_('Photo Gallery') ?></span></a>
@@ -121,7 +123,7 @@ $user =& JFactory::getUser();
     </ul>
     <ul class="contents">
         <li><p>If you're looking to find "<?php echo $this->details->ownership_name ?> address", you're in the right place! Look at the addresses below where members have contacted <?php echo $this->details->name ?> and send them your fan mail, posters, photographs or memorablilia to be autographed. Autograph collectors have used our celebrity contacts database since 1996 to get a <?php echo $this->details->name ?> autograph or other signed memorablilia from thousands of famous people.</p></li>
-        <li>
+        <li style="line-height:1.5; overflow-y:auto">
             <div>
                 <?php if ($this->details->full_name) : ?>
                 <div>
