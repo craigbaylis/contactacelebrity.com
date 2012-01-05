@@ -73,6 +73,7 @@ background-attachment: scroll;
 
 }
 </style>
+
 <div id="wrapper">
 		
 		<div class="width960">
@@ -135,7 +136,7 @@ background-attachment: scroll;
 				
 				<div class="clr"></div>
 				
-				<ul id="addressAction">
+				<ul id="addressAction" style="width:220px"><!--remove after site launch-->
 					<li>
 <?php if(!$user->id):?>
 <a href="<?php echo JRoute::_('index.php?option=com_user&view=login') ?>" class="general_login"><?php echo JText::_('Add my Results') ?></a>
@@ -144,15 +145,17 @@ background-attachment: scroll;
 <?php endif;?>
 </li>
                     
-					<li>
+					<li class="noBorder_right">
                   <?php if(!$user->id):?>  
                     <a href="<?php echo JRoute::_('index.php?option=com_user&view=login') ?>" class="general_login"><?php echo JText::_('Add New Address') ?></a>
                     <?php else: ?>
                      <a href="<?php echo JRoute::_('index.php?option=com_celebrity&task=add&controller=address&cid='.$this->celebrity->id.'&Itemid='.$this->addressItemid) ?>"><?php echo JText::_('Add New Address') ?></a>
                      <?php endif;?>
                     </li>
-					<li><a href="javascript:;"><?php echo JText::_('Add Private Tracking Notes') ?></a></li>
-					<li class="noBorder_right"><a href="javascript:;"><?php echo JText::_('Report Address as Outdated') ?></a></li>	
+                    <!--hide for now-->
+					<?php /*?><li><a href="javascript:;"><?php echo JText::_('Add Private Tracking Notes') ?></a></li>
+					<li class="noBorder_right"><a href="javascript:;"><?php echo JText::_('Report Address as Outdated') ?></a></li><?php */?>
+                    <!--hide for now-->	
 				</ul>
 				
 		
@@ -226,9 +229,9 @@ echo $result;
 			
 			?>
 				<ul>
-                <?php if($this->ResultAddress[$m]->label == "Success"):?>
+                <?php //if($this->ResultAddress[$m]->label == "Success"):?>
 					<li class="readButton"><a href="<?php echo JRoute::_( "index.php?option=com_celebrity&view=result&id=".$this->ResultAddress[$m]->id."&cid=".Jrequest::getcmd("cid")."&aid=".Jrequest::getcmd("aid")."&anumber=".Jrequest::getcmd("anumber")."&Itemid=60");?>">View Details</a></li>
-                    <?php endif;?>
+                    <?php //endif;?>
 					<!--<li class="commentNumber">5 Comments</li>
 					<li class="addComment"><a href="#">+ Add Comment</a></li>-->
 				</ul>
