@@ -39,6 +39,8 @@ if($this->searchType == 'browse'){
 } else {
     $browsetype = 'all';
 }
+//get user section
+$user =& JFactory::getUser();
 ?>
 <script type="text/javascript">
     GS_googleAddAdSenseService("ca-pub-7953222348963766");
@@ -172,9 +174,15 @@ $document->addStyleDeclaration($style);
     <?php echo $this->pagination->getPagesLinks() ?>
     <div class="clr"></div>
     <div id="addressRequest">
-        <a href="<?php echo JRoute::_('index.php?option=com_celebrity&task=add&controller=celebrity') ?>" id="addressRequestLink">
+    <?php if(!$user->id):?>
+     <a href="<?php echo JRoute::_('index.php?option=com_celebrity&task=add&controller=celebrity') ?>" id="addressRequestLink" class="general_login">
             <img width="275" height="103" title="Celebrity not in our database? Request an address here!" alt="addressRequest" src="<?php echo JURI::root() ?>templates/gk_musicity/images/style/addressRequest.png">
         </a>
+        <?php else:?>	
+        <a href="<?php echo JRoute::_('index.php?option=com_celebrity&task=add&controller=celebrity') ?>" id="addressRequestLink" >
+            <img width="275" height="103" title="Celebrity not in our database? Request an address here!" alt="addressRequest" src="<?php echo JURI::root() ?>templates/gk_musicity/images/style/addressRequest.png">
+        </a>
+        <?php endif;?>
     </div>
 </div>
 <div style="margin-right:40px;float: right;">
@@ -211,7 +219,8 @@ if(JRequest::getCmd('searchword'))
     
     <?php } ?>
 </div>
-<div style="margin-right:40px;float: right;">
+
+<div style="margin-right:40px;<?php if(count($this->celebrities)<=8){?>margin-left:410px;<?php }?>float: right;">
     <div id="thankYou">
         <p>
             <span class="big">"</span><?php echo JText::_('CACTHANKYOU') ?>
