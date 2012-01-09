@@ -162,9 +162,13 @@ class CelebrityControllerAddress extends JController
             break;
             
             case 'email':
+			$model = $this->getModel('address');
+            $view->setModel($model,true);  
             break;
             
             case 'website':
+			$model = $this->getModel('address');
+            $view->setModel($model,true);  
             break;
         }
         
