@@ -19,6 +19,8 @@ if(strtolower(substr($this->celebrity->full_name,-1,1)) == 's') {
 }
 $document->setDescription(JText::sprintf('CELEBADDRESSDESC',$owner_full_name,$this->celebrity->full_name,$this->address->id));
 $document->addStyleSheet($css);
+
+$type = Jrequest::getcmd('type');
 //pagination
 $prevcount = Jrequest::getcmd("anumber")-2;
 $prevcountadd = Jrequest::getcmd("anumber")-1;
@@ -31,7 +33,7 @@ $prevurl = "javascript:;";
 } else {
 $prev = $this->addressPage[$prevcount];
 $countprev = Jrequest::getcmd("anumber")-1;
-$prevurl = JRoute::_('index.php?option=com_celebrity&view=address&task=details&type=address&aid='.$prev.'&cid='.Jrequest::getcmd("cid").'&anumber='.$countprev.'&Itemid=60');
+$prevurl = JRoute::_('index.php?option=com_celebrity&view=address&task=details&type='.$type.'&aid='.$prev.'&cid='.Jrequest::getcmd("cid").'&anumber='.$countprev.'&Itemid=60');
 }
 //next
 if(Jrequest::getcmd("anumber") == count($this->addressPage)){
@@ -41,10 +43,19 @@ $nexturl = "javascript:;";
 } else {
 $next = $this->addressPage[Jrequest::getcmd("anumber")];
 $countnext = Jrequest::getcmd("anumber")+1;	
-$nexturl = JRoute::_('index.php?option=com_celebrity&view=address&task=details&type=address&aid='.$next.'&cid='.Jrequest::getcmd("cid").'&anumber='.$countnext.'&Itemid=60');
+$nexturl = JRoute::_('index.php?option=com_celebrity&view=address&task=details&type='.$type.'&aid='.$next.'&cid='.Jrequest::getcmd("cid").'&anumber='.$countnext.'&Itemid=60');
 }
 // adjust auto width
+if($type == "address"):
 $adjustlen = 295 + strlen($this->celebrity->full_name.' - '.JText::_('Address').$this->anumber);
+$name = "Address";
+elseif($type=="email"):
+$adjustlen = 295 + strlen($this->celebrity->full_name.' - '.JText::_('Email').$this->anumber);
+$name = "E-mail";
+elseif($type=="website"):
+$adjustlen = 295 + strlen($this->celebrity->full_name.' - '.JText::_('Website').$this->anumber);
+$name = "Website";
+endif;
 //get user section
 $user =& JFactory::getUser();
 
@@ -74,11 +85,11 @@ background-attachment: scroll;
 }
 </style>
 
-<div id="wrapper">
+<!--<div id="wrapper">-->
 		
 		<div class="width960">
 			
-				<h1 class="searchAddressDetails"><?php echo $this->celebrity->full_name.' - '.JText::_('Address').$this->anumber ?></h1>
+				<h1 class="searchAddressDetails"><?php echo $this->celebrity->full_name.' - '.JText::_($name).$this->anumber ?></h1>
 				
 			
 				<div class="pagenationNumbers">
@@ -92,7 +103,7 @@ background-attachment: scroll;
 						 foreach($this->addressPage as $getaddressid){	
 						 $count = $k++;						
 						?>
-						<li><a href="<?php echo JRoute::_('index.php?option=com_celebrity&view=address&task=details&type=address&aid='.$getaddressid.'&cid='.Jrequest::getcmd("cid").'&anumber='.$count.'&Itemid=60') ?>" <?php echo ($count == Jrequest::getcmd("anumber"))?"style='color:#DA6246'":'';?>><?php echo $count;?></a></li>
+						<li><a href="<?php echo JRoute::_('index.php?option=com_celebrity&view=address&task=details&type='.$type.'&aid='.$getaddressid.'&cid='.Jrequest::getcmd("cid").'&anumber='.$count.'&Itemid=60') ?>" <?php echo ($count == Jrequest::getcmd("anumber"))?"style='color:#DA6246'":'';?>><?php echo $count;?></a></li>
                         <?php }?>
 						<li><a href="<?php echo $nexturl;?>">next</a></li>
 						<li class="forward_button"><a href="#"></a></li>
@@ -104,6 +115,11 @@ background-attachment: scroll;
 				
 			<div id="grungeAddressBox">
 				<div id="address_bigDisplayed" style="overflow-x :auto;padding-bottom:2px;">
+                <?php if(Jrequest::getcmd('type') == "email"):?>
+                <?php echo $this->address->email;?>
+                <?php elseif(Jrequest::getcmd('type') == "website"):?>
+                <?php echo $this->address->url;?>
+                <?php else:?>
 				<h3><?php echo $this->celebrity->full_name ?><br/>
                 <?php if (!empty($this->address->company)) : ?><?php echo $this->address->company ?><br/><?php endif; ?>
                  <?php if (!$this->user->id) : ?>
@@ -113,10 +129,15 @@ background-attachment: scroll;
                     <?php if (!empty($this->address->line_1)) : ?><?php echo $this->address->line_1 ?><br/><?php endif; ?> <?php if (!empty($this->address->line_2)) : ?><?php echo $this->address->line_2 ?><br/><?php endif; ?>
                  <?php endif; ?>
 				<?php echo $this->address->city.', '.$this->address->state_code.' '.$this->address->zipcode ?><br/>
-				<?php echo $this->address->country ?>
-                 
+				<?php echo $this->address->country; ?>
+                 <?php endif;?>
                 </h3>
 				</div><!-- div#name close -->
+                <div id="mailAddress_detailInfo" style="padding-top:65px;">
+                <ul>
+                <li id="backToAddressList"><a href="index.php?option=com_celebrity&view=celebrity&task=details&cid=<?php echo Jrequest::getcmd("cid");?>&Itemid=<?php echo Jrequest::getcmd("Itemid");?>"></a><span ><a href="index.php?option=com_celebrity&view=celebrity&task=details&cid=<?php echo Jrequest::getcmd("cid");?>&Itemid=<?php echo Jrequest::getcmd("Itemid");?>" style="background:none;color:#464646; text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Go Back to Address List Page</a></span></li>
+                </ul>
+                </div>
 			</div><!-- div#grungeAddressBox close -->
 
 				<div id="mailAddress_detailInfo">
@@ -126,7 +147,7 @@ background-attachment: scroll;
 						<li>Still Waiting for Reply: X I'm waiting too!</li>
 						<li>Submitted by: <a href="<?php echo JRoute::_('index.php?option=com_community&view=profile&userid='.$this->address->submitted_by_uid) ?>"><?php echo $this->address->submitted_by ?></a></li>
 						<li>Submitted on: <?php echo $this->address->submitted_on;?></li>
-						<li id="backToAddressList"><a href="index.php?option=com_celebrity&view=celebrity&task=details&cid=<?php echo Jrequest::getcmd("cid");?>&Itemid=<?php echo Jrequest::getcmd("Itemid");?>"></a><span ><a href="index.php?option=com_celebrity&view=celebrity&task=details&cid=<?php echo Jrequest::getcmd("cid");?>&Itemid=<?php echo Jrequest::getcmd("Itemid");?>" style="background:none;color:#464646; text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Go Back to Address List Page</a></span></li>
+						<?php /*?><li id="backToAddressList"><a href="index.php?option=com_celebrity&view=celebrity&task=details&cid=<?php echo Jrequest::getcmd("cid");?>&Itemid=<?php echo Jrequest::getcmd("Itemid");?>"></a><span ><a href="index.php?option=com_celebrity&view=celebrity&task=details&cid=<?php echo Jrequest::getcmd("cid");?>&Itemid=<?php echo Jrequest::getcmd("Itemid");?>" style="background:none;color:#464646; text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Go Back to Address List Page</a></span></li><?php */?>
 					</ul>
 				</div><!-- div#userInteraction close -->
 				
@@ -141,7 +162,7 @@ background-attachment: scroll;
 <?php if(!$user->id):?>
 <a href="<?php echo JRoute::_('index.php?option=com_user&view=login') ?>" class="general_login"><?php echo JText::_('Add my Results') ?></a>
 <?php else: ?>
-<a href="<?php echo JText::_('index.php?option=com_celebrity&view=result&task=add&cid='.$this->celebrity->id.'&aid='.$this->address->id.'&Itemid='.$this->resultsItemid) ?>"><?php echo JText::_('Add my Results') ?></a>
+<a href="<?php echo JText::_('index.php?option=com_celebrity&view=result&task=add&cid='.$this->celebrity->id.'&aid='.$this->address->id.'&type='.$type.'&anumber='.$this->anumber.'&Itemid='.$this->resultsItemid) ?>"><?php echo JText::_('Add my Results') ?></a>
 <?php endif;?>
 </li>
                     
@@ -149,7 +170,7 @@ background-attachment: scroll;
                   <?php if(!$user->id):?>  
                     <a href="<?php echo JRoute::_('index.php?option=com_user&view=login') ?>" class="general_login"><?php echo JText::_('Add New Address') ?></a>
                     <?php else: ?>
-                     <a href="<?php echo JRoute::_('index.php?option=com_celebrity&task=add&controller=address&cid='.$this->celebrity->id.'&Itemid='.$this->addressItemid) ?>"><?php echo JText::_('Add New Address') ?></a>
+                     <a href="<?php echo JRoute::_('index.php?option=com_celebrity&task=add&controller=address&cid='.$this->celebrity->id.'&Itemid='.$this->addressItemid) ?>"><?php echo JText::_('Add New '.$name); ?></a>
                      <?php endif;?>
                     </li>
                     <!--hide for now-->
@@ -167,7 +188,7 @@ background-attachment: scroll;
 		
 <div class="width640">
 
-		<h1 class="search">Result For This Address</h1>
+		<h1 class="search">Result For This <?php echo $name;?></h1>
 			<div class="pagenationNumbers">
             <?php echo $this->pagination->getPagesLinks() ?>
 					<!--<ul>
@@ -230,7 +251,7 @@ echo $result;
 			?>
 				<ul>
                 <?php //if($this->ResultAddress[$m]->label == "Success"):?>
-					<li class="readButton"><a href="<?php echo JRoute::_( "index.php?option=com_celebrity&view=result&id=".$this->ResultAddress[$m]->id."&cid=".Jrequest::getcmd("cid")."&aid=".Jrequest::getcmd("aid")."&anumber=".Jrequest::getcmd("anumber")."&Itemid=60");?>">View Details</a></li>
+					<li class="readButton"><a href="<?php echo JRoute::_( "index.php?option=com_celebrity&view=result&id=".$this->ResultAddress[$m]->id."&cid=".Jrequest::getcmd("cid")."&aid=".Jrequest::getcmd("aid")."&anumber=".Jrequest::getcmd("anumber")."&type=".$type."&Itemid=60");?>">View Details</a></li>
                     <?php //endif;?>
 					<!--<li class="commentNumber">5 Comments</li>
 					<li class="addComment"><a href="#">+ Add Comment</a></li>-->
@@ -435,7 +456,7 @@ echo $result;
 </div><!-- div#width640 close -->
 
 
-
+<div style="float:right;margin-right:40px;" >
 <!-- ============================================================================================== -->	
 
 	<!-- browse_RT1_300x250 -->
