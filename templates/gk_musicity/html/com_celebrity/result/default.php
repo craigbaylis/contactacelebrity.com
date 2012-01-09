@@ -35,18 +35,28 @@ $document->addScript($slimbox);
 $document->addScriptDeclaration($initialize);
 $document->addStyleSheet($slimboxCss);
 
-
+$type = Jrequest::getcmd('type');
+// adjust auto width
+if($type == "address"):
+$name = "Address";
+elseif($type=="email"):
+$name = "E-mail";
+elseif($type=="website"):
+$name = "Website";
+endif;
 //lightbox
 ?>
 <style>
 #gk-current-content-wrap{
-background-color:transparent;	
+background-color:transparent;
+padding-top:0px;	
 }
+
 </style>
 
-		
+<div style="margin-left:-18px;">		
 		<div class="width1002">
-				<h1 id="result"><?php echo $this->CelebrityDetail->full_name;?> Success for Address<?php echo Jrequest::getcmd("anumber");?></h1>
+				<h1 id="result"><?php echo $this->CelebrityDetail->full_name;?> Success for <?php echo $name;?><?php echo Jrequest::getcmd("anumber");?></h1>
 				
 				
 			<div id="individualSuccess_story">
@@ -89,7 +99,11 @@ echo $result;
 		<div class="avatar_speachBubble_325">
 		<p><?php echo $this->ResultAddress->comments; ?></p>						
 		</div><!-- avatar_speachBubble_300 close -->	
-
+<div id="mailAddress_detailInfo" style="margin-top:0px;">
+                <ul>
+                <li id="backToAddressList"><a href="index.php?option=com_celebrity&view=address&task=details&type=<?php echo Jrequest::getcmd("type");?>&aid=<?php echo Jrequest::getcmd("aid");?>&cid=<?php echo Jrequest::getcmd("cid");?>&anumber=<?php echo Jrequest::getcmd("anumber");?>&Itemid=<?php echo Jrequest::getcmd("Itemid");?>"></a><span ><a href="index.php?option=com_celebrity&view=address&task=details&type=<?php echo Jrequest::getcmd("type");?>&aid=<?php echo Jrequest::getcmd("aid");?>&cid=<?php echo Jrequest::getcmd("cid");?>&anumber=<?php echo Jrequest::getcmd("anumber");?>&Itemid=<?php echo Jrequest::getcmd("Itemid");?>" style="background:none;color:#464646; text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Go Back to Address List Page</a></span></li>
+                </ul>
+                </div>
 </div><!--individualSuccess_story close -->
 
 				<div id="middleImageLoader">		
@@ -364,6 +378,17 @@ echo $result;
 <br />	
 <br />
 <br />	
+<br />
+<br />	
+	<br />
+<br />
+<br />	
+	<br />
+<br />
+<br />	
+<br />
+<br />	
+
 	
 </div><!-- div#width640 close -->
 
@@ -371,7 +396,7 @@ echo $result;
 
 <!-- ============================================================================================== -->	
 
-		<div style="margin-right:-25px;float:right">	
+		<div style="margin-right:-18px;float:right">	
 	<!-- browse_RT1_300x250 -->
     <img src="<?php echo JURI::base().'modules/mod_celebrityaddresses/assets/images/spacer.png' ?>" alt="Successes" width="18" height="1" />
 <script type="text/javascript">
@@ -405,7 +430,7 @@ $blockips = array();
 GA_googleFillSlot("browse_RT1_300x250");
 </script>
 </div>
-	<div id="recentComments" style="margin-right:-25px;float:right">
+	<div id="recentComments" style="margin-right:-18px;float:right">
 		<h1 id="result">Recent Comments</h1>
 		
 		<div class="recentCommentPost">
@@ -461,7 +486,7 @@ GA_googleFillSlot("browse_RT1_300x250");
 	
 	
 	
-<div id="ebayaddress" style="margin-right:-25px;float:right" >
+<div id="ebayaddress" style="margin-right:-18px;float:right" >
 		<h1 id="details"><?php echo JText::_('FUNITEMS') ?></h1>
 		<?php 
                 $myEbay = JModuleHelper::getModule('MyEbay_Search','MyEbay_Search module');
@@ -519,3 +544,4 @@ GA_googleFillSlot("browse_RT1_300x250");
 
 </div>
 <?php */?>
+</div>
