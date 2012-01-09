@@ -164,13 +164,74 @@ class CelebrityViewAddress extends JView
 				//pass in pagination
 				$pagination = $this->get('Pagination');
 				$this->assignRef('pagination',$pagination);
-			
-                break;
-                
+				//breadcrumbs
+				$mainframe = &JFactory::getApplication();
+				$pathway   =& $mainframe->getPathway();
+				$getcid = Jrequest::getcmd('cid');
+				$celebritypath = 'index.php?option=com_celebrity&view=celebrity&task=details&cid='.$getcid.'&Itemid=60';
+				unset($pathway->_pathway[0]); //delete a celebrity detail page path
+				$pathway->addItem('Celebrity Details Page', $celebritypath);
+				$pathway->addItem('Address', '');
+                break;                
                 case 'email':
+				$emailModel = $this->getModel();
+                $email = $emailModel->getEmail();
+                $this->assignRef('address',$email);
+				//pagination
+				$emailpagination = $emailModel->getEmailpagination();
+				$this->assignRef('addressPage',$emailpagination);
+				//sucessfull mailing
+				$Smailing = $emailModel->getSucessfullMailing(1);
+				$this->assignRef('Smailing',$Smailing);
+				$Rmailing = $emailModel->getSucessfullMailing(2);
+				$this->assignRef('Rmailing',$Rmailing);
+				
+				//result for address
+				$ResultAddress = $emailModel->getResultOfAddress();
+				$this->assignRef('ResultAddress',$ResultAddress);
+					
+				//pass in pagination
+				$pagination = $this->get('Pagination');
+				$this->assignRef('pagination',$pagination);
+				//breadcrumbs
+				$mainframe = &JFactory::getApplication();
+				$pathway   =& $mainframe->getPathway();
+				$getcid = Jrequest::getcmd('cid');
+				$celebritypath = 'index.php?option=com_celebrity&view=celebrity&task=details&cid='.$getcid.'&Itemid=60';
+				unset($pathway->_pathway[0]); //delete a celebrity detail page path
+				$pathway->addItem('Celebrity Details Page', $celebritypath);
+				$pathway->addItem('Email', '');
                 break;
                 
                 case 'website':
+				$websiteModel = $this->getModel();
+                $website = $websiteModel->getWebsite();
+                $this->assignRef('address',$website);
+				//pagination
+				$emailpagination = $websiteModel->getWebsitepagination();
+				$this->assignRef('addressPage',$emailpagination);
+				//sucessfull mailing
+				$Smailing = $websiteModel->getSucessfullMailing(1);
+				$this->assignRef('Smailing',$Smailing);
+				$Rmailing = $websiteModel->getSucessfullMailing(2);
+				$this->assignRef('Rmailing',$Rmailing);
+				
+				//result for address
+				$ResultAddress = $websiteModel->getResultOfAddress();
+				$this->assignRef('ResultAddress',$ResultAddress);
+					
+				//pass in pagination
+				$pagination = $this->get('Pagination');
+				$this->assignRef('pagination',$pagination);
+				//breadcrumbs
+				$mainframe = &JFactory::getApplication();
+				$pathway   =& $mainframe->getPathway();
+				$getcid = Jrequest::getcmd('cid');
+				$celebritypath = 'index.php?option=com_celebrity&view=celebrity&task=details&cid='.$getcid.'&Itemid=60';
+				unset($pathway->_pathway[0]); //delete a celebrity detail page path
+				$pathway->addItem('Celebrity Details Page', $celebritypath);
+				$pathway->addItem('Website', '');
+				
                 break;
             }
             $anumber = JRequest::getCmd('anumber');
