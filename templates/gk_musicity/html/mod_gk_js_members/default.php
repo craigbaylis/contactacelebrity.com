@@ -134,11 +134,11 @@ $j=1;
                                                 </li>
                                                 <?php }?>
                                                  <?php if($member->email){?>
-                                                <li class="addressTitle"><?php echo JText::_('Email Address').''. $j++;?>
+                                                <li class="addressTitle"><?php echo JText::_('E-mail').''. $j++;?>
                                                 </li>
                                                 <?php }?>
                                                  <?php if($member->url){?>
-                                                <li class="addressTitle"><?php echo JText::_('Web Address').''. $j++;?>
+                                                <li class="addressTitle"><?php echo JText::_('Website').''. $j++;?>
                                                 </li>
                                                 <?php }?>
                                                 
@@ -152,8 +152,9 @@ $j=1;
                                                  </li>
                                                  <?php }?>
                                                       <?php if($member->email){?>
+                                                   <li class="viewDetail"><a href="index.php?option=com_celebrity&view=address&task=details&type=email&aid=<?php echo $member->id;?>&cid=<?php echo Jrequest::getCmd('cid');?>&anumber=<?php echo $j-1;?>&Itemid=60"></a></li>
                                                   <li>&nbsp;</li>
-                                                    <li>&nbsp;</li>
+                                                 <li>&nbsp;</li>
                                                 <li class="addressLine1">
 												<?php 
 											list($username1,$domain1)=split('@',$member->email);
@@ -168,8 +169,8 @@ $j=1;
                                                  <li>&nbsp;</li>
                                                  <?php }?>
                                                       <?php if($member->url){?>
-                                                       <li>&nbsp;</li>
-                                                    <li>&nbsp;</li>
+                                                       <li class="viewDetail"><a href="index.php?option=com_celebrity&view=address&task=details&type=website&aid=<?php echo $member->id;?>&cid=<?php echo Jrequest::getCmd('cid');?>&anumber=<?php echo $j-1;?>&Itemid=60"></a></li>
+                                                      
                                                 <li class="addressLine1">
 												<?php echo wordwrap($member->url, 20, "\n", true);?>
                                                  </li>
