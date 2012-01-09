@@ -28,6 +28,7 @@ class CelebrityModelAddress extends JModel
 	var $_ResultOfAddress = null;
 	var $_query = null;
 	 var $_default_limit;
+	 private $_data;
 	/*pagination*/
     function __construct()
     {
@@ -453,6 +454,7 @@ class CelebrityModelAddress extends JModel
     {
 
  		$aid  = $this->_aid;
+		$cid  = $this->_cid;
         if (!$aid) JError::raiseError(500,'Missing address identification code');
 		
         if($receivedtype == "1")
@@ -461,7 +463,8 @@ class CelebrityModelAddress extends JModel
             SELECT 
              COUNT(*) as Smailingcount          
             FROM
-              #__celebrity_result  a                    
+              #__celebrity_result  a    
+			 INNER JOIN #__community_users c ON (c.userid = a.created_by_id)                           
             WHERE
               a.address_id = $aid and received_type_id =1
         ";
@@ -472,10 +475,10 @@ class CelebrityModelAddress extends JModel
              COUNT(*) as Smailingcount          
             FROM
               #__celebrity_result  a                    
+			  INNER JOIN #__community_users c ON (c.userid = a.created_by_id)  
             WHERE
               a.address_id = $aid and received_type_id =2
         ";
-		
         $db = JFactory::getDBO();
         $db->setQuery($query);
         $result = $db->loadResultArray();
@@ -542,7 +545,7 @@ class CelebrityModelAddress extends JModel
         return $result;   
      
    		} 
-	
+		
 	 /**
      * Method to get a pagination object of the weblink items for the category
      *
@@ -569,8 +572,108 @@ class CelebrityModelAddress extends JModel
             $this->_total = $this->_getListCount($this->_query);
             return $this->_total;
         }
-    }      
+    } 
+	
+	
+	/*=========================================Email Address==============================*/
+	public function getEmail()	{
+			$aid  = Jrequest::getcmd("aid");
+			if (!$aid) JError::raiseError(500,'Missing email identification code');
+				$query = "SELECT
+				 a.id,
+				 a.email,
+				 a.created_by_uid AS submitted_by_uid,
+				 DATE_FORMAT(a.date_created,'%m/%d/%Y') AS submitted_on,
+				 e.username AS submitted_by
+				 FROM 
+				 `#__celebrity_email` a 
+				 INNER JOIN #__users e ON (a.created_by_uid = e.id) 
+				 WHERE
+              	 a.published = 1 AND 
+              	 a.id = $aid";
+				 $db = JFactory::getDBO();
+        $db->setQuery($query);
+        $db->query();
+        if ($db->getNumRows() == 0) return false;
+        $result = $db->loadObject();
+        if ($db->getErrorNum()) JError::raiseError('500', JText::_('DBERROR'));
+        return $result;   
+	}
+	
+	 public function getEmailpagination()
+    {
+		 $cid = JRequest::getInt('cid');
+        if (!$cid) JError::raiseError(500,'Missing address identification code');
+        
+        //build query
+        $query = "
+            SELECT 
+              a.id as address_id,
+			  a.celebrity_id            
+            FROM
+              #__celebrity_email a                    
+            WHERE
+              a.celebrity_id = $cid
+        ";
+        $db = JFactory::getDBO();
+        $db->setQuery($query);
+        $result = $db->loadResultArray();
+        return $result; 
+          
+    }   	    
+	
+	
+	/*=========================================Website Address==============================*/
+	public function getWebsite()	{
+			$aid  = Jrequest::getcmd("aid");
+			if (!$aid) JError::raiseError(500,'Missing email identification code');
+				$query = "SELECT
+				 a.id,
+				 a.url,
+				 a.created_by_uid AS submitted_by_uid,
+				 DATE_FORMAT(a.date_created,'%m/%d/%Y') AS submitted_on,
+				 e.username AS submitted_by
+				 FROM 
+				 `#__celebrity_website` a 
+				 INNER JOIN #__users e ON (a.created_by_uid = e.id) 
+				 WHERE
+              	 a.published = 1 AND 
+              	 a.id = $aid";
+				 $db = JFactory::getDBO();
+        $db->setQuery($query);
+        $db->query();
+        if ($db->getNumRows() == 0) return false;
+        $result = $db->loadObject();
+        if ($db->getErrorNum()) JError::raiseError('500', JText::_('DBERROR'));
+        return $result;   
+	}
+	
+	 public function getWebsitepagination()
+    {
+		 $cid = JRequest::getInt('cid');
+        if (!$cid) JError::raiseError(500,'Missing address identification code');
+        
+        //build query
+        $query = "
+            SELECT 
+              a.id as address_id,
+			  a.celebrity_id            
+            FROM
+              #__celebrity_website a                    
+            WHERE
+              a.celebrity_id = $cid
+        ";
+        $db = JFactory::getDBO();
+        $db->setQuery($query);
+        $result = $db->loadResultArray();
+        return $result; 
+          
+    }   	    
    
 }
+
+
+	
+	
 
 ?>
