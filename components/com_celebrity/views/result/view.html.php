@@ -37,7 +37,11 @@ class CelebrityViewResult extends JView
                $Itemid = '&Itemid='.$celebDetailsMenu->id;
             } 
             
-            $backlink = JRoute::_('index.php?option=com_celebrity&view=celebrity&task=details&cid='.$cid.$Itemid);
+			 $aid = JRequest::getcmd('address_id');
+			 $type = JRequest::getcmd('type');
+			 $anumber = JRequest::getcmd('anumber');
+            //$backlink = JRoute::_('index.php?option=com_celebrity&view=celebrity&task=details&cid='.$cid.$Itemid);
+			$backlink = JRoute::_('?option=com_celebrity&view=address&task=details&type='.$type.'&aid='.$aid.'&cid='.$cid.'&anumber='.$anumber.''.$Itemid);
             $this->assignRef('backlink',$backlink);
             break;
             
@@ -102,9 +106,22 @@ class CelebrityViewResult extends JView
 			//result photo	
 			$ResultPhoto = $this->get('ResultPhoto');			
 			$this->assignRef('result_image',$ResultPhoto);
-			//$this->assignRef('Lresult_image',$Lresult_image);
-			//large image
-			
+			$anumber = Jrequest::getcmd('anumber');
+			$type = Jrequest::getcmd('type');
+			//get a link for address page
+			$addresspage = 'index.php?option=com_celebrity&view=address&task=details&type='.$type.'&aid='.$ResultAddress->address_id.'&cid='.$CelebrityDetail->id.'&anumber='.$anumber.'&Itemid=60';
+			//get a pathway and title
+			$mainframe = &JFactory::getApplication();
+			$document  = &JFactory::getDocument();	
+			$pathway   =& $mainframe->getPathway();
+			$celebritypath = 'index.php?option=com_celebrity&view=celebrity&task=details&cid='.$CelebrityDetail->id.'&Itemid=60';
+			unset($pathway->_pathway[0]); //delete a celebrity detail page path name
+			$pathway->addItem('Celebrity Details Page', $celebritypath);
+			$pathway->addItem(ucfirst($type), $addresspage);
+			$pathway->addItem('Result', '');
+			//Page title
+			$settitle = ''.$CelebrityDetail->full_name.' '.$type.''.$anumber.' result - 100% FREE! ContactACelebrity.com (#'.$ResultAddress->id.')';
+			$document->setTitle( $settitle );		
 			//result photo
             $data = $this->get('Data');
             $this->assignRef('data', $data);
