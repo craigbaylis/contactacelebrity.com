@@ -21,7 +21,34 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 JHTML::_('behavior.formvalidation');
 
 ?>
+<style>
+#gk-current-content-wrap{
+background:none;
+padding-top:0px;
+padding-left:0px;
+}
+#component .login_form label{
+line-height:15px;
+width:100px;	
+}
+#gkLogin h2, #gkRegister h2{
+margin-left:5px;
+margin-top:5px;	
+}
+#component .login_form{
+margin:15px 15px 15px 15px	
+}
+#component .form-register{
+margin:15px 15px 15px 15px;
+line-height:20px;
 
+}
+#name{
+	margin-left:0px;
+	margin-top:0px;
+}
+</style>
+<div class="width960">
 <div id="gkLogin">
       <h2>Login</h2>
       <form action="<?php echo JRoute::_( 'index.php', true, $this->params->get('usesecure')); ?>" method="post" name="login" id="login" class="login_form<?php echo $this->params->get( 'pageclass_sfx' ); ?>">
@@ -116,3 +143,4 @@ JHTML::_('behavior.formvalidation');
       </form>
 </div>
 <?php endif; ?>
+</div>

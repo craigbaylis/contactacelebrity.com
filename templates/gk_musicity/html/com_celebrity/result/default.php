@@ -14,7 +14,7 @@ for($click=0;$click<count($this->result_image);$click++){
 	if($this->result_image['largeimage'][$click]){
 $spaceentities = str_replace(" ", "%20",$this->result_image['largeimage'][$click]);
 $countphoto = $click+1;
-$largeimage .= '["'.$spaceentities.'", "'.$this->CelebrityDetail->full_name.' Photo '.$countphoto.'"], ';	
+$largeimage .= '["'.$spaceentities.'", "'.$this->result_image['imagetitle'][$click].'"], ';	
 
 	}
 }
@@ -114,7 +114,7 @@ echo $result;
 				if($this->result_image['smallimage'][$img]){
 			?>
             
-                  <a  href="<?php echo $this->result_image['largeimage'][$img];?>" rel="lightbox-atomium" title="<?php echo $this->CelebrityDetail->full_name;?> Photo <?php echo $img+1;?>">  <img src="<?php echo $this->result_image['smallimage'][$img];?>"  class="lighboximg" width="140" height="180" /></a><br /><br />
+                  <a  href="<?php echo $this->result_image['largeimage'][$img];?>" rel="lightbox-atomium" title="<?php echo $this->result_image['imagetitle'][$img];?>">  <img src="<?php echo $this->result_image['smallimage'][$img];?>"  class="lighboximg" width="140" height="180" /></a><br /><br />
 <?php } }?>
 					</div><!-- div#userInteraction closewidth="200" height="300" -->
 				<a id="viewFullimage" href="javascript:;"  >View Full Image</a>

@@ -83,6 +83,17 @@ background-attachment: scroll;
     overflow-y: hidden;
 
 }
+#address_bigDisplayed {
+    color: #464646;
+    font-family: Helvetica,sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 0;
+    padding-bottom: 30px;
+    padding-left: 12px;
+    padding-right: 20px;
+    padding-top: 12px;
+}
 </style>
 
 <!--<div id="wrapper">-->
@@ -114,11 +125,28 @@ background-attachment: scroll;
 				
 				
 			<div id="grungeAddressBox">
-				<div id="address_bigDisplayed" style="overflow-x :auto;padding-bottom:2px;">
+				<div id="address_bigDisplayed" style="width: 250px;word-wrap: break-word;">
                 <?php if(Jrequest::getcmd('type') == "email"):?>
-                <?php echo $this->address->email;?>
+                <?php
+				if ($this->user->id) : 
+				echo $this->address->email;
+				else:
+				?>
+                <?php 
+				list($username1,$domain1)=split('@',$this->address->email);
+											echo ($getuid!='') ? wordwrap($username1, 15, "\n", true) : wordwrap(str_replace(substr($username1,0,5),"*****",$username1), 15, "\n", true); echo JText::_('@');
+											echo ($getuid!='') ? wordwrap($domain1, 10, "\n", true) :  wordwrap(str_replace(substr($domain1,2,6),"*****",$domain1), 10, "\n", true);
+				endif;
+				?>
                 <?php elseif(Jrequest::getcmd('type') == "website"):?>
-                <?php echo $this->address->url;?>
+                 <?php
+				if ($this->user->id) : 
+				echo wordwrap($this->address->url, 20, "\n", true);
+				else:
+				?>
+                <?php echo wordwrap($this->address->url, 20, "\n", true);
+				endif;
+				?>
                 <?php else:?>
 				<h3><?php echo $this->celebrity->full_name ?><br/>
                 <?php if (!empty($this->address->company)) : ?><?php echo $this->address->company ?><br/><?php endif; ?>
@@ -133,8 +161,9 @@ background-attachment: scroll;
                  <?php endif;?>
                 </h3>
 				</div><!-- div#name close -->
-                <div id="mailAddress_detailInfo" style="padding-top:65px;">
-                <ul>
+                <div id="mailAddress_detailInfo">
+                <ul style="margin-top:-45px;">
+                <li>&nbsp;</li>
                 <li id="backToAddressList"><a href="index.php?option=com_celebrity&view=celebrity&task=details&cid=<?php echo Jrequest::getcmd("cid");?>&Itemid=<?php echo Jrequest::getcmd("Itemid");?>"></a><span ><a href="index.php?option=com_celebrity&view=celebrity&task=details&cid=<?php echo Jrequest::getcmd("cid");?>&Itemid=<?php echo Jrequest::getcmd("Itemid");?>" style="background:none;color:#464646; text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Go Back to Address List Page</a></span></li>
                 </ul>
                 </div>
@@ -190,7 +219,9 @@ background-attachment: scroll;
 
 		<h1 class="search">Result For This <?php echo $name;?></h1>
 			<div class="pagenationNumbers">
-            <?php echo $this->pagination->getPagesLinks() ?>
+            <?php 
+			Jrequest::setVar('rpage','1');
+			echo $this->pagination->getPagesLinks() ?>
 					<!--<ul>
 						<li class="backwards_button"><a href="#"></a></li>
 						<li><a href="#">prev</a></li>
@@ -452,7 +483,9 @@ echo $result;
 				<li class="roundedSquare"><a href="#">Next</a></li>
 			</ul> -->
             <?php endif;?>
-
+ <?php 
+ Jrequest::setVar('rpage','2');
+ echo $this->pagination->getPagesLinks() ?>
 </div><!-- div#width640 close -->
 
 

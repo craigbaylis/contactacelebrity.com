@@ -67,6 +67,8 @@ $style = "
 ";
 $document = JFactory::getDocument();
 $document->addStyleDeclaration($style);
+//get a celebrity
+$celebphoto = &$this->getModel();
 ?>
 <div class="width960">
 <?php /*?><?php if(JRequest::getCmd('sr')){?>
@@ -125,11 +127,24 @@ $document->addStyleDeclaration($style);
         $i = 1;
         $k = 1;
         foreach ($this->celebrities AS $celebrity) :
+
     ?>
     <ul class="eachResult row<?php echo $k ?>">
         <li class="number"><?php echo $i ?></li>
-        <?php if (!file_exists(JPATH_SITE.$image_path.$celebrity->image) || empty($celebrity->image)) {$celebrity->image = JURI::base().'components/com_celebrity/assets/images/'.strtolower('M').'-head.png';} else {$celebrity->image = JURI::root().$this->params->get('image_location').$celebrity->image;} ?>
-        <li class="search-image"><a href="<?php echo JRoute::_('index.php?option=com_celebrity&view=celebrity&task=details&cid='.$celebrity->id.'&Itemid='.$this->itemid) ?>"><img class="headshot" name="celebrity-photo" src="<?php echo $celebrity->image ?>" alt="<?php echo JText::_('Thumbnail picture of').' '.$celebrity->name ?>" title="<?php echo JText::_('Thumbnail picture of').' '.$celebrity->name ?>" /></a></li>
+        <!--image location-->
+        <?php if (($celebrity->album_catid == "0") || empty($celebrity->album_catid)) {$celebrity->image = JURI::base().'components/com_celebrity/assets/images/'.strtolower('M').'-head.png';} else {
+	/*celebrity Photo*/
+ $getphoto = $celebphoto->getCelebrityPhoto($celebrity->album_catid);
+if(!$getphoto):
+$image_location = JURI::base().'components/com_celebrity/assets/images/'.strtolower('M').'-head.png';
+else:
+ $pathexplode = explode("/",$getphoto[0]->photoceleb); 
+ $image_location = JURI::base().'images/phocagallery/'.$pathexplode[0].'/'.$pathexplode[1].'/'.$pathexplode[2].'/thumbs/phoca_thumb_s_'.$pathexplode[3];
+ endif;
+ /*celebrity Photo*/
+ $celebrity->image = $image_location;} ?>
+        <!--image location-->
+        <li class="search-image"><a href="<?php echo JRoute::_('index.php?option=com_celebrity&view=celebrity&task=details&cid='.$celebrity->id.'&Itemid='.$this->itemid) ?>"><img class="headshot" name="celebrity-photo" src="<?php echo $celebrity->image ?>" alt="<?php echo JText::_('Thumbnail picture of').' '.$celebrity->name ?>" title="<?php echo JText::_('Thumbnail picture of').' '.$celebrity->name ?>" width="50" height="50" /></a></li>
         <li>
             <ul class="listTitle">
                 <li><?php echo JText::_('Name') ?>:</li>

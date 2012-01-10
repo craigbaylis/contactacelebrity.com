@@ -86,7 +86,7 @@ $document->addStyleSheet($css);
           </div>
           <div>
             <label for="imagetitle1" class="normal-label"><?php echo JText::_('Image Title') ?></label>
-            <input id="imagetitle1" type="text" name="imagetitle1" disabled="disabled" class="validate['required']" />
+            <input id="imagetitle1" type="text" name="imagetitle1" disabled="disabled" class="validate['required','length[2,50]']" />
           </div>
           <div>
             <label for="caption1" class="wide-label"><?php echo JText::_('Image Caption (for premium members, this will show up in your Autograph Gallery)') ?></label>
