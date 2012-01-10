@@ -319,7 +319,7 @@ $document->addStyleSheet($celebrityCss);
         </div>
         <div id="image_title_container" class="field">
             <label for="image_title" class="label"><?php echo JText::_('IMAGETITLE') ?></label>
-            <input type="text" disabled="disabled" class="validate['required']" name="image_title" id="image_title">
+            <input type="text" disabled="disabled" class="validate['required','length[2,50]']" name="image_title" id="image_title">
             <span class="required">*</span>
         </div>
         </div>
