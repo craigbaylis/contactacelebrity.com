@@ -51,15 +51,15 @@ body {
 	float: left;
 	margin-top: 20px;/*-420px*/
 }
-@media screen and (-webkit-min-device-pixel-ratio:0) {
+/*@media screen and (-webkit-min-device-pixel-ratio:0) {
 .width640detail {
 	background-image: url(../images/style4/transparentWhite_bg.png);
 	background-repeat: repeat;
 	width: 640px;
 	float: none;
-	margin-top: -130px;/*-420px*/
+	margin-top: -130px;
 }
-}
+}*/
 
 #left {
 	width: 460px;
