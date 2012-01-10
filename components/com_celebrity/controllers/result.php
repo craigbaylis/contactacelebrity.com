@@ -228,11 +228,15 @@ class CelebrityControllerResult extends JController
 	   $query = "select a.id from  `#__phocagallery` `a` where a.userid=$getruserid order by a.id desc limit 0,$countimage";
 	   $db->setQuery($query);
 		$result =$db->loadResultArray();
+	     $queueimage = 1;
 		  foreach($result as $getid){
+			 $getimagename = 'imagetitle'. $queueimage++;
+			 $imgtitle = JRequest::getcmd($getimagename);
 			$query = "
             UPDATE
               `#__phocagallery` `a`
             SET
+			  `title` = '$imgtitle',
               `result_id` = $result_id
             WHERE
               `a`.`id` = $getid       
