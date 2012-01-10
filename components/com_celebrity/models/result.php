@@ -194,12 +194,13 @@ class CelebrityModelResult extends JModel{
 	
 	public function getResultPhoto() {
  		$id  = Jrequest::getcmd("id");
-        if (!$id) JError::raiseError(500,'Missing address identification code');
+        if (!$id) JError::raiseError(500,'Missing result id identification code');
 		
 		$db = JFactory::getDBO();
         //build query
         $query = " SELECT 
-                  `a`.`filename`
+                  `a`.`filename`,
+				   `a`.`title`
 				  from #__phocagallery `a`
 				  where a.result_id=$id
 				  ";
@@ -229,7 +230,18 @@ class CelebrityModelResult extends JModel{
 				$result_image[] = JURI::base().'/components/com_celebrity/assets/images/m-head.png';
 				$Lresult_image[] = JURI::base().'/components/com_celebrity/assets/images/m-head.png';
 		}
-$smallimage = array("smallimage"=>$result_image);
+			$db = JFactory::getDBO();
+        //build query
+        $title = " SELECT 
+				   `a`.`title`
+				  from #__phocagallery `a`
+				  where a.result_id=$id
+				  ";
+        $db->setQuery( $title );
+		$this->_data = $db->loadResultArray();
+		$image_title = array();
+		$image_title = $this->_data;
+$smallimage = array("smallimage"=>$result_image,"imagetitle"=>$image_title);
 $largeimage = array("largeimage"=>$Lresult_image);
 $arraymerge = array_merge($smallimage,$largeimage);
 return $arraymerge;     

@@ -96,6 +96,7 @@ class CelebrityModelSearch extends JModel
                   CONCAT(d.celebrity_id, '_', d.file_name, '_S','.', d.file_ext) AS image,
                   GROUP_CONCAT(c.name) AS profession,
                   a.famous_for,
+				  a.album_catid,
                   a.gender
                 FROM
                   #__celebrity_celebrity_profession b
@@ -194,7 +195,25 @@ class CelebrityModelSearch extends JModel
             $this->_total = $this->_getListCount($this->_query);
             return $this->_total;
         }
-    }    
+    }  
+	
+	/*get celebrity photo*/
+		public function getCelebrityPhoto($album_id)  {
+           $db = $this->_db;
+        	if (!$album_id) JError::raiseError(500,'Missing albumid identification code');
+            //build query
+            $query = "
+            SELECT             
+              b.filename AS `photoceleb`            
+            FROM
+              #__phocagallery b
+            WHERE
+              b.catid = $album_id order by b.id asc
+            ";
+            $result = $this->_getList($query);
+       
+        return $result;            
+    	}  
 }
 
 ?>
