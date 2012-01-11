@@ -55,6 +55,15 @@ class CelebrityViewResult extends JView
             $addressModel = $this->getModel('Address');
             $address = $addressModel->getMailingAddress();
             $this->assignRef('address',$address);
+			
+			//get the chosen email information
+            $email = $addressModel->getEmail();
+            $this->assignRef('email',$email);
+			//get the chosen website information
+            $website = $addressModel->getWebsite();
+            $this->assignRef('website',$website);
+			
+			
             
             //get the sent types
             $resultsenttypeModel = $this->getModel('resultsenttype');
