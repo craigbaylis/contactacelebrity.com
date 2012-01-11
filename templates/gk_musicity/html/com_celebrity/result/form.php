@@ -21,6 +21,8 @@ require_once(JPATH_COMPONENT.DS.'helpers'.DS.'loadformvalidation.php');
 $document->addScriptDeclaration($phpjsvariables);
 $document->addScript($resultsform);
 $document->addStyleSheet($css);
+
+$type = JRequest::getcmd('type');
 ?>
 <style>
 #photo {
@@ -37,11 +39,19 @@ $document->addStyleSheet($css);
       <label for="address" class="normal-label"><?php echo JText::_('Where I sent it') ?></label>
     <input type="checkbox" class="validate['required']" name="address" value="confirmed" id="address" tabindex="1" style="vertical-align:top" />
     <div class="confirm-address">
+    <?php if($type == "email"):
+	echo $this->email->email;
+	?>
+     <?php elseif($type == "website"):
+	 echo $this->website->url;
+	 ?>
+    <?php else:?>
         <?php if($this->address->company) echo $this->address->company.'<br />' ?>
         <?php if($this->address->line_1) echo $this->address->line_1.'<br />' ?>
         <?php if($this->address->line_2) echo $this->address->line_2.'<br />' ?>
         <?php if($this->address->city) echo $this->address->city.', '; if($this->address->state) echo $this->address->state; if($this->address->zipcode) echo ' '.$this->address->zipcode; ?><br />
         <?php if($this->address->country) echo $this->address->country ?> 
+        <?php endif;?>
     </div>
   </div>
   
