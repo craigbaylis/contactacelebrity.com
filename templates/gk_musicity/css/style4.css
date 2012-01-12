@@ -2105,3 +2105,332 @@ img.googleAdsresult_300x250 {
 }
 
 
+/* Gallery landing page 
+------------------------------------- */
+p.rating {
+	font-family: Helvetica, sans-serif;
+	color: #fff;
+	background-color: #000;
+	font-size: 12px;
+	text-align: center;
+	padding-bottom: 5px;
+}
+
+p.rating img {
+ 	border: none;
+ 	padding-left: 10px;
+}
+
+img.gallery_avatar {
+	float: left;
+	margin-right: 5px;
+}
+
+h2.galleryH2 {
+	font-size: 18px;
+	line-height: 22px;
+	background: none;
+	text-align: left;
+	padding: 10px 0 20px 0;
+}
+
+form.searchPhotos {
+	padding-top: 10px;
+}
+
+form.searchPhotos input#searchField {
+	border: 1px solid #8e8e8e;
+}
+
+div#homeLeftContainer {
+	width: 680px;
+	float: left;
+}
+
+div#homeRightContainer {
+	float: right;
+	width: 300px;
+}
+
+
+div#homeMainContentContainer {
+	float: left;
+	margin: 10px 10px 10px 10px;
+}
+
+div#joinToday {
+	margin-top: 20px;
+}
+
+div.rightColumn_width300 {
+	background-image: url(../images/style4/transparentWhite_bg.png);
+	background-repeat: repeat;
+	width: 300px;
+	float: left;
+	margin-bottom: 20px;
+}
+
+div.home_contentList {
+	float: left;
+	width: 149px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+div.home_contentList img {
+	border: 1px solid #949494;
+	border-bottom: none;
+}
+
+h3.home_contentTitle {
+	text-transform: uppercase;
+	font-family: Helvetica, sans-serif;
+	color: #fff;
+	background-color: #000;
+	margin-top: -5px;
+	padding: 10px 0 5px 0;
+	font-size: 14px;
+	font-weight: 400;
+	text-align: center;
+}
+
+div.home_contentList dl dd {
+	font-family: Helvetica, sans-serif;
+	color: #464646;
+	font-size: 12px;
+	margin-bottom: 2px;
+}
+
+div.home_contentList dl {
+	margin-top: 5px;
+}
+
+div#join_left {
+	float: left;
+	width: 300px;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+div#join_left h3 {
+	color: #b45b46;
+	font-family: Helvetica, sans-serif;
+	font-size: 22px;
+	font-weight: 600;
+}
+
+div#join_left p, div.rightColumn_width300 p {
+	font-family: Helvetica, sans-serif;
+	color: #656565;
+	font-size: 14px;
+	line-height: 16px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+
+}
+
+a#joinNow:link{
+	width: 280px;
+	height: 140px;
+	float: left;
+	margin-left: 40px;
+	margin-top: 70px;
+	background-image: url(../images/style4/joinNow.png);
+	background-repeat: no-repeat;
+}
+
+a#joinNow:visited{
+	background-image: url(../images/style4/joinNow.png);
+	background-repeat: no-repeat;
+}
+
+a#joinNow:hover{
+	background-image: url(../images/joinNow_hover.png);
+	background-repeat: no-repeat;
+}
+
+div.rightColumn_width300 p {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+h1#topSigner {
+	position: relative;
+}
+
+img#topTen {
+	position: absolute;
+	top: 3px;
+	left: 220px;
+}
+
+div.rightColumn_width300 ul#topSignerList li {
+	background-image: url(../images/style4/recentComments_border.gif);
+	background-repeat: repeat-x;
+	background-position: center bottom;
+	color: #2d2d2d;
+	font-family: Helvetica, sans-serif;
+	font-size: 20px;
+	padding: 10px 0 10px 10px;
+}
+
+div.rightColumn_width300 ul#topSignerList li.noBorderImg, div#gavickModule ul#gModule li.noBorderImg {
+	background-image: none;
+	border: none;
+}
+
+div.rightColumn_width300 ul#topSignerList li {
+	position: relative;
+}
+
+div.rightColumn_width300 ul#topSignerList li a.viewButton {
+	position: absolute;
+	top: 8px;;
+	left: 200px;
+	
+}
+
+/*gavick Module - landing page
+------------------ */
+div#gavickModuleGallery {
+	height: 25px;
+	border-bottom: #000 3px solid;	
+}
+
+ul#gModuleGallery {
+	float: left;
+	margin-top: 5px;
+}
+
+ul#nextButtonsGallery {
+	float: right;
+	margin-top: 5px;
+}
+
+#gavickModuleGallery ul#gModuleGallery li {
+	float: left;
+	border-right: 1px dashed #000;
+}
+
+ul#gModuleGallery a:link {
+	font-family: Helvetica, sans-serif;
+	color: #000;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 14px;	
+	padding: 0px 10px 0 10px;	
+	
+}
+
+ul#gModuleGallery a:visited {
+	color: #000;
+}
+
+ul#gModuleGallery li a:hover {
+	background-color: #000;
+	color: #FFF;
+	border-top: 5px solid #000;
+	border-bottom: 5px solid #000;	
+}
+
+ul#gModuleGallery li a:active {
+	background-color: #000;
+	color: #FFF;
+	border-top: 5px solid #000;
+	border-bottom: 5px solid #000;	
+}
+
+ul#nextButtonsGallery li {
+	float: left;
+	margin-right: 5px;
+}
+
+li.nextCircleGallery a:link {
+	background-image: url(../images/style4/nextButton_grayCircle.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding: 5px;
+}
+
+li.nextCircleGallery a:visited {
+	background-image: url(../images/style4/nextButton_grayCircle.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding: 5px;
+}
+
+li.nextCircleGallery a:hover {
+	background-image: url(../images/style4/nextButton_redCircle.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding: 5px;
+}
+
+li.nextCircleGallery a:active {
+	background-image: url(../images/style4/nextButton_redCircle.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding: 5px;
+}
+
+li#backwardsArrowGallery a:link {
+	background-image: url(../images/style4/nextButton_backwards.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding: 5px;
+}
+
+li#backwardsArrowGallery a:visited {
+	background-image: url(../images/style4/nextButton_backwards.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding: 5px;
+}
+
+
+li#backwardsArrowGallery a:hover {
+	background-image: url(../images/style4/nextButton_backwards_red.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding: 5px;
+}
+
+li#backwardsArrowGallery a:active {
+	background-image: url(../images/style4/nextButton_backwards_red.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding: 5px;
+}
+
+
+li#forwardArrowGallery a:link {
+	background-image: url(../images/style4/nextButton_forwards.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding: 5px;
+}
+
+li#forwardArrowGallery a:visited {
+	background-image: url(../images/style4/nextButton_forwards.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding: 5px;
+}
+
+li#forwardArrowGallery a:hover {
+	background-image: url(../images/style4/nextButton_forwards_red.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding: 5px;
+}
+
+li#forwardArrowGallery a:active {
+	background-image: url(../images/style4/nextButton_forwards_red.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding: 5px;
+}
+#header_wrapGallery, #wrapperGallery, #footer_wrapGallery, #linksonBodyGallery {
+	margin: 0 auto;
+	width: 1002px;
+}
