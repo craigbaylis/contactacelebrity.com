@@ -112,7 +112,8 @@ $type = JRequest::getcmd('type');
 </div>
     <input type="submit" value="submit" />
     <input type="hidden" name="cid" value="<?php echo $this->celebrity->id ?>" />    
-    <input type="hidden" name="address_id" value="<?php echo $this->address->id ?>" />
+    <input type="hidden" name="address_id" value="<?php 
+	if($this->address->id){echo $this->address->id;} else if($this->email->id) { echo $this->email->id;} else{echo $this->website->id;}?>" />
     <input type="hidden" name="controller" value="result" />
     <input type="hidden" name="task" value="save" />
     <input type="hidden" name="itemid" value="<?php echo JRequest::getInt('Itemid') ?>"/>
