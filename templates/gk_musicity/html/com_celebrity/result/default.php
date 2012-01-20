@@ -45,6 +45,15 @@ elseif($type=="website"):
 $name = "Website";
 endif;
 //lightbox
+
+//smiles
+$key=array(":D"=>"laugh.gif"); 
+$smiley_array = array(":D" => "<img src='".JURI::base()."components/com_jcomments/images/smiles/laugh.gif'/>",":lol:" => "<img src='".JURI::base()."components/com_jcomments/images/smiles/lol.gif'/>",":-)" => "<img src='".JURI::base()."components/com_jcomments/images/smiles/smile.gif'/>",";-)" => "<img src='".JURI::base()."components/com_jcomments/images/smiles/wink.gif'/>","8)" => "<img src='".JURI::base()."components/com_jcomments/images/smiles/cool.gif'/>",":-|" => "<img src='".JURI::base()."components/com_jcomments/images/smiles/normal.gif'/>",":-*" => "<img src='".JURI::base()."components/com_jcomments/images/smiles/whistling.gif'/>",":oops:" => "<img src='".JURI::base()."components/com_jcomments/images/smiles/redface.gif'/>",":sad:" => "<img src='".JURI::base()."components/com_jcomments/images/smiles/sad.gif'/>",":cry:" => "<img src='".JURI::base()."components/com_jcomments/images/smiles/cry.gif'/>",":o" => "<img src='".JURI::base()."components/com_jcomments/images/smiles/surprised.gif'/>",":-?" => "<img src='".JURI::base()."components/com_jcomments/images/smiles/confused.gif'/>",":-x" => "<img src='".JURI::base()."components/com_jcomments/images/smiles/shocked.gif'/>",":eek:" => "<img src='".JURI::base()."components/com_jcomments/images/smiles/sick.gif'/>",":zzz" => "<img src='".JURI::base()."components/com_jcomments/images/smiles/sleeping.gif'/>",":P" => "<img src='".JURI::base()."components/com_jcomments/images/smiles/tongue.gif'/>",":roll:" => "<img src='".JURI::base()."components/com_jcomments/images/smiles/rolleyes.gif'/>",":sigh:" => "<img src='".JURI::base()."components/com_jcomments/images/smiles/unsure.gif'/>");
+$codes = array_keys($smiley_array);
+$links = array_values($smiley_array);
+$str = str_replace($codes, $links, $str);
+
+
 ?>
 <style>
 #gk-current-content-wrap{
@@ -432,55 +441,33 @@ GA_googleFillSlot("browse_RT1_300x250");
 </div>
 	<div id="recentComments" style="margin-right:-18px;float:right">
 		<h1 id="result">Recent Comments</h1>
-		
+		<?php
+
+		if($this->Jcomment){
+		foreach($this->Jcomment as $getjcomment){?>
 		<div class="recentCommentPost">
-				<img class="avatar" src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/avatar3.gif" alt="avatar3" width="72" height="71" />
+        <?php if($getjcomment[2] && file_exists($getjcomment[2])):
+			 ?> 
+                            
+ <img src="<?php echo JURI::base();?><?php echo $getjcomment[2];?>" class="avatar" alt="greenStar" width="72" height="71" />                <?php else:?>
+                 <img class="avatar" src="<?php echo JURI::base();?>components/com_community/assets/user_thumb.png" alt="avatar1" width="72" height="71" />
+                <?php endif;?>
 				<ul>
-					<li class="postedBy">Posted by <a href="#">Rossy</a><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /></li>
-					<li class="postingDate">Fri, Sep 04 2010 10:34PM</li>
-					<li class="commentText"><p>I just got signed poster from Audrey Tautou way from France!</p></li>
+					<li class="postedBy">Posted by <a href="index.php?option=com_community&view=profile&userid=<?php echo $getjcomment[5];?>&Itemid=20"><?php echo $getjcomment[0];?></a><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /></li>
+					<li class="postingDate"><?php echo $getjcomment[4];?></li>
+					<li class="commentText" style="word-wrap: break-word;"><p><?php echo str_replace($codes, $links,$getjcomment[1]);?></p></li>
 				</ul>
 		</div><!-- .recentCommentText close -->
-		
-		<div class="recentCommentPost">
-				<img class="avatar" src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/avatar2.gif" alt="avatar2" width="72" height="71" />
-				<ul>
-					<li class="postedBy">Posted by <a href="#">Rossy</a><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /></li>
-					<li class="postingDate">Fri, Sep 04 2010 10:34PM</li>
-					<li class="commentText"><p>I just got signed poster from Audrey Tautou way from France!</p></li>
-				</ul>
-		</div><!-- .recentCommentText close -->
-		
-		<div class="recentCommentPost">
-				<img class="avatar" src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/avatar1.gif" alt="avatar1" width="72" height="71" />
-				<ul>
-					<li class="postedBy">Posted by <a href="#">Rossy</a><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /></li>
-					<li class="postingDate">Fri, Sep 04 2010 10:34PM</li>
-					<li class="commentText"><p>I just got signed poster from Audrey Tautou way from France!</p></li>
-				</ul>
-		</div><!-- .recentCommentText close -->
-		
-		<div class="recentCommentPost">
-				<img class="avatar" src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/avatar5.gif" alt="avatar5" width="72" height="71" />
-				<ul>
-					<li class="postedBy">Posted by <a href="#">Rossy</a><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /></li>
-					<li class="postingDate">Fri, Sep 04 2010 10:34PM</li>
-					<li class="commentText"><p>I just got signed poster from Audrey Tautou way from France!</p></li>
-				</ul>
-		</div><!-- .recentCommentText close -->
-		
-		<div class="recentCommentPost">
-				<img class="avatar" src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/avatar4.gif" alt="avatar4" width="72" height="71" />
-				<ul>
-					<li class="postedBy">Posted by <a href="#">Rossy</a><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /></li>
-					<li class="postingDate">Fri, Sep 04 2010 10:34PM</li>
-					<li class="commentText"><p>I just got signed poster from Audrey Tautou way from France!</p></li>
-				</ul>
-		</div><!-- .recentCommentText close -->
-		
-		<a href="#"><img id="recentCommentRSS" src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/rss2.png" alt="rss%202" width="64" height="25" /></a>
-		
-	
+        	
+		<?php }?>
+        <a href="index.php?option=com_jcomments&task=rss&object_id=<?php echo $id;?>&object_group=com_celebrity&format=raw"><img id="recentCommentRSS" src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/rss2.png" alt="rss%202" width="64" height="25" /></a>
+        <?php } else {?>
+        <div class="avatar_speech_triangle_up"></div>
+        <div class="avatar_speachBubble_325">
+		<p>No Recent Comment</p>						
+		</div><br /><br /><br /><br />
+        <?php }?>
+		<!-- .recentCommentText close -->
 	</div><!--#recentComments close -->
 	
 	
