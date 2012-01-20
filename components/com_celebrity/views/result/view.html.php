@@ -130,7 +130,12 @@ class CelebrityViewResult extends JView
 			$pathway->addItem('Result', '');
 			//Page title
 			$settitle = ''.$CelebrityDetail->full_name.' '.$type.''.$anumber.' result - 100% FREE! ContactACelebrity.com (#'.$ResultAddress->id.')';
-			$document->setTitle( $settitle );		
+			$document->setTitle( $settitle );
+				
+			//jcomment			
+			$Jcomment = $this->get('Recentcomment');
+			$this->assignRef('Jcomment',$Jcomment);	
+			
 			//result photo
             $data = $this->get('Data');
             $this->assignRef('data', $data);
