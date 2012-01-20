@@ -61,6 +61,7 @@ $user =& JFactory::getUser();
 
 //get member sent
 $newmodel = $this->getModel();
+
 ?>
 <style>
 ul.pagination_result li a, ul.pagination_result li span {
@@ -252,7 +253,18 @@ background-attachment: scroll;
 		<div class="avatar_speachBubble">
 			<div class="successStatus">
 				<ul>
-					<li class="postedBy">Posted by <a href="<?php echo JRoute::_('index.php?option=com_community&view=profile&userid='.$this->ResultAddress[$m]->created_by_id); ?>"><?php echo $this->ResultAddress[$m]->username;?></a><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /></li>
+					<li class="postedBy">Posted by <a href="<?php echo JRoute::_('index.php?option=com_community&view=profile&userid='.$this->ResultAddress[$m]->created_by_id); ?>"><?php echo $this->ResultAddress[$m]->username;?></a><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" />
+                    <!--picture indicator-->
+                    <?php 
+					$return_pic = $newmodel->getPictureresult($this->ResultAddress[$m]->id);
+					if($return_pic):
+					?>
+                    <img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/pic_indicator.png"   />
+                    <?php endif;?>
+                    
+                    <!--picture indicator-->
+                    
+                    </li>
 					<li class="postingDate"><?php echo $this->ResultAddress[$m]->datecreate;?></li>
 					<li class="status">Status:<span class="greenText"><?php echo $this->ResultAddress[$m]->label;?></span></li>
 					<?php if(!$this->ResultAddress[$m]->quality):?>
