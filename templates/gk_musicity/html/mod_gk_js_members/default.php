@@ -164,7 +164,20 @@ $j=1;
                                                  </li>
                                                
                                                
-                                                 <li>&nbsp;</li>
+                                                 <li class="success" style="width:520px; float:left;margin-left:-7px;">
+                                      <?php
+									//success
+									 	$getsucess = $this->getResults($member->id,'success');
+										$successvote = new stdClass();
+										$successvote = $getsucess[$member->id];	
+										//failure
+										$getfailure = $this->getResults($member->id,'returned');
+										$failurevote = new stdClass();
+										$failurevote = $getfailure[$member->id];									
+
+									 ?>
+									
+                                     <?php $imagecheck = (!empty($successvote->total_success)) ? 'success_check.png' : 'success_uncheck.png' ?> <img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/<?php echo $imagecheck;?>" alt="success" title="success"/>Success  <img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/success_green.png" alt="successNumber" title="successNumber"><a class="green" href="#"><?php echo (!empty($successvote->total_success)) ? $successvote->total_success : '0' ?></a><a class="red" href="#"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/unsuccess_red.png" alt="unsuccessNumber" title="unsuccessNumber"/><?php echo (!empty($failurevote->total_returned)) ? $failurevote->total_returned : '0' ?></a></li> 
                                                  <li>&nbsp;</li>
                                                  <li>&nbsp;</li>
                                                  <?php }?>
@@ -174,6 +187,20 @@ $j=1;
                                                 <li class="addressLine1">
 												<?php echo wordwrap($member->url, 20, "\n", true);?>
                                                  </li>
+                                                  <li class="success" style="width:520px; float:left;margin-left:-7px;">
+                                      <?php
+									//success
+									 	$getsucess = $this->getResults($member->id,'success');
+										$successvote = new stdClass();
+										$successvote = $getsucess[$member->id];	
+										//failure
+										$getfailure = $this->getResults($member->id,'returned');
+										$failurevote = new stdClass();
+										$failurevote = $getfailure[$member->id];									
+
+									 ?>
+									
+                                     <?php $imagecheck = (!empty($successvote->total_success)) ? 'success_check.png' : 'success_uncheck.png' ?> <img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/<?php echo $imagecheck;?>" alt="success" title="success"/>Success  <img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/success_green.png" alt="successNumber" title="successNumber"><a class="green" href="#"><?php echo (!empty($successvote->total_success)) ? $successvote->total_success : '0' ?></a><a class="red" href="#"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/unsuccess_red.png" alt="unsuccessNumber" title="unsuccessNumber"/><?php echo (!empty($failurevote->total_returned)) ? $failurevote->total_returned : '0' ?></a></li> 
                                                  <?php }?>
                                                  <?php if($member->name){
 													 ?>
