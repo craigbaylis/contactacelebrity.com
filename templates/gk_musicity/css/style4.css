@@ -2630,3 +2630,355 @@ margin-top: 15px;
 max-width: 500px;
 }
 
+
+/*index page
+-------------------------------------- */
+div#homeLeftContainer {
+	width: 680px;
+	float: left;
+}
+
+div#homeRightContainer {
+	float: right;
+	width: 300px;
+}
+
+
+div#homeMainContentContainer {
+	float: left;
+	margin: 10px 10px 10px 10px;
+}
+
+div#joinToday {
+	margin-top: 20px;
+}
+
+div.rightColumn_width300 {
+	background-image: url(../images/style4/transparentWhite_bg.png);
+	background-repeat: repeat;
+	width: 300px;
+	float: left;
+	margin-bottom: 20px;
+}
+
+div.home_contentList {
+	float: left;
+	width: 149px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+div.home_contentList img {
+	border: 1px solid #949494;
+	border-bottom: none;
+}
+
+h3.home_contentTitle {
+	text-transform: uppercase;
+	font-family: Helvetica, sans-serif;
+	color: #fff;
+	background-color: #000;
+	margin-top: -5px;
+	padding: 10px 0 5px 0;
+	font-size: 14px;
+	font-weight: 400;
+	text-align: center;
+}
+
+div.home_contentList dl dd {
+	font-family: Helvetica, sans-serif;
+	color: #464646;
+	font-size: 12px;
+	margin-bottom: 2px;
+}
+
+div.home_contentList dl {
+	margin-top: 5px;
+}
+
+div#join_left {
+	float: left;
+	width: 300px;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+div#join_left h3 {
+	color: #b45b46;
+	font-family: Helvetica, sans-serif;
+	font-size: 22px;
+	font-weight: 600;
+}
+
+div#join_left p, div.rightColumn_width300 p {
+	font-family: Helvetica, sans-serif;
+	color: #656565;
+	font-size: 14px;
+	line-height: 16px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+
+}
+
+a#joinNow:link{
+	width: 280px;
+	height: 140px;
+	float: left;
+	margin-left: 40px;
+	margin-top: 70px;
+	background-image: url(../images/style4/joinNow.png);
+	background-repeat: no-repeat;
+}
+
+a#joinNow:visited{
+	background-image: url(../images/style4/joinNow.png);
+	background-repeat: no-repeat;
+}
+
+a#joinNow:hover{
+	background-image: url(../images/style4/joinNow_hover.png);
+	background-repeat: no-repeat;
+}
+
+div.rightColumn_width300 p {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+h1#topSigner {
+	position: relative;
+}
+
+img#topTen {
+	position: absolute;
+	top: 3px;
+	left: 220px;
+}
+
+div.rightColumn_width300 ul#topSignerList li {
+	background-image: url(../images/style4/recentComments_border.gif);
+	background-repeat: repeat-x;
+	background-position: center bottom;
+	color: #2d2d2d;
+	font-family: Helvetica, sans-serif;
+	font-size: 20px;
+	padding: 10px 0 10px 10px;
+}
+
+div.rightColumn_width300 ul#topSignerList li.noBorderImg, div#gavickModule ul#gModule li.noBorderImg {
+	background-image: none;
+	border: none;
+}
+
+div.rightColumn_width300 ul#topSignerList li {
+	position: relative;
+}
+
+div.rightColumn_width300 ul#topSignerList li a.viewButton {
+	position: absolute;
+	top: 8px;;
+	left: 200px;
+	
+}
+
+/* Forum Post
+-------------------------- */
+
+div.forumPost {
+	height: 80px;
+}
+
+.forumPost img.avatar {
+	width: 50px;
+	height: 50px;
+	margin-right: 10px;
+	margin-top: 5px;
+}
+
+
+.forumPost {
+	background-image: url(../images/style4/recentComments_border.gif);
+	background-repeat: repeat-x;
+	background-position: bottom;
+	margin-top: 5px;
+
+}
+
+div.forumPost ul li.postedBy a:link {
+	font-style: italic;
+	color: #b44233;
+}
+
+div.forumPost ul li.postedBy a:visited {
+	font-style: italic;
+	color: #b44233;
+}
+
+div.forumPost ul li.postedBy a:hover {
+	color: #464646;
+}
+
+div.forumPost ul li.postedBy a:active {
+	color: #464646;
+}
+
+div#home_bottomContainer {
+	width: 1002px;
+}
+
+div.width240 {
+	width: 240px;
+	background-image: url(../images/style4/transparentWhite_bg.png);
+	background-repeat: repeat;
+	float: left;
+	margin-right: 14px;
+	padding-bottom: 20px;
+}
+
+div.width240_noMargin {
+	width: 240px;
+	background-image: url(../images/style4/transparentWhite_bg.png);
+	background-repeat: repeat;
+	float: left;
+	padding-bottom: 20px;
+}
+
+div.newAddress {
+	background-image: url(../images/style4/recentComments_border.gif);
+	background-repeat: repeat-x;
+	background-position: bottom center;
+	margin-top: 5px;
+	height: 40px;
+	margin-top: 10px;
+	padding-bottom: 5px;
+}
+
+div.newAddress ul {
+	width: 140px;
+	margin-left: 10px;
+	float: left;
+
+}
+
+div.newAddress ul li {
+	font-family: Helvetica, sans-serif;
+	color: #464646;
+	
+}
+
+div.newAddress ul li.celebrityName {
+	font-weight: bold;
+	font-size: 14px;
+}
+
+div.newAddress ul li.address1, div.newAddress ul li.address2 {
+	font-size: 12px;
+}
+
+
+/* Member Activity
+-------------------------- */
+div.width240 div.forumPost li.commentText {
+	font-size: 12px;
+}
+
+div.width240 div.forumPost {
+	height: 70px;
+}
+
+
+
+/*vewDetailButton
+--------------------------- */
+
+.viewDetailButton {
+	margin-right: 10px;
+	float: right;
+	font-family: sans-serif;
+	
+}
+
+
+a.viewDetailButton:link {
+	border: 1px solid #8d382d;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding: 5px 10px 4px 10px;
+	background-color: #b44233;
+	color: #FFF;
+	font-weight: 400;
+	text-decoration: none;
+	font-size: 11px;
+}
+
+a.viewDetailButton:visited {
+	border: 1px solid #8d382d;
+	background-color: #b44233;
+}
+
+a.viewDetailButton:hover {
+	border: 1px solid #d19e98;
+	background-color: #efd8d5;
+	color: #b44233;
+}
+
+a.viewDetailButton:active {
+	border: 1px solid #d19e98;
+	background-color: #efd8d5;
+	color: #b44233;
+}
+
+/*hottestCelebList
+------------------------ */
+
+div.hottestCelebList {
+	width: 56px;
+	float: left;
+	padding-left: 4px;
+	margin-top: 10px;
+
+}
+
+div.hottestCelebList a:link.celebrity img{
+	border: 1px solid #949494;
+}
+
+div.hottestCelebList a:hover.celebrity img {
+	border: 1px solid #b44233;
+}
+
+div.hottestCelebList a:link.celebrity p {
+	font-size: 12px;
+	text-align: center;
+	color: #464646;
+	font-weight: 600;
+}
+
+div.hottestCelebList a:hover.celebrity p {
+	font-size: 12px;
+	text-align: center;
+	color: #b44233;
+}
+
+/* CAC News
+--------------------------- */
+div.width240_noMargin h3{
+	color: #464646;
+	font-family: Helvetica, sans-serif;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+div.width240_noMargin p {
+	color: #464646;
+	font-family: Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 16px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+
+
+
+
