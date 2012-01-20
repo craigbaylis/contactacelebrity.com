@@ -668,11 +668,33 @@ class CelebrityModelAddress extends JModel
         $result = $db->loadResultArray();
         return $result; 
           
-    }   	    
+    } 
+	
+	
+/*=========================================Picture indicator==============================*/
+ public function getPictureresult($resultid)
+    {
+        if (!$resultid) JError::raiseError(500,'Missing result identification code');
+        
+        //build query
+        $query = "
+            SELECT 
+              a.filename
+            FROM
+              #__phocagallery a                    
+            WHERE
+              a.result_id = $resultid and a.filename <> ' '
+        ";
+        $db = JFactory::getDBO();
+        $db->setQuery($query);
+        $result = $db->loadResultArray();
+        return $result; 
+          
+    }     	    
    
 }
 
-
+	
 	
 	
 

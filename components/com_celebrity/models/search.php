@@ -150,6 +150,7 @@ class CelebrityModelSearch extends JModel
                   CONCAT(d.celebrity_id, '_', d.file_name, '_S', '.', d.file_ext) AS image,
                   a.famous_for,
                   c.name AS profession,
+				  a.album_catid,
                   a.gender
                 FROM
                   #__celebrity_celebrity_profession b
