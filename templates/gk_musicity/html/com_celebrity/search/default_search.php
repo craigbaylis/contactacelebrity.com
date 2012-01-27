@@ -233,13 +233,12 @@ if(JRequest::getCmd('searchword'))
     </div>
     
     <?php } ?>
-</div>
-
-<div style="margin-right:40px;<?php if(count($this->celebrities)<=8){?>margin-left:410px;<?php }?>float: right;">
+<div>&nbsp;</div>
+<div style="margin-right:40px;float: right;">
     <div id="thankYou">
         <p>
             <span class="big">"</span><?php echo JText::_('CACTHANKYOU') ?>
         </p>
     </div>
 </div>
-
+</div>
