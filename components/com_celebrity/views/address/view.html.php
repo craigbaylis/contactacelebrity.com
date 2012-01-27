@@ -160,7 +160,7 @@ class CelebrityViewAddress extends JView
 				//result for address
 				$ResultAddress = $addressModel->getResultOfAddress();
 				$this->assignRef('ResultAddress',$ResultAddress);
-					
+				
 				//pass in pagination
 				$pagination = $this->get('Pagination');
 				$this->assignRef('pagination',$pagination);
@@ -169,9 +169,10 @@ class CelebrityViewAddress extends JView
 				$pathway   =& $mainframe->getPathway();
 				$getcid = Jrequest::getcmd('cid');
 				$celebritypath = 'index.php?option=com_celebrity&view=celebrity&task=details&cid='.$getcid.'&Itemid=60';
+				
 				unset($pathway->_pathway[0]); //delete a celebrity detail page path
-				$pathway->addItem('Celebrity Details Page', $celebritypath);
-				$pathway->addItem('Address', '');
+				$pathway->addItem($celebrity->full_name, $celebritypath);
+				$pathway->addItem('Address #'.JRequest::getcmd('anumber'), '');
                 break;                
                 case 'email':
 				$emailModel = $this->getModel();
@@ -199,8 +200,8 @@ class CelebrityViewAddress extends JView
 				$getcid = Jrequest::getcmd('cid');
 				$celebritypath = 'index.php?option=com_celebrity&view=celebrity&task=details&cid='.$getcid.'&Itemid=60';
 				unset($pathway->_pathway[0]); //delete a celebrity detail page path
-				$pathway->addItem('Celebrity Details Page', $celebritypath);
-				$pathway->addItem('Email', '');
+				$pathway->addItem($celebrity->full_name, $celebritypath);
+				$pathway->addItem('Email #'.JRequest::getcmd('anumber'), '');
                 break;
                 
                 case 'website':
@@ -229,8 +230,8 @@ class CelebrityViewAddress extends JView
 				$getcid = Jrequest::getcmd('cid');
 				$celebritypath = 'index.php?option=com_celebrity&view=celebrity&task=details&cid='.$getcid.'&Itemid=60';
 				unset($pathway->_pathway[0]); //delete a celebrity detail page path
-				$pathway->addItem('Celebrity Details Page', $celebritypath);
-				$pathway->addItem('Website', '');
+				$pathway->addItem($celebrity->full_name, $celebritypath);
+				$pathway->addItem('Website #'.JRequest::getcmd('anumber'), '');
 				
                 break;
             }
