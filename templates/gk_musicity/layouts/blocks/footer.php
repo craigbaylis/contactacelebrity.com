@@ -4,7 +4,11 @@
 		<jdoc:include type="modules" name="footer_nav" style="none" />
 	</div>		
 	<?php endif; ?>
-	
+  <?php if($this->countModules('footer_menu')) : ?>
+	<div id="gk-footer-nav">
+		<jdoc:include type="modules" name="footer_menu" style="none" />
+	</div>		
+	<?php endif; ?>
 	<?php if($this->getParam('stylearea', 1)) : ?>
 	<div id="stylearea">
 		<a href="#" class="style_switcher" id="style_switcher1">red</a>
