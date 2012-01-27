@@ -2840,7 +2840,7 @@ div.width240_noMargin {
 	background-image: url(../images/style4/transparentWhite_bg.png);
 	background-repeat: repeat;
 	float: left;
-	padding-bottom: 20px;
+	padding-bottom: 100px;
 }
 
 div.newAddress {
@@ -2883,7 +2883,7 @@ div.width240 div.forumPost li.commentText {
 }
 
 div.width240 div.forumPost {
-	height: 70px;
+	height: 78px;/*70px*/
 }
 
 
@@ -2913,7 +2913,14 @@ a.viewDetailButton:link {
 
 a.viewDetailButton:visited {
 	border: 1px solid #8d382d;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding: 5px 10px 4px 10px;
 	background-color: #b44233;
+	color: #FFF;
+	font-weight: 400;
+	text-decoration: none;
+	font-size: 11px;
 }
 
 a.viewDetailButton:hover {
