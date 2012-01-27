@@ -125,9 +125,9 @@ class CelebrityViewResult extends JView
 			$pathway   =& $mainframe->getPathway();
 			$celebritypath = 'index.php?option=com_celebrity&view=celebrity&task=details&cid='.$CelebrityDetail->id.'&Itemid=60';
 			unset($pathway->_pathway[0]); //delete a celebrity detail page path name
-			$pathway->addItem('Celebrity Details Page', $celebritypath);
-			$pathway->addItem(ucfirst($type), $addresspage);
-			$pathway->addItem('Result', '');
+			$pathway->addItem($CelebrityDetail->full_name, $celebritypath);
+			$pathway->addItem(ucfirst($type).' #'.JRequest::getcmd('anumber'), $addresspage);
+			$pathway->addItem('Mailing Result for '.$CelebrityDetail->full_name, '');
 			//Page title
 			$settitle = ''.$CelebrityDetail->full_name.' '.$type.''.$anumber.' result - 100% FREE! ContactACelebrity.com (#'.$ResultAddress->id.')';
 			$document->setTitle( $settitle );
