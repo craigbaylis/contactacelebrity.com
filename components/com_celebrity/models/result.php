@@ -252,8 +252,8 @@ return $arraymerge;
 /*=================================================Jcomment - Recent======================================*/	
 
 public function getRecentcomment() {
- 		$id  = Jrequest::getcmd("id");
-        if (!$id) JError::raiseError(500,'Missing result id identification code');
+ 		//$id  = Jrequest::getcmd("id");
+       // if (!$id) JError::raiseError(500,'Missing result id identification code');
 		
         //build query
         $query = "select
@@ -266,7 +266,7 @@ public function getRecentcomment() {
 			  from  #__jcomments b 
 			  INNER JOIN #__community_users a ON (a.userid = b.userid)
 			  INNER JOIN #__users c ON (c.id = b.userid)
-			  where b.object_id = ".$id." and b.object_group = 'com_celebrity' order by b.id desc limit 0,4";
+			  order by b.id desc limit 0,4";
 		 $db = JFactory::getDBO();
         $db->setQuery($query);
         $result = $db->loadRowList();
