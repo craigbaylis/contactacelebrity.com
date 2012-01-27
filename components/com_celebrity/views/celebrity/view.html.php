@@ -136,6 +136,12 @@ class CelebrityViewCelebrity extends JView
                 $this->assignRef('profile_image',$profile_image);
                 $this->assignRef('details',$details);
                 $this->assignRef('profile_image',$profile_image);
+				
+				//breadcrumbs
+				$mainframe = &JFactory::getApplication();
+				$pathway   =& $mainframe->getPathway();
+				unset($pathway->_pathway[0]); //delete a celebrity detail page path
+				$pathway->addItem($details->full_name, $celebritypath);
                 break;
 				/*add an image module*/
 				 case 'lightupload':
