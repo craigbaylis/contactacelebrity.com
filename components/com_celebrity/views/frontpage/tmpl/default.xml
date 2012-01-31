@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="Front Page - Kevin" hidden="false">
+        <message>
+            <![CDATA[
+               Front Page contain a Most recent celebrity result,top celebrity signer,forum comments etc.
+            ]]>
+        </message>
+    </layout>
+    <state>
+        <name>Front Page</name>
+        <description>Front Page contain a Most recent celebrity result,top celebrity signer,forum comments etc.</description>       
+    </state>
+</metadata>
