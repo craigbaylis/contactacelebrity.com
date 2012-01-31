@@ -164,6 +164,11 @@ class CelebrityViewCelebrity extends JView
 				 $this->setLayout('watermark_deceased');
 				 break;
 				/*watermark deceased*/
+				/*Upload using a celebrityid*/
+				 case 'uploadceleb':
+				 $this->setLayout('uploadcelebrity');
+				 break;
+				/*Upload using a celebrityid*/				
             default:
                 $this->setLayout('default');
                 //build profession dropdown
