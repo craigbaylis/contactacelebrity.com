@@ -2746,7 +2746,15 @@ div.rightColumn_width300 p {
 }
 
 h1#topSigner {
-	position: relative;
+	color: #FFF;
+	font-size: 20px;	
+	background-image: url(../images/style4/moduleH3.png);
+	background-repeat: repeat;
+	background-position: top left;
+	font-family: Trade Gothic, Helvetica, sans-serif;
+	padding: 15px 0 10px 10px;
+	height: 16px;
+	margin-top: 15px;
 }
 
 img#topTen {
@@ -2983,6 +2991,18 @@ div.width240_noMargin p {
 	line-height: 16px;
 	margin-left: 10px;
 	margin-top: 10px;
+}
+h1.redBg {
+	color: #FFF;
+	font-size: 20px;	
+	background-image: url(../images/style4/moduleH3.png);
+	background-repeat: repeat-x;
+	background-position: bottom left;
+	font-family: Trade Gothic, Helvetica, sans-serif;
+	padding: 15px 0 10px 10px;
+	height: 16px;
+	margin-top: 15px;
+	max-width: 500px;
 }
 
 
