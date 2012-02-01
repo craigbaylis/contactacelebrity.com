@@ -17,7 +17,7 @@ jimport( 'joomla.application.component.view' );
 * @subpackage   EXTENSION
 * @copyright    Copyright (C) TCM Services. All rights reserved.
 */
-class CelebrityViewfrontpage extends JView
+class CelebrityViewFrontpage extends JView
 {
 
     public function display($tpl = null)
