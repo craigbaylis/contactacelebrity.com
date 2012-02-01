@@ -342,3 +342,57 @@ a.nsp_comments { }
 #nsp-newsfooter p.nsp_text { color:#FFF;}
 #nsp-newsfooter p.nsp_info { color:#FFF;}
 #nsp-newsfooter .nsp_art { border-right:#3F3F3F solid 1px;margin-top:15px;margin-right:-5px;margin-left:4px;}
+
+
+
+
+/* Celebrityresult */
+.gk_js_members_result{ clear:both; }
+.gk_js_members_result .gk_js_content{ float:left; clear:both; }
+.gk_js_members_result .gk_js_content.loading { background: transparent url('../images/style1/loader.gif') no-repeat center center; }
+.gk_js_members_result .gk_js_content_wrap{ position:relative; }
+.gk_js_members_result .gk_js_overlay{ width:100%; height:100%; background:#aaa; display:none; position:absolute; z-index:10; top:0; }
+.gk_js_members_result .gk_js_members{ display:none; clear:both; position:relative; }
+.gk_js_members_result .gk_js_members_scroll1{overflow:hidden; }
+.gk_js_members_result .gk_js_members_scroll2{width:100000px; overflow:hidden; }
+.gk_js_members_result .gk_js_members_wrap{float:left; }
+.gk_js_members_result .gk_js_members:first-child{display:block; }
+.gk_js_members_result .gk_js_member{ float:left; overflow:hidden; /* padding-top: 18px; */ }
+.gk_js_members_result .gk_js_member > div{ padding-right: 7px; }
+.gk_js_members_result .gk_js_avatar{ display: block; }
+.gk_js_members_result .gk_js_avatar img{ display: block; opacity: 0.8; filter:alpha(opacity=80); }
+.gk_js_members_result .gk_js_member_wrap:hover img { opacity: 1.0; filter:alpha(opacity=100); }
+.gk_js_members_result .gk_js_member_name{ background: #000; height: 28px; line-height: 29px; color: #fff; text-align: center; text-transform: uppercase; font-size: 11px; margin-bottom: 14px; }
+.gk_js_members_result .gk_js_since,				
+.gk_js_members_result .gk_js_lastonline,
+.gk_js_members_result .gk_js_profileviews { font-size: 11px; }
+.gk_js_members_result .gk_js_since span,				
+.gk_js_members_result .gk_js_lastonline span,
+.gk_js_members_result .gk_js_profileviews span { display: block; float: left; }
+.gk_js_members_result .gk_js_since span:first-child,				
+.gk_js_members_result .gk_js_lastonline span:first-child,
+.gk_js_members_result .gk_js_profileviews span:first-child { width: 75px; clear: both; }
+.gk_js_members_result .gk_js_since span:first-child { color: #656565; }
+.gk_js_members_result .gk_js_since span { color: #bc372d; }
+.gk_js_members_result .gk_js_interface { position:absolute; right:0; top:-33px; }
+.gk_js_members_result .gk_js_interface > div { float: right; }	
+.gk_js_members_result .gk_js_interface span { float:left; border:none !important; width:10px; height:10px; background: transparent url('../images/style1/gk_nsp_interface.png') no-repeat center -32px; text-indent: -999em!important; margin:6px 0 0 5px; cursor:pointer; padding:0 !important; display:block; }	
+.gk_js_members_result .gk_js_interface span.active,
+.gk_js_members_result .gk_js_interface span:hover { background-position:center -22px; cursor:pointer; }
+.gk_js_members_result .gk_js_interface span.gk_js_page { float: left; } 	
+.gk_js_members_result .gk_js_interface span.gk_js_next,
+.gk_js_members_result .gk_js_interface span.gk_js_prev { background: transparent url('../images/style1/gk_nsp_interface.png') no-repeat left -11px; float:left; border:none !important; height:11px; display: block; width:8px; margin:5px 0 0 4px; cursor:pointer; text-indent:-999em; padding:0 !important; }
+.gk_js_members_result .gk_js_interface span.gk_js_prev { margin-left: 10px; }
+.gk_js_members_result .gk_js_interface span.gk_js_next { background-position: right -11px; }
+.gk_js_members_result .gk_js_interface span.gk_js_prev:hover { background-position: left top; }	
+.gk_js_members_result .gk_js_interface span.gk_js_next:hover { background-position: right top; }
+.gk_js_members_result .gk_js_tabs { margin: 0; padding: 0; overflow:hidden; border-bottom: 5px solid #000; }
+.gk_js_members_result .gk_js_tabs_wrap{}
+.gk_js_members_result .gk_js_tab { background:transparent; float: left; cursor: pointer; margin: 0; border: none!important; padding: 0; height: 32px; text-transform:uppercase; color: #656565;}
+.gk_js_members_result .gk_js_tab:first-child span { border-left: none!important; }
+.gk_js_members_result .gk_js_tab span { display: block; padding: 0 14px; margin: 6px 0; font-size: 16px; line-height:24px; border-left:1px dashed #999; }
+.gk_js_members_result .gk_js_tab.active,
+.gk_js_members_result .gk_js_tab.active:hover { background: url('../images/dark_bg.png') repeat 0 0; color: #9f9f9f!important; }
+.gk_js_members_result .gk_js_tab.active + div span,
+.gk_js_members_result .gk_js_tab.active span { border-left: 1px solid transparent; } 
+.gk_js_members_result .gk_js_tab:hover { color: #000; }	
