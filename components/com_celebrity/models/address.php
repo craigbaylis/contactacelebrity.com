@@ -439,7 +439,8 @@ class CelebrityModelAddress extends JModel
               a.address_id,
 			  a.celebrity_id            
             FROM
-              #__celebrity_celebrity_address a                    
+              #__celebrity_celebrity_address a    
+			  INNER JOIN jos_celebrity_address ca ON (a.address_id = ca.id)                
             WHERE
               a.celebrity_id = $cid
         ";
@@ -611,7 +612,8 @@ class CelebrityModelAddress extends JModel
               a.id as address_id,
 			  a.celebrity_id            
             FROM
-              #__celebrity_email a                    
+              #__celebrity_email a    
+			  Left JOIN #__celebrity_address ca ON (a.id = ca.id)                
             WHERE
               a.celebrity_id = $cid
         ";
@@ -659,7 +661,8 @@ class CelebrityModelAddress extends JModel
               a.id as address_id,
 			  a.celebrity_id            
             FROM
-              #__celebrity_website a                    
+              #__celebrity_website a 
+			  Left JOIN #__celebrity_address ca ON (a.id = ca.id)                  
             WHERE
               a.celebrity_id = $cid
         ";

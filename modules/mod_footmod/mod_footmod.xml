@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+    <name>Footer Module</name>
+    <author>Craig Baylis</author>
+    <version>1.0.0</version>
+    <description>Footer Module (New address,Recentactivity,hot celebrity,content)</description>
+    <files>
+        <filename>mod_footmod.xml</filename>
+        <filename module="mod_footmod">mod_footmod.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+    </files>
+    <params>
+    </params>
+</install>

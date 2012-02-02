@@ -1,0 +1,20 @@
+@charset "utf-8";
+/* CSS Document */
+.zKparamSpace {
+	background: none repeat scroll 0 0 #F3F3F3 !important;
+	color: #00F !important;
+	font-weight: bold;
+	border-right-width: 5px;
+	border-left-width: 5px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #00F;
+	border-left-color: #00F;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #00F;
+	padding-top: 2px;
+	padding-right: 10px;
+	padding-bottom: 2px;
+	padding-left: 10px;
+}
