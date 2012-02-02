@@ -354,26 +354,26 @@ a.nsp_comments { }
 .gk_js_members_result .gk_js_overlay{ width:100%; height:100%; background:#aaa; display:none; position:absolute; z-index:10; top:0; }
 .gk_js_members_result .gk_js_members{ display:none; clear:both; position:relative; }
 .gk_js_members_result .gk_js_members_scroll1{overflow:hidden; }
-.gk_js_members_result .gk_js_members_scroll2{width:100000px; overflow:hidden; }
+.gk_js_members_result .gk_js_members_scroll2{width:100000px; overflow:hidden;margin:8px; }
 .gk_js_members_result .gk_js_members_wrap{float:left; }
 .gk_js_members_result .gk_js_members:first-child{display:block; }
 .gk_js_members_result .gk_js_member{ float:left; overflow:hidden; /* padding-top: 18px; */ }
-.gk_js_members_result .gk_js_member > div{ padding-right: 7px; }
+.gk_js_members_result .gk_js_member > div{ padding-right: 12px; /*7px;*/}
 .gk_js_members_result .gk_js_avatar{ display: block; }
 .gk_js_members_result .gk_js_avatar img{ display: block; opacity: 0.8; filter:alpha(opacity=80); }
 .gk_js_members_result .gk_js_member_wrap:hover img { opacity: 1.0; filter:alpha(opacity=100); }
 .gk_js_members_result .gk_js_member_name{ background: #000; height: 28px; line-height: 29px; color: #fff; text-align: center; text-transform: uppercase; font-size: 11px; margin-bottom: 14px; }
 .gk_js_members_result .gk_js_since,				
 .gk_js_members_result .gk_js_lastonline,
-.gk_js_members_result .gk_js_profileviews { font-size: 11px; }
+.gk_js_members_result .gk_js_profileviews { font-family: Helvetica, sans-serif;color: #464646;font-size: 12px;margin-bottom: 2px; }
 .gk_js_members_result .gk_js_since span,				
 .gk_js_members_result .gk_js_lastonline span,
-.gk_js_members_result .gk_js_profileviews span { display: block; float: left; }
+.gk_js_members_result .gk_js_profileviews span { display: block; float: left;font-family: Helvetica, sans-serif;color: #464646;font-size: 12px;margin-bottom: 2px; }
 .gk_js_members_result .gk_js_since span:first-child,				
 .gk_js_members_result .gk_js_lastonline span:first-child,
-.gk_js_members_result .gk_js_profileviews span:first-child { width: 75px; clear: both; }
-.gk_js_members_result .gk_js_since span:first-child { color: #656565; }
-.gk_js_members_result .gk_js_since span { color: #bc372d; }
+.gk_js_members_result .gk_js_profileviews span:first-child { width: 75px; clear: both;font-family: Helvetica, sans-serif;color: #464646;font-size: 12px;margin-bottom: 2px; }
+.gk_js_members_result .gk_js_since span:first-child { color: #656565; font-family: Helvetica, sans-serif;color: #464646;font-size: 12px;margin-bottom: 2px;}
+.gk_js_members_result .gk_js_since span { color: #bc372d; font-family: Helvetica, sans-serif;color: #464646;font-size: 12px;margin-bottom: 2px;}
 .gk_js_members_result .gk_js_interface { position:absolute; right:0; top:-33px; }
 .gk_js_members_result .gk_js_interface > div { float: right; }	
 .gk_js_members_result .gk_js_interface span { float:left; border:none !important; width:10px; height:10px; background: transparent url('../images/style1/gk_nsp_interface.png') no-repeat center -32px; text-indent: -999em!important; margin:6px 0 0 5px; cursor:pointer; padding:0 !important; display:block; }	
