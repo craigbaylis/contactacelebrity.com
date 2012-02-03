@@ -11,13 +11,14 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access'); ?>
 <?php JHTML::stylesheet('zk_latest.css','modules/mod_zkunenalatest/assets/'); ?>
-<div class="forumPost">
 <div id="zKlatest">
 <?php if ($params->get('addHeader', 0)) : ?>
 	<div id="zKlatestHeader"><?php echo $params->get('headerText', '') ?></div>
 <?php endif; ?>
-<div id="Kboxwrap<?php echo $module->id ?>" class="Kboxwrap kwrap" >
+<div id="Kboxwrap<?php echo $module->id ?>" class="Kboxwrap kwrap" style="width:300px;" >
 <?php foreach($list as $item) : ?>
+<div class="forumPost">
+
 	<div class="Kboxgridwrap" >
         <div class="Kboxgrid captionfull<?php echo $module->id ?>">
         <?php if($params->get('showAvatar', 1) == 1 ) :?>
@@ -29,6 +30,20 @@ defined('_JEXEC') or die('Restricted access'); ?>
         		<?php echo modZKunenaLatestHelper::getTopicIcon( $item, $params ); ?>
             </div>
         <?php endif ;?>
+                  <?php if ($params->get('showAuthor', 1)) : ?>
+            <div class="zKlatestAuthor">
+				<?php 
+                echo $params->get( 'authorPrefix', 'Posted by' ). ' ';
+                echo CKunenaLink::GetProfileLink ($item->userid, $item->name);
+                ?><img src="<?php echo JURI::base().'templates/gk_musicity/images/style4/';?>greenStar.png" alt="greenStar" width="13" height="12" /><img src="<?php echo JURI::base().'templates/gk_musicity/images/style4/';?>greenStar.png" alt="greenStar" width="13" height="12" />
+            </div>
+            <?php endif; ?>
+             <?php if ($params->get('showTime')) : ?>
+            <div class="zKlatestDatetime">
+                <?php echo modZKunenaLatestHelper::getPostDate($item, $params)?>
+            </div>
+            <?php endif; ?>
+            <br />
             <div class="zKlatestSubject">
                 <?php echo modZKunenaLatestHelper::getSubject($item, $params); ?>
                 <?php if (($params->get('showNew', 1))&& ($item->unread)) :?>
@@ -37,20 +52,9 @@ defined('_JEXEC') or die('Restricted access'); ?>
                 </span>
                 <?php endif;?>
             </div>
-            <?php if ($params->get('showAuthor', 1)) : ?>
-            <div class="zKlatestAuthor">
-				<?php 
-                echo $params->get( 'authorPrefix', 'by' ). ' ';
-                echo CKunenaLink::GetProfileLink ($item->userid, $item->name);
-                ?>
-            </div>
-            <?php endif; ?>
+  
 
-            <?php if ($params->get('showTime')) : ?>
-            <div class="zKlatestDatetime">
-                <?php echo modZKunenaLatestHelper::getPostDate($item, $params)?>
-            </div>
-            <?php endif; ?>
+           
             <?php if(!$params->get('noMooFX', 0 )) : ?>
             <div class="cover Kboxcaption">
                 <?php echo modZKunenaLatestHelper::getSubject($item, $params); ?>
@@ -67,10 +71,10 @@ defined('_JEXEC') or die('Restricted access'); ?>
             <?php endif; ?>
         </div>
     </div>	
+    </div>
 <?php endforeach; ?>
 </div>
 <?php /*?><?php if ($params->get('allowLink',1)) : ?>
 	<span class="small"> <?php echo modZKunenaLatestHelper::getCredit() ;?> </span>
 <?php endif;?><?php */?>
-</div>
 </div>
