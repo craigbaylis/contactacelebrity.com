@@ -107,24 +107,34 @@ $gettype = "address";
 $query = "SELECT * FROM (SELECT @row := @row +1 AS rownum, address_id FROM (SELECT @row :=0) r, #__celebrity_celebrity_address where celebrity_id = ".$member->celebrity_id.") ranked  WHERE address_id =".$member->address_id;
 $db->setQuery($query);
 $row = $db->loadAssoc();
+$getnumber = ($row['rownum'] == "0" || $row['rownum'] == "1" || $row['rownum'] == "")?"1":$row['rownum']-1;
 } 
 if($member->email){
 $gettype = "email";	
 $query = "SELECT * FROM (SELECT @row := @row +1 AS rownum, id FROM (SELECT @row :=0) r, #__celebrity_email where celebrity_id = ".$member->celebrity_id.") ranked  WHERE id =".$member->address_id;
 $db->setQuery($query);
+$getnumber = ($row['rownum'] == "0" || $row['rownum'] == "1" || $row['rownum'] == "")?"1":$row['rownum']-3;
+
 } 
 
 if($member->url) {
 $gettype = "website";	
 $query = "SELECT * FROM (SELECT @row := @row +1 AS rownum, id FROM (SELECT @row :=0) r, #__celebrity_website where celebrity_id = ".$member->celebrity_id.") ranked WHERE id =".$member->address_id;
 $db->setQuery($query);
+$getnumber = ($row['rownum'] == "0" || $row['rownum'] == "1" || $row['rownum'] == "")?"1":$row['rownum']-3;
+
+}
+if(!$member->company && !$member->email && !$member->url){
+$gettype="address";
+$getnumber = ($row['rownum'] == "0" || $row['rownum'] == "1" || $row['rownum'] == "")?"1":$row['rownum']-1;
+
 }
 //echo $query;
-//echo $row['rownum'];
+//echo "<br>".$row['rownum'];
 
 ?>
 
-									<a href="index.php?option=com_celebrity&view=result&id=<?php echo $member->id;?>&cid=<?php echo $member->celebrity_id;?>&aid=<?php echo $member->address_id;?>&anumber=<?php echo ($row['rownum'] == "0")?"1":$row['rownum']-1;?>&type=<?php echo $gettype;?>&Itemid=60" class="gk_js_avatar">
+									<a href="index.php?option=com_celebrity&view=result&id=<?php echo $member->id;?>&cid=<?php echo $member->celebrity_id;?>&aid=<?php echo $member->address_id;?>&anumber=<?php echo $getnumber;?>&type=<?php echo $gettype;?>&Itemid=60" class="gk_js_avatar">
 <?php 
 $filemember = array();
 $filemember = explode("/",$member->filename);
@@ -151,7 +161,15 @@ $resultpath =$image_location;
 
 									<div class="gk_js_member_name">
 
-										<span><?php echo substr($member->alias,0,20); ?></span>
+										<span><?php 
+										$getname = str_replace($member->celebrity_id,'',str_replace("-"," ",$filemember[2]));
+										echo substr($getname,0,20);
+										//echo $getname;
+										//echo substr($getname,0,20);
+										
+										
+										//substr(str_replace('Mailing Result -','',$member->cat_title),0,20); //,0,20); ?></span>
+                                        
 
 									</div>
 
@@ -165,7 +183,7 @@ $resultpath =$image_location;
 
 										<span><?php echo JText::_('Posted On:'); ?></span>
 
-										<span><?php echo date('d.m.y',strtotime($member->datecreate)); ?></span>
+										<span><?php echo date('m/d/Y',strtotime($member->datecreate)); ?></span>
 
 									</div>	
 
@@ -192,7 +210,8 @@ $resultpath =$image_location;
 									<div class="gk_js_profileviews">
 
 										<span><?php echo JText::_('Caption:'); ?></span>
-										<span><?php echo $member->title;?></span>
+										<span><?php echo substr($member->title,0,10);?></span>
+                                        <span><?php echo substr($member->title,10);?></span>
 
 
 									</div>
