@@ -134,7 +134,7 @@ $getnumber = ($row['rownum'] == "0" || $row['rownum'] == "1" || $row['rownum'] =
 
 ?>
 
-									<a href="index.php?option=com_celebrity&view=result&id=<?php echo $member->id;?>&cid=<?php echo $member->celebrity_id;?>&aid=<?php echo $member->address_id;?>&anumber=<?php echo $getnumber;?>&type=<?php echo $gettype;?>&Itemid=60" class="gk_js_avatar">
+									<a href="<?php echo JRoute::_('index.php?option=com_celebrity&task=details&view=result&id='.$member->id.'&cid='.$member->celebrity_id.'&aid='.$member->address_id.'&anumber='.$getnumber.'&type='.$gettype.'&Itemid=60');?>" class="gk_js_avatar">
 <?php 
 $filemember = array();
 $filemember = explode("/",$member->filename);
@@ -197,7 +197,7 @@ $resultpath =$image_location;
 
 										<span><?php echo JText::_('Posted By:'); ?></span>
 
-										<span><?php echo $member->username; ?></span>
+										<span><?php echo substr($member->username,0,8); ?>&nbsp;&nbsp;</span>
 
 									</div>
 
@@ -209,9 +209,9 @@ $resultpath =$image_location;
 
 									<div class="gk_js_profileviews">
 
-										<span><?php echo JText::_('Caption:'); ?></span>
-										<span><?php echo substr($member->title,0,10);?></span>
-                                        <span><?php echo substr($member->title,10);?></span>
+
+										<?php /*?><span><?php echo JText::_('Caption:'); ?></span><?php */?>
+										<span style="width:100%"><i><?php echo $member->title;?></i><?php //echo substr($member->title,0,15);?></span>
 
 
 									</div>
