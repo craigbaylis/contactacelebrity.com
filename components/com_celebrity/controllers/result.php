@@ -231,7 +231,7 @@ class CelebrityControllerResult extends JController
 	     $queueimage = 1;
 		  foreach($result as $getid){
 			 $getimagename = 'imagetitle'. $queueimage++;
-			 $imgtitle = JRequest::getcmd($getimagename);
+			 $imgtitle = JRequest::getvar($getimagename);
 			$query = "
             UPDATE
               `#__phocagallery` `a`
