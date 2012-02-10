@@ -78,7 +78,7 @@ $getuid =$_SESSION[__default][user]->id;
 							if($keys[$i] == "newest"){
 								?>								
                         <div class="noRightBorder" id="addAnotherAddress">
-<a href="<?php echo JURI::base();?>index.php?option=com_celebrity&task=add&controller=address&cid=<?php echo $_GET['cid'];?>&Itemid=61"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="114" height="133" /></a>
+<a href="<?php echo JRoute::_("index.php?option=com_celebrity&task=add&controller=address&cid=".$_GET['cid']."&Itemid=61");?>"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="114" height="133" /></a>
 </div>
 <?php } else {?>
                 <?php if($getuid==false){ ?>
@@ -88,7 +88,7 @@ $getuid =$_SESSION[__default][user]->id;
 
 				<?php }else {?>
                 		<div class="noRightBorder" id="addAnotherAddress">
-                		<a href="<?php echo JURI::base();?>index.php?option=com_celebrity&task=add&controller=address&cid=<?php echo $_GET['cid'];?>&Itemid=61"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="114" height="133" /></a>
+                		<a href="<?php echo JRoute::_("index.php?option=com_celebrity&task=add&controller=address&cid=".$_GET['cid']."&Itemid=61");?>"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="114" height="133" /></a>
                         </div>
                         <?php }?>
 <?php }?>
@@ -143,7 +143,7 @@ $j=1;
                                                 <?php }?>
                                                 
                                                  <?php if($member->name){?>
-                                                 <li class="viewDetail"><a href="index.php?option=com_celebrity&view=address&task=details&type=address&aid=<?php echo $member->id;?>&cid=<?php echo Jrequest::getCmd('cid');?>&anumber=<?php echo $j-1;?>&Itemid=60"></a>
+                                                 <li class="viewDetail"><a href="<?php echo JRoute::_('index.php?option=com_celebrity&view=address&task=details&type=address&aid='.$member->id.'&cid='.Jrequest::getCmd('cid').'&anumber='.($j-1).'&Itemid=60');?>"></a>
                                                 </li>
                                                 <?php } ?>
                                                <?php if($member->name){?>
@@ -152,7 +152,7 @@ $j=1;
                                                  </li>
                                                  <?php }?>
                                                       <?php if($member->email){?>
-                                                   <li class="viewDetail"><a href="index.php?option=com_celebrity&view=address&task=details&type=email&aid=<?php echo $member->id;?>&cid=<?php echo Jrequest::getCmd('cid');?>&anumber=<?php echo $j-1;?>&Itemid=60"></a></li>
+                                                   <li class="viewDetail"><a href="<?php echo JRoute::_('index.php?option=com_celebrity&view=address&task=details&type=email&aid='.$member->id.'&cid='.Jrequest::getCmd('cid').'&anumber='.($j-1).'&Itemid=60');?>"></a></li>
                                                   <li>&nbsp;</li>
                                                  <li>&nbsp;</li>
                                                 <li class="addressLine1">
@@ -182,7 +182,7 @@ $j=1;
                                                  <li>&nbsp;</li>
                                                  <?php }?>
                                                       <?php if($member->url){?>
-                                                       <li class="viewDetail"><a href="index.php?option=com_celebrity&view=address&task=details&type=website&aid=<?php echo $member->id;?>&cid=<?php echo Jrequest::getCmd('cid');?>&anumber=<?php echo $j-1;?>&Itemid=60"></a></li>
+                                                       <li class="viewDetail"><a href="<?php echo JRoute::_('index.php?option=com_celebrity&view=address&task=details&type=website&aid='.$member->id.'&cid='.Jrequest::getCmd('cid').'&anumber='.($j-1).'&Itemid=60');?>"></a></li>
                                                       
                                                 <li class="addressLine1">
 												<?php echo wordwrap($member->url, 20, "\n", true);?>
@@ -208,7 +208,7 @@ $j=1;
 												$user =& CFactory::getUser($member->id);
 												echo ($getuid!='') ? $member->line_1 : str_replace(substr($member->line_1,5),"********",$member->line_1); ?></li>
                                                 <li class="city_state_zip" style="width:520px; float:left;margin-left:-7px;"><?php echo substr($member->city,0,10).', '.$member->state.' '.substr($member->zipcode,0,6); ?></li>
-                                                <li class="submission" style="width:520px; float:left;margin-left:-7px;">Submitted by: <a href="index.php?option=com_community&view=profile&userid=<?php echo $member->created_by_uid;?>&Itemid=41"><?php echo $member->username;?></a></li>
+                                                <li class="submission" style="width:520px; float:left;margin-left:-7px;">Submitted by: <a href="<?php echo JRoute::_('index.php?option=com_community&view=profile&userid='.$member->created_by_uid.'&Itemid=41');?>"><?php echo $member->username;?></a></li>
                                       <li class="success" style="width:520px; float:left;margin-left:-7px;">
                                       <?php
 									//success
@@ -305,7 +305,7 @@ $j=1;
                         <?php if($getuser == "0"){?>
                         <a href="<?php echo JRoute::_('index.php?option=com_user&view=login') ?>" class="general_login"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="114" height="133" /></a>
                         <?php } else {?>
-<a href="<?php echo JURI::base();?>index.php?option=com_celebrity&task=add&controller=address&cid=<?php echo $_GET['cid'];?>&Itemid=61"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="114" height="133" /></a>
+<a href="<?php echo JRoute::_('index.php?option=com_celebrity&task=add&controller=address&cid='.$_GET['cid'].'&Itemid=61');?>"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="114" height="133" /></a>
 <?php }?>
 </div>
 
@@ -322,7 +322,7 @@ $j=1;
                         <a href="<?php echo JRoute::_('index.php?option=com_user&view=login') ?>" class="general_login"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="114" height="133" /></a>
                         <?php } 
 						else{?>
-<a href="<?php echo JURI::base();?>index.php?option=com_celebrity&task=add&controller=address&cid=<?php echo $_GET['cid'];?>&Itemid=61"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="113" height="133" /></a>
+<a href="<?php echo JRoute::_('index.php?option=com_celebrity&task=add&controller=address&cid='.$_GET['cid'].'&Itemid=61');?>"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="113" height="133" /></a>
 <?php }?>
 </div><?php }?>
 <?php
@@ -332,7 +332,7 @@ $j=1;
                           <?php if($getuser == "0"){?>
                         <a href="<?php echo JRoute::_('index.php?option=com_user&view=login') ?>" class="general_login"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="114" height="133" /></a>
                         <?php } else {?>
-<a href="<?php echo JURI::base();?>index.php?option=com_celebrity&task=add&controller=address&cid=<?php echo $_GET['cid'];?>&Itemid=61"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="114" height="133" /></a>
+<a href="<?php echo JRoute::_('index.php?option=com_celebrity&task=add&controller=address&cid='.$_GET['cid'].'&Itemid=61');?>"><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/addNewAddress_box.png" alt="addNewAddress_box" title="Have another address? Add it here!" width="114" height="133" /></a>
 <?php }?>
 </div><?php }?>
 
