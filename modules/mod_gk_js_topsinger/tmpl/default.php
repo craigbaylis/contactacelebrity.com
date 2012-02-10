@@ -104,7 +104,7 @@ $k=1;
 
 									<?php if( $this->config['show_avatar'] ) : ?>
 
-									<a href="index.php?option=com_community&amp;view=profile&amp;userid=<?php echo $member->id; ?>" class="gk_js_avatar">
+									<a href="<?php echo JRoute::_('index.php?option=com_community&amp;view=profile&amp;userid='.$member->id);?>" class="gk_js_avatar">
 
 										<?php 
 
@@ -126,7 +126,7 @@ $k=1;
 
 									<?php if( $this->config['show_name'] ) : ?>
 <ul id="topSignerList">
-		<li><?php echo $k++;?>. <?php echo substr($member->name,0,15)?> <a class="viewButton" href="index.php?option=com_celebrity&view=celebrity&task=details&cid=<?php echo $member->id;?>&Itemid=60">View</a></li>
+		<li><?php echo $k++;?>. <?php echo substr($member->name,0,15)?> <a class="viewButton" href="<?php echo JRoute::_('index.php?option=com_celebrity&view=celebrity&task=details&cid='.$member->id.'&Itemid=60');?>">View</a></li>
 	</ul>
 
 								<!--	<div class="gk_js_member_name">
