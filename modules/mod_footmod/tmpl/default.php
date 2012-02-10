@@ -63,7 +63,7 @@ foreach($newaddress as $getaddress){
 
 				</ul>
 
-				<a class="viewDetailButton" href="index.php?option=com_celebrity&view=address&task=details&type=address&aid=<?php echo $getaddress[9];?>&cid=<?php echo $getaddress[8];?>&anumber=1&Itemid=60">View Detail</a>
+				<a class="viewDetailButton" href="<?php echo JRoute::_('index.php?option=com_celebrity&view=address&task=details&type=address&aid='.$getaddress[9].'&cid='.$getaddress[8].'&anumber=1&Itemid=60');?>">View Detail</a>
 
 				
 
@@ -103,7 +103,7 @@ foreach($memberactivity as $getmember){
 
 			<ul>
 
-				<li class="postedBy">Posted by <a href="index.php?option=com_community&view=profile&userid=<?php echo $getmember[5];?>&Itemid=20"><?php echo $getmember[3];?></a><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /></li>
+				<li class="postedBy">Posted by <a href="<?php echo JRoute::_('index.php?option=com_community&view=profile&userid='.$getmember[5].'&Itemid=20');?>"><?php echo $getmember[3];?></a><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /></li>
 
 				<li class="postingDate"><?php echo $getmember[4];?></li>
 
@@ -145,7 +145,7 @@ foreach($memberactivity as $getmember){
 
 		<div class="hottestCelebList">
 <!--index.php?option=com_phocagallery&view=gallery&task=galleryview&id=<?php //echo $hottest[3];?>&Itemid=65&cid=<?php //echo $hottest[4];?>-->
-		<a href="index.php?option=com_celebrity&view=celebrity&task=details&cid=<?php echo $hottest[4];?>&Itemid=60" class="celebrity">
+		<a href="<?php echo JRoute::_('index.php?option=com_celebrity&view=celebrity&task=details&cid='.$hottest[4].'&Itemid=60');?>" class="celebrity">
 
 		<img src="<?php echo JURI::base();?>images/phocagallery/<?php echo str_replace('\\','/',$hottest[2]);?>/thumbs/phoca_thumb_s_<?php echo $celebimage;?>" alt="benicioDelToro" width="50" height="50" />
 
