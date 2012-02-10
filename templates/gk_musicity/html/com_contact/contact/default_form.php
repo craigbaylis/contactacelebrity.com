@@ -35,8 +35,24 @@ defined('_JEXEC') or die('Restricted access');
 		}
 	}
 </script>
+<style>
+#gk-current-content-wrap{
+background:none;
+}
+</style>
+<div class="width960" style="padding:8px;">
 
 <form action="<?php echo JRoute::_('index.php'); ?>" class="form-validate" method="post" name="emailForm" id="emailForm">
+<div class="contact_email<?php echo $this->escape($this->params->get( 'pageclass_sfx' )); ?>">
+		<label for="subject">
+		<?php echo JText::_( 'Subject' ); ?>*:</label>
+        <select name="subject" id="subject" class="inputbox required">
+        <option value=""><?php echo JText::_( 'Select Subject' ); ?></option>
+          <option value="General Questions"><?php echo JText::_( 'General Questions' ); ?></option>
+            <option value="Billing or Account Questions"><?php echo JText::_( 'Billing or Account Questions' ); ?></option>
+             <option value="Report Website Issues"><?php echo JText::_( 'Report Website Issues' ); ?></option>
+        </select>
+	</div>
 	<div class="contact_email<?php echo $this->escape($this->params->get( 'pageclass_sfx' )); ?>">
 		<label for="contact_name">
 		<?php echo JText::_( 'Enter your name' ); ?>:</label>
@@ -46,10 +62,10 @@ defined('_JEXEC') or die('Restricted access');
 		<?php echo JText::_( 'Email address' ); ?>*:</label>
 		<input type="text" id="contact_email" name="email" size="30" value="" class="inputbox required validate-email" maxlength="100" />
 	</div>
-	<div class="contact_email<?php echo  $this->escape($this->params->get( 'pageclass_sfx' )); ?>"><label for="contact_subject">
+<?php /*?>	<div class="contact_email<?php echo  $this->escape($this->params->get( 'pageclass_sfx' )); ?>"><label for="contact_subject">
 		<?php echo JText::_( 'Message subject' ); ?>:</label>
 		<input type="text" name="subject" id="contact_subject" size="30" class="inputbox" value="" />
-	</div>
+	</div><?php */?>
 		<div class="contact_email<?php echo $this->escape($this->params->get( 'pageclass_sfx' )); ?>"><label id="contact_textmsg" for="contact_text" class="textarea">
 		<?php echo JText::_( 'Enter your message' ); ?>*:</label>
 		<textarea name="text" id="contact_text" class="inputbox required" rows="10" cols="40"></textarea>
@@ -68,3 +84,4 @@ defined('_JEXEC') or die('Restricted access');
 	<input type="hidden" name="task" value="submit" />
 	<?php echo JHTML::_( 'form.token' ); ?>
 </form>
+</div>
