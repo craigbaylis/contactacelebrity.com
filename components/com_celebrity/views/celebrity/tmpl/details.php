@@ -90,7 +90,7 @@ $user =& JFactory::getUser();
                         <a href="javascript:;"><span class="aligning"><?php echo JText::_('Photo Gallery') ?></span></a>
                        <?php else:?>
                      <?php /*?>  index.php?option=com_phocagallery&view=category&id=<?php echo $this->details->album_catid;?>:<?php echo strtolower($this->details->first_name);?>-<?php echo strtolower($this->details->last_name);?>&Itemid=59<?php */?>
-                         <a href="index.php?option=com_phocagallery&view=gallery&task=galleryview&id=<?php echo $this->details->album_catid;?>&Itemid=59&cid=<?php echo $scripid;?>"><span class="aligning"><?php echo JText::_('Photo Gallery') ?></span></a>
+                         <a href="<?php echo JRoute::_('index.php?option=com_phocagallery&view=gallery&task=galleryview&id='.$this->details->album_catid.'&Itemid=59&cid='.$scripid); ?>"><span class="aligning"><?php echo JText::_('Photo Gallery') ?></span></a>
                          <?php endif;?>
                         </span><br />
                         <?php if($this->deceasedstatus[0]->is_deceased == 1):?>
