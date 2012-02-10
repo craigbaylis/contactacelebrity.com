@@ -66,6 +66,7 @@ switch ($task) {
             if (!empty($type)) shRemoveFromGETVarsList('type');
             if (!empty($aid)) shRemoveFromGETVarsList('aid');
             if (!empty($anumber)) shRemoveFromGETVarsList('anumber');
+			if (!empty($rpage)) shRemoveFromGETVarsList('rpage');
             $db = JFactory::getDBO();
             //get the celebrity name
             $query = "
@@ -79,9 +80,30 @@ switch ($task) {
             ";
              $db->setQuery($query);
              $results = $db->loadObject();
-            $title[] = "$results->first_name-$results->last_name-address";
-            $title[] = $aid;            
-        }
+            $title[] = "$results->first_name-$results->last_name-".$type;
+            $title[] = $aid.'-'.$anumber;            
+        } elseif($view=='result'){
+			if (!empty($id)) shRemoveFromGETVarsList('id');
+            if (!empty($cid)) shRemoveFromGETVarsList('cid');
+            if (!empty($aid)) shRemoveFromGETVarsList('aid');
+			if (!empty($anumber)) shRemoveFromGETVarsList('anumber');
+			if (!empty($type)) shRemoveFromGETVarsList('type');
+			 $db = JFactory::getDBO();
+            //get the celebrity name
+            $query = "
+                SELECT 
+                  LOWER(`a`.`first_name`) as first_name,
+                  LOWER(`a`.`last_name`) as last_name
+                FROM
+                  `#__celebrity_celebrity` `a`
+                WHERE
+                  `a`.`id` = $cid
+            ";
+             $db->setQuery($query);
+             $results = $db->loadObject();
+            $title[] = "$results->first_name-$results->last_name-autographs";
+			$title[] = $id;         
+		}
         break;
         case 'search':
         if($type == 'alpha') {
@@ -92,7 +114,7 @@ switch ($task) {
             $title[] = 'celebrity-names';
             $title[] = 'start-letter-'.$letter;
         }
-        break;
+		break;		
         default:
         $dosef = false;
 }
