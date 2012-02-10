@@ -45,7 +45,7 @@ class CelebrityModelAddress extends JModel
         // Call the parents constructor
         parent::__construct();
 
-        $context = 'com_celebrity.address.';
+        $context = 'com_celebrity.address';
         
         // Get the pagination request variables
         $limit        = $app->getUserStateFromRequest( $context, 'limit', $this->_default_limit, 'int' );
