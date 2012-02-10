@@ -165,7 +165,7 @@ background-attachment: scroll;
                 <div id="mailAddress_detailInfo">
                 <ul style="margin-top:-45px;">
                 <li>&nbsp;</li>
-                <li id="backToAddressList"><a href="index.php?option=com_celebrity&view=celebrity&task=details&cid=<?php echo Jrequest::getcmd("cid");?>&Itemid=<?php echo Jrequest::getcmd("Itemid");?>"></a><span ><a href="index.php?option=com_celebrity&view=celebrity&task=details&cid=<?php echo Jrequest::getcmd("cid");?>&Itemid=<?php echo Jrequest::getcmd("Itemid");?>" style="background:none;color:#464646; text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Go Back to Address List Page</a></span></li>
+                <li id="backToAddressList"><a href="<?php echo JRoute::_('index.php?option=com_celebrity&view=celebrity&task=details&cid='.Jrequest::getcmd("cid").'&Itemid='. Jrequest::getcmd("Itemid"));?>"></a><span ><a href="<?php echo JRoute::_('index.php?option=com_celebrity&view=celebrity&task=details&cid='.Jrequest::getcmd("cid").'&Itemid='. Jrequest::getcmd("Itemid"));?>" style="background:none;color:#464646; text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Go Back to Address List Page</a></span></li>
                 </ul>
                 </div>
 			</div><!-- div#grungeAddressBox close -->
@@ -294,7 +294,7 @@ echo $result;
 			?>
 				<ul>
                 <?php //if($this->ResultAddress[$m]->label == "Success"):?>
-					<li class="readButton"><a href="<?php echo JRoute::_( "index.php?option=com_celebrity&view=result&id=".$this->ResultAddress[$m]->id."&cid=".Jrequest::getcmd("cid")."&aid=".Jrequest::getcmd("aid")."&anumber=".Jrequest::getcmd("anumber")."&type=".$type."&Itemid=60");?>">View Details</a></li>
+					<li class="readButton"><a href="<?php echo JRoute::_( "index.php?option=com_celebrity&task=details&view=result&id=".$this->ResultAddress[$m]->id."&cid=".Jrequest::getcmd("cid")."&aid=".Jrequest::getcmd("aid")."&anumber=".Jrequest::getcmd("anumber")."&type=".$type."&Itemid=60");?>">View Details</a></li>
                     <?php //endif;?>
 					<!--<li class="commentNumber">5 Comments</li>
 					<li class="addComment"><a href="#">+ Add Comment</a></li>-->
