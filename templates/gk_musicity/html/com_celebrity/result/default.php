@@ -63,7 +63,7 @@ padding-top:0px;
 
 </style>
 
-<div style="margin-left:-18px;">		
+<div >		
 		<div class="width1002">
 				<h1 id="result"><?php echo $this->CelebrityDetail->full_name;?> Success for <?php echo $name;?><?php echo Jrequest::getcmd("anumber");?></h1>
 				
@@ -110,7 +110,7 @@ echo $result;
 		</div><!-- avatar_speachBubble_300 close -->	
 <div id="mailAddress_detailInfo" style="margin-top:0px;">
                 <ul>
-                <li id="backToAddressList"><a href="index.php?option=com_celebrity&view=address&task=details&type=<?php echo Jrequest::getcmd("type");?>&aid=<?php echo Jrequest::getcmd("aid");?>&cid=<?php echo Jrequest::getcmd("cid");?>&anumber=<?php echo Jrequest::getcmd("anumber");?>&Itemid=<?php echo Jrequest::getcmd("Itemid");?>"></a><span ><a href="index.php?option=com_celebrity&view=address&task=details&type=<?php echo Jrequest::getcmd("type");?>&aid=<?php echo Jrequest::getcmd("aid");?>&cid=<?php echo Jrequest::getcmd("cid");?>&anumber=<?php echo Jrequest::getcmd("anumber");?>&Itemid=<?php echo Jrequest::getcmd("Itemid");?>" style="background:none;color:#464646; text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Go Back to Address List Page</a></span></li>
+                <li id="backToAddressList"><a href="<?php echo JRoute::_('index.php?option=com_celebrity&view=address&task=details&type='.Jrequest::getcmd("type").'&aid='.Jrequest::getcmd("aid").'&cid='.Jrequest::getcmd("cid").'&anumber='.Jrequest::getcmd("anumber").'&Itemid='.Jrequest::getcmd("Itemid"));?>"></a><span ><a href="<?php echo JRoute::_('index.php?option=com_celebrity&view=address&task=details&type='.Jrequest::getcmd("type").'&aid='.Jrequest::getcmd("aid").'&cid='.Jrequest::getcmd("cid").'&anumber='.Jrequest::getcmd("anumber").'&Itemid='. Jrequest::getcmd("Itemid"));?>" style="background:none;color:#464646; text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Go Back to Address List Page</a></span></li>
                 </ul>
                 </div>
 </div><!--individualSuccess_story close -->
@@ -405,7 +405,7 @@ echo $result;
 
 <!-- ============================================================================================== -->	
 
-		<div style="margin-right:-18px;float:right">	
+		<div style="float:right">	
 	<!-- browse_RT1_300x250 -->
     <img src="<?php echo JURI::base().'modules/mod_celebrityaddresses/assets/images/spacer.png' ?>" alt="Successes" width="18" height="1" />
 <script type="text/javascript">
@@ -439,7 +439,7 @@ $blockips = array();
 GA_googleFillSlot("browse_RT1_300x250");
 </script>
 </div>
-	<div id="recentComments" style="margin-right:-18px;float:right">
+	<div id="recentComments" style="float:right">
 		<h1 id="result">Recent Comments</h1>
 		<?php
 
@@ -453,14 +453,14 @@ GA_googleFillSlot("browse_RT1_300x250");
                  <img class="avatar" src="<?php echo JURI::base();?>components/com_community/assets/user_thumb.png" alt="avatar1" width="72" height="71" />
                 <?php endif;?>
 				<ul>
-					<li class="postedBy">Posted by <a href="index.php?option=com_community&view=profile&userid=<?php echo $getjcomment[5];?>&Itemid=20"><?php echo $getjcomment[0];?></a><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /></li>
+					<li class="postedBy">Posted by <a href="<?php echo JRoute::_('index.php?option=com_community&view=profile&userid='.$getjcomment[5].'&Itemid=20');?>"><?php echo $getjcomment[0];?></a><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /><img src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/greenStar.png" alt="greenStar" width="13" height="12" /></li>
 					<li class="postingDate"><?php echo $getjcomment[4];?></li>
 					<li class="commentText" style="word-wrap: break-word;"><p><?php echo str_replace($codes, $links,$getjcomment[1]);?></p></li>
 				</ul>
 		</div><!-- .recentCommentText close -->
         	
 		<?php }?>
-        <a href="index.php?option=com_jcomments&task=rss&object_id=<?php echo $id;?>&object_group=com_celebrity&format=raw"><img id="recentCommentRSS" src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/rss2.png" alt="rss%202" width="64" height="25" /></a>
+        <a href="<?php echo JRoute::_('index.php?option=com_jcomments&task=rss&object_id='.$id.'&object_group=com_celebrity&format=raw');?>"><img id="recentCommentRSS" src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/rss2.png" alt="rss%202" width="64" height="25" /></a>
         <?php } else {?>
         <div class="avatar_speech_triangle_up"></div>
         <div class="avatar_speachBubble_325">
@@ -473,7 +473,7 @@ GA_googleFillSlot("browse_RT1_300x250");
 	
 	
 	
-<div id="ebayaddress" style="margin-right:-18px;float:right" >
+<div id="ebayaddress" style="float:right" >
 		<h1 id="details"><?php echo JText::_('FUNITEMS') ?></h1>
 		<?php 
                 $myEbay = JModuleHelper::getModule('MyEbay_Search','MyEbay_Search module');
