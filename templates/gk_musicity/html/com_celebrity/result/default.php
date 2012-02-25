@@ -121,9 +121,19 @@ echo $result;
 			<?php
 			for($img=0;$img<count($this->result_image);$img++){
 				if($this->result_image['smallimage'][$img]){
+//get photogallery id from phocagallery table
+$db =& JFactory::getDBO();
+$galleryquery = 'select a.id,a.catid,a.result_id from #__phocagallery a where a.result_id ='.$this->ResultAddress->id;
+$db->setQuery($galleryquery);
+$getgallery = $db->loadObject();
 			?>
-            
-                  <a  href="<?php echo $this->result_image['largeimage'][$img];?>" rel="lightbox-atomium" title="<?php echo $this->result_image['imagetitle'][$img];?>">  <img src="<?php echo $this->result_image['smallimage'][$img];?>"  class="lighboximg" width="140" height="180" /></a><br /><br />
+        
+          		 <?php if(empty($getgallery->result_id)){?>
+                  <a  href="<?php echo $this->result_image['largeimage'][$img];?>" rel="lightbox-atomium" title="<?php echo $this->result_image['imagetitle'][$img];?>">  <img src="<?php echo $this->result_image['smallimage'][$img];?>"  class="lighboximg" width="140" height="180" /></a>
+                  <?php  } else {?>
+                  <img src="<?php echo $this->result_image['smallimage'][$img];?>"  class="lighboximg" width="140" height="180" onclick="document.location.href='<?php echo JRoute::_('index.php?option=com_phocagallery&view=gallery&task=comment&id='.$getgallery->id.'&parentid='.$getgallery->catid.'&cid='.Jrequest::getcmd("cid").'&status=mailing');?>'" style="cursor:pointer;" />
+                  <?php }?>
+                  <br /><br />
 <?php } }?>
 					</div><!-- div#userInteraction closewidth="200" height="300" -->
 				<a id="viewFullimage" href="javascript:;"  >View Full Image</a>
