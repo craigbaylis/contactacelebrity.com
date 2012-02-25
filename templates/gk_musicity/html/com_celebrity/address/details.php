@@ -62,6 +62,47 @@ $user =& JFactory::getUser();
 //get member sent
 $newmodel = $this->getModel();
 
+//result section
+$celebrityresult = new stdClass();
+$dbresult = JFactory::getDBO();
+$query2 = 'select `a`.`first_name`, `a`.`last_name` , `a`.`album_catid` from `#__celebrity_celebrity` `a` where a.id ='.JRequest::getcmd('cid');
+$dbresult->setQuery($query2);
+$celebrityresult = $dbresult->loadObject();	
+
+/*custom*/
+$mooltools  = JURI::base().'components/com_celebrity/js/mootools-1.2.5.1-more.js';
+$lightbox = JURI::base().'components/com_celebrity/js/LightFace.js';
+$more = JURI::base().'components/com_celebrity/js/LightFace.IFrame.js';
+/*custom*/
+$scripid = Jrequest::getcmd("cid");
+$albumid = 0;
+$return_url = base64_encode($_SERVER['QUERY_STRING']);
+$titleceleb = addslashes($celebrityresult->first_name." ".$celebrityresult->last_name);
+$domready = <<<SCRIPT
+window.addEvent('domready',function(){
+	document.id('start').addEvent('click',function() {	
+		if(confirm('You have to add photo to celebrity photogallery,then you can add a result image here')){
+				light = new LightFace.IFrame({ height:250, width:525, url: 'index.php?option=com_celebrity&view=celebrity&task=lightupload&cid=$scripid&album_id=$albumid&return_url=$return_url', title: '$titleceleb' }).addButton('Close', function() { light.close(); },true).open();
+		} else {
+		return false;	
+		}
+			});
+			
+});
+SCRIPT;
+$celebrityCss = JURI::base().'components/com_celebrity/assets/css/Assets/LightFace.css';
+$document = JFactory::getDocument();
+/*custom*/
+$document->addScript($mooltools);
+$document->addScript($lightbox);
+$document->addScript($more);
+$document->addStyleSheet($celebrityCss);
+/*custom*/
+$document->addScriptDeclaration($domready);
+
+
+
+//result section
 ?>
 <style>
 ul.pagination_result li a, ul.pagination_result li span {
@@ -192,7 +233,11 @@ background-attachment: scroll;
 <?php if(!$user->id):?>
 <a href="<?php echo JRoute::_('index.php?option=com_user&view=login') ?>" class="general_login"><?php echo JText::_('Add my Results') ?></a>
 <?php else: ?>
+<?php if($celebrityresult->album_catid == "0"){?>
+ <a href="javascript:;" id="start" ><?php echo JText::_('Add my Results') ?></a>
+<?php } else {?>
 <a href="<?php echo JText::_('index.php?option=com_celebrity&view=result&task=add&cid='.$this->celebrity->id.'&aid='.$this->address->id.'&type='.$type.'&anumber='.$this->anumber.'&Itemid='.$this->resultsItemid) ?>"><?php echo JText::_('Add my Results') ?></a>
+<?php }?>
 <?php endif;?>
 </li>
                     
@@ -299,12 +344,25 @@ echo $result;
 					<!--<li class="commentNumber">5 Comments</li>
 					<li class="addComment"><a href="#">+ Add Comment</a></li>-->
 				</ul>
-				<p><!--Sent the letter asking for a signed picture for my sisters' birthday. She is the most coolest girl ever I love her CD identified it reminds me of how I left my boyfriend, but it was so nice to leave a message...--><?php echo ($this->ResultAddress[$m]->comments=="")?'No Comment':$this->ResultAddress[$m]->comments;?></p>		
-			</div><!-- div.user_comment close -->			
+				<p><!--Sent the letter asking for a signed picture for my sisters' birthday. She is the most coolest girl ever I love her CD identified it reminds me of how I left my boyfriend, but it was so nice to leave a message...--><?php echo ($this->ResultAddress[$m]->comments=="")?'No Comment':$this->ResultAddress[$m]->comments;?>
+               
+                
+                </p>
+               <?php /*?> <p>
+                	   <!--share result-->
+         <?php 
+                $myEbay = JModuleHelper::getModule('social_widgets','Social Widgets Ultimate Edition');
+                echo JModuleHelper::renderModule($myEbay);
+            ?>
+                <!--share result-->	
+                </p><?php */?>
+              
+			</div><!-- div.user_comment close -->	
+		
 		</div><!-- avatar_speachBubble close -->	
 			
 		<?php endfor;?>	
-			
+		
 			<?php /*?><!-- avatar2 -->
 			<img class="avatar" src="<?php echo JURI::base();?>templates/gk_musicity/images/style4/avatar2.gif" alt="avatar2" width="72" height="71" />
 			<div class="avatar_speech_triangle"></div>
