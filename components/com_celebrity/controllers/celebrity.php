@@ -452,7 +452,11 @@ class CelebrityControllerCelebrity extends JController {
             }
         }           
        }
+	   if($post['return_url']){
+		   $this->setRedirect("index.php?".base64_decode(JRequest::getcmd('return_url')),"result Image added succesfuly");
+	   } else{
 		 $this->setRedirect('index.php?option=com_celebrity&view=celebrity&task=details&cid='.$cid.'&Itemid=60',"Celebrity Image added succesfuly");
+	   }
    }
    
    

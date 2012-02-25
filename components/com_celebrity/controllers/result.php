@@ -152,7 +152,7 @@ class CelebrityControllerResult extends JController
         $catdata = $imageModel->getUserFolder();
 		
 		//Image upload in mailing result directory for particular celebrity
-		$category = array();
+		$categorymailing = array();
        require_once(JPATH_ROOT.DS.'components'.DS.'com_celebrity'.DS.'helpers'.DS.'utilities.php');
 	   //get a celebrity details
 	    $cid = Jrequest::getcmd("cid");
@@ -166,6 +166,7 @@ class CelebrityControllerResult extends JController
 		$db->setQuery($query2);
 		$celebrity = $db->loadObject();	
 		
+		
 		$query3 = 'select `a`.`id` from `#__phocagallery_categories` `a` where a.parent_id ='.$celebrity->album_catid;
 		$db->setQuery($query3);
 		$catid = $db->loadObject();	
@@ -173,8 +174,8 @@ class CelebrityControllerResult extends JController
        $name = $celebrity->first_name.' '.$celebrity->last_name;
        $alias = CelebrityUtilitiesHelper::getAliasName($name);
        $path = md5($alias);
-       $category['userfolder'] = substr($path,0,1).DS.substr($path,1,2).DS.$alias.'-'.$cid.DS.'Mailing Results';
-       if(!file_exists($category['userfolder'])) CelebrityUtilitiesHelper::createFolder($category['userfolder']);
+       $categorymailing['userfolder'] = substr($path,0,1).DS.substr($path,1,2).DS.$alias.'-'.$cid.DS.'Mailing Results';
+       if(!file_exists($categorymailing['userfolder'])) CelebrityUtilitiesHelper::createFolder($categorymailing['userfolder']);
 		//if user not have a category id
 		/*if(!$catdata->catid){ 
 		require_once(JPATH_ROOT.DS.'components'.DS.'com_celebrity'.DS.'helpers'.DS.'utilities.php');		
@@ -215,7 +216,7 @@ class CelebrityControllerResult extends JController
 		$cat_id = $catdata->catid;
 		}*/
 
-        JRequest::setVar('folder',$category['userfolder']);
+        JRequest::setVar('folder',$categorymailing['userfolder']);
         JRequest::setVar('catid',$catid->id);
         $object->_realJavaUpload($errUploadMsg,$redirectUrl);
 		
@@ -242,8 +243,9 @@ class CelebrityControllerResult extends JController
               `a`.`id` = $getid       
        		";
        		$db->setQuery($query);
-       		$db->query();		
-		 }
+       		$db->query();	
+		  }
+		 //}
 
 		
                 
@@ -336,6 +338,7 @@ class CelebrityControllerResult extends JController
         }
         */
         //display success results page
+		 //JRequest::setVar('resultid', '79184');
         $view = $this->getView('result','html');
         $view->setLayout('success');
         $view->display();
