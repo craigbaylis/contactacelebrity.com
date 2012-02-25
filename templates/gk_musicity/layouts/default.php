@@ -68,6 +68,11 @@ define('GK_LOGIN', $this->countModules('login'));
     $this->loadBlock('head'); 
     $this->useCache($this->getParam('css_compress'), $this->getParam('css_cache'));
 ?>
+<script>
+window.addEvent('domready',function(){
+$$(".item42>a>span").addClass("general_login");
+});
+</script>
 </head>
 
 <body id="bd" class="fs<?php echo $this->getParam(GK_TOOL_FONT);?> <?php echo $this->browser();?>">

@@ -29,6 +29,8 @@
 			<a class="gk-tool-switchlayout" href="<?php echo JURI::base()?>?ui=<?php echo $switch_to?>" title="<?php echo JText::_($text)?>"><span><?php echo JText::_($text)?></span></a>
 
 		<?php endif ; ?>
-		<?php echo $this->_tpl->params->get("footer_content"); ?>
+		<?php //echo $this->_tpl->params->get("footer_content"); ?>
+        <?php $year = date("Y"); ?>
+        	&copy;&nbsp;<?php echo $year;?> Contactacelebrity.com - All rights reserved.
 	</div>
 </div>
