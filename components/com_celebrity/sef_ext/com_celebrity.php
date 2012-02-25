@@ -113,6 +113,8 @@ switch ($task) {
             if (!empty($letter)) shRemoveFromGETVarsList('letter');
             $title[] = 'celebrity-names';
             $title[] = 'start-letter-'.$letter;
+			$title[] =  'alpha';
+			//$title[] = 'alpha'.JRequest::getInt('limitstart');
         }
 		break;		
         default:
