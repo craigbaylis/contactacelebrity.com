@@ -40,9 +40,16 @@ class CelebrityViewResult extends JView
 			 $aid = JRequest::getcmd('address_id');
 			 $type = JRequest::getcmd('type');
 			 $anumber = JRequest::getcmd('anumber');
+			 $resultid = JRequest::getvar('resultid');
+			 
             //$backlink = JRoute::_('index.php?option=com_celebrity&view=celebrity&task=details&cid='.$cid.$Itemid);
 			$backlink = JRoute::_('?option=com_celebrity&view=address&task=details&type='.$type.'&aid='.$aid.'&cid='.$cid.'&anumber='.$anumber.''.$Itemid);
             $this->assignRef('backlink',$backlink);
+			$this->assignRef('aid',$aid);
+			$this->assignRef('type',$type);
+			$this->assignRef('anumber',$anumber);
+			$this->assignRef('cid',$cid);
+			$this->assignRef('resultid',$resultid);
             break;
             
             case 'form':
