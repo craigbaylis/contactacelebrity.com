@@ -62,5 +62,6 @@ margin-top:-20px
     <input type="hidden" name="celebrity_name" value="<?php echo $this->celebname[0]->full_name;?>" />
     <input type="hidden" name="<?php echo JUtility::getToken(); ?>" value="1" />
     <input type="hidden" name="cid" value="<?php echo Jrequest::getcmd("cid");?>" />
+      <input type="hidden" name="return_url" value="<?php echo Jrequest::getcmd("return_url");?>" />    
 
 </form>
