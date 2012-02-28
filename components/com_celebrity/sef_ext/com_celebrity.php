@@ -113,14 +113,14 @@ switch ($task) {
             if (!empty($letter)) shRemoveFromGETVarsList('letter');
             $title[] = 'celebrity-names';
             $title[] = 'start-letter-'.$letter;
-			$title[] =  'alpha';
+			//$title[] =  'alpha';
 			//$title[] = 'alpha'.JRequest::getInt('limitstart');
         }
 		break;		
         default:
         $dosef = false;
 }
-  
+  //str_replace("-al-","alpha",)
 // ------------------  standard plugin finalize function - don't change ---------------------------  
 if ($dosef){
    $string = shFinalizePlugin( $string, $title, $shAppendString, $shItemidString, 
