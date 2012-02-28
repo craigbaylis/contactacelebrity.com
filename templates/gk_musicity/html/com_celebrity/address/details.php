@@ -233,11 +233,11 @@ background-attachment: scroll;
 <?php if(!$user->id):?>
 <a href="<?php echo JRoute::_('index.php?option=com_user&view=login') ?>" class="general_login"><?php echo JText::_('Add my Results') ?></a>
 <?php else: ?>
-<?php if($celebrityresult->album_catid == "0"){?>
+<?php /*?><?php if($celebrityresult->album_catid == "0"){?>
  <a href="javascript:;" id="start" ><?php echo JText::_('Add my Results') ?></a>
-<?php } else {?>
+<?php } else {?><?php */?>
 <a href="<?php echo JText::_('index.php?option=com_celebrity&view=result&task=add&cid='.$this->celebrity->id.'&aid='.$this->address->id.'&type='.$type.'&anumber='.$this->anumber.'&Itemid='.$this->resultsItemid) ?>"><?php echo JText::_('Add my Results') ?></a>
-<?php }?>
+<?php //}?>
 <?php endif;?>
 </li>
                     
